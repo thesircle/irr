@@ -8,6 +8,7 @@ var isUpdateMode = (props) => {
 }
 
 export const KaseyaComp = (props ) => {
+  if(props.match.path.endsWith('/view')){props.onV}
   let _url, _companyId, _userName, _password
   var update = (e) => {
     e.preventDefault();

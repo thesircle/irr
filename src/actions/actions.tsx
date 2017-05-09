@@ -1,5 +1,5 @@
 import T from '../constants/types'
-import fetch from 'isomorphic-fetch'
+import 'isomorphic-fetch'
 
 export  const updateKaseya = (url, companyId, userName, password) => {
   return {

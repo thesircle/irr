@@ -34,8 +34,13 @@
   margin-bottom:30px;
 }
 .p-l-30{
-
   padding-left: 30px;
+}
+.p-t-0{
+  padding-top: 0px;
+}
+.p-l-20{
+  padding-left: 20px;
 }
 .widget-item .wm-logo {
   position: absolute;
@@ -96,6 +101,34 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 .bg-white {
   background-color: #fff;
+}
+
+.list-style{
+  list-style: none;
+}
+.img-display{
+  display: inline-flex;
+}
+.m-t-20{
+  margin-top: 20px;
+}
+.text-padding{
+  padding: 0px 20px;
+}
+.form-background{
+  background: #FBFBFB;
+}
+.label-style{
+  font-size: 15px;
+  font-weight: normal;
+}
+.hr-integration{
+  border-color: #ECEEF1;
+  border-width: 3px;
+}
+
+.line-height{
+  line-height: 5px;
 }
 .breadcrumb {
   font-family: "Open Sans", sans-serif;

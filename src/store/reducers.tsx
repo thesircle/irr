@@ -6,7 +6,7 @@ export const kaseya = (state={}, action) => {
   console.log(`state & payload: ${JSON.stringify(action)}`)
   switch(action.type) {
 
-    case T.INTEGRATIONS.KASEYA.CREATE :
+    case T.INTEGRATIONS.KASEYA.VIEW :
       //TODO: do some math
       return action.payload
 

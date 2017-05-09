@@ -1,0 +1,142 @@
+.widgetborder {
+  border: 1px solid rgba(0, 0, 0, 0.07);
+}
+.fs-11 {
+  font-size: 11px !important;
+}
+.bold {
+  font-weight: bold !important;
+}
+.p-l-0 {
+  padding-left: 0px !important;
+}
+.no-padding {
+  padding: 0px !important;
+}
+.m-t-15 {
+  margin-top: 15px;
+}
+.p-r-0 {
+  padding-right: 0px !important;
+}
+.p-t-5 {
+  padding-top: 5px !important;
+}
+.p-b-5 {
+  padding-bottom: 5px !important;
+}
+.m-t-60{
+
+  margin-top: 60px;
+}
+.m-b-30{
+
+  margin-bottom:30px;
+}
+.p-l-30{
+
+  padding-left: 30px;
+}
+.widget-item .wm-logo {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.bg-complete {
+  background-color: #62c4b6;
+}
+.form-group-default {
+  background-color: #fff;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 2px;
+  padding-top: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  overflow: hidden;
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  min-height: 45px !important;
+}
+.form-group-default .form-control {
+  border: none;
+  height: 25px;
+  min-height: 25px;
+  padding: 0;
+  margin-top: -4px;
+  background: none;
+
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  -webkit-border-radius: 0 !important;
+  -webkit-background-clip: padding-box !important;
+  -moz-border-radius: 0 !important;
+  -moz-background-clip: padding !important;
+  border-radius: 0 !important;
+  background-clip: padding-box !important;
+  /* color: #858585; */
+  color: #858585;
+  border: 1px solid #d5d5d5;
+  font-family: inherit;
+  -webkit-transition: -webkit-box-shadow .45s, border-color .45s ease-in-out;
+  -moz-transition: -moz-box-shadow .45s, border-color .45s ease-in-out;
+  -o-transition: box-shadow .45s, border-color .45s ease-in-out;
+  transition: box-shadow .45s, border-color .45s ease-in-out;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.container-margin {
+  margin-top: 60px;
+}
+.bg-white {
+  background-color: #fff;
+}
+.breadcrumb {
+  font-family: "Open Sans", sans-serif;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 5px 0;
+  margin: 0;
+  border: none;
+  text-transform: uppercase;
+  display: block;
+}
+.breadcrumb li {
+  color: #7b7d82;
+  font-weight: 300;
+  text-shadow: none;
+}
+.breadcrumb li {
+  padding-left: 0px;
+}
+.companyheader {
+  background-color: white;
+  color: #555;
+  font-size: 28px !important;
+  margin-top: 10px !important;
+  font-weight:200;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.m-l-10{
+
+  margin-left: 10px;
+}
+.breadcrumb a, .breadcrumb i, .breadcrumb span, .breadcrumb li {
+  color: #7b7d82;
+  font-weight: 300;
+  text-shadow: none;
+  text-decoration: none;
+}
+$myColor : blue;
+.myClass{
+  color: $myColor;
+}

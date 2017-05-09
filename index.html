@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+  <body id="body">
+    <script>
+      var messageEventHandler = function(event){
+        //preventing internal webpack interruption messages.
+        // No security checks for now
+        if(event.origin != window.location.origin){
+          if(event.data.name === "token"){
+            alert(`Token fetched from parent is: ${event.data.value}`)
+          }
+        }
+      }
+      window.addEventListener('message', messageEventHandler,false);
+    </script>
+    <div id="react-container"></div>
+    <script src="/dist/bundle.js"></script>
+    <script>
+
+
+        window.onload = function() {
+          var body = document.getElementById('body').contentWindow;
+          console.log("sending message from iframe")
+          parent.postMessage('Message from iframe!', '*');
+        }
+    </script>
+  </body>
+</html>

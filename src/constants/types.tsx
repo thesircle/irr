@@ -1,0 +1,12 @@
+const types = {
+  INTEGRATIONS : {
+    KASEYA: {
+      CREATE: "KASEYA-CREATE",
+      UPDATE: "KASEYA-UPDATE",
+      FETCHING: "KASEYA-FETCHING",
+      CANCELFETCHING: "KASEYA-CANCELFETCHING",
+      UPDATING: "KASEYA-UPDATING"
+    }
+  }
+}
+export default types;

@@ -43,9 +43,9 @@ export const KaseyaComp = (props ) => {
         <div className="col-lg-12 col-md-12 col-xs-12">
           <ul className="breadcrumb role_list_breadcrumb p-t-0 p-r-0">
             <li>
-              <a ui-sref="app.dashboard" href="#/app/dashboard">Dashboard</a>
+              <a>Dashboard</a>
             </li>&nbsp;
-            <li> <a ui-sref="app.updateglobalpreferences" href="#/app/updateglobalpreferences">Organization Settings</a>
+            <li> <a>Organization Settings</a>
             </li>&nbsp;
             <li> <a href="" className="active">Integration Management</a>
             </li>
@@ -217,7 +217,7 @@ export const KaseyaComp = (props ) => {
             <div className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div className="row clearfix">
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                  <div className="form-group form-group-default" pg-form-group="">
+                  <div className="form-group form-group-default pg-form-group">
                     <label className="label-style">Server
                       URL</label>
                     <input type="text" required={true} name="serverName" className="form-control" placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net" />
@@ -231,7 +231,7 @@ export const KaseyaComp = (props ) => {
               <div className="row clearfix">
                 <div>&nbsp;</div>
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                  <div className="form-group form-group-default" pg-form-group="">
+                  <div className="form-group form-group-default pg-form-group">
                     <label className="label-style">Company
                       ID</label>
                     <input type="text" required={true} name="CompID"  className="form-control" placeholder="CW Company ID" />

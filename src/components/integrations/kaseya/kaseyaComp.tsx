@@ -1,4 +1,5 @@
 import './../../../styles/main.scss'
+import {IntegrationInfoComp} from '../integrationInfoComp'
 
 var isUpdateMode = (props) => {
   return(// to be changed soon
@@ -8,6 +9,7 @@ var isUpdateMode = (props) => {
 }
 
 export const KaseyaComp = (props ) => {
+  if(props.match.path.endsWith('/view')){props.onViewKaseya()}
   let _url, _companyId, _userName, _password
   var update = (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ export const KaseyaComp = (props ) => {
 
   return(
   <div>
+    <IntegrationInfoComp/>
     {/*<div className="myClass">This is user ID page... your id: {props.match.params.id} </div>*/}
     <div className="container">
       <div className="modal fade" id="myModal" role="dialog">

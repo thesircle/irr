@@ -1,7 +1,7 @@
 import { KaseyaComp } from './kaseyaComp'
 import { withRouter } from 'react-router-dom'
 import { connect }    from 'react-redux'
-import { updateKaseya } from '../../../actions/actions'
+import {updateKaseya, viewKaseya} from '../../../actions/actions'
 
 
 const mapStateToProps = (state, props) =>
@@ -17,6 +17,11 @@ const mapDispatchToProps = dispatch =>
     onUpdateKaseya({url, companyId, userName, password}) {
       dispatch(
         updateKaseya(url, companyId, userName, password)
+      )
+    },
+    onViewKaseya() {
+      dispatch(
+        viewKaseya()
       )
     }
   })

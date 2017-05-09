@@ -14,7 +14,7 @@ const mapStateToProps = (state, props) =>
 
 const mapDispatchToProps = dispatch =>
   ({
-    onCreateUser({url, companyId, userName, password}) {
+    onUpdateKaseya({url, companyId, userName, password}) {
       dispatch(
         updateKaseya(url, companyId, userName, password)
       )

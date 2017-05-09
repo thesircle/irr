@@ -1,7 +1,7 @@
 import './../../../styles/main.scss'
 
 var isUpdateMode = (props) => {
-  return(
+  return(// to be changed soon
     props.match.path.endsWith('/update')
     || props.match.path.endsWith('/create')
   )
@@ -11,9 +11,7 @@ export const KaseyaComp = (props ) => {
   let _url, _companyId, _userName, _password
   var update = (e) => {
     e.preventDefault();
-    //do some other logic
-    // props.history.push(`/user/${props.match.params.id}/update`)
-    props.onCreateUser({
+    props.onUpdateKaseya({
       url: _url.value,
       companyId: _companyId.value,
       userName: _userName.value,
@@ -23,7 +21,7 @@ export const KaseyaComp = (props ) => {
 
   return(
   <div>
-    <div className="myClass">This is user ID page... your id: {props.match.params.id} </div>
+    {/*<div className="myClass">This is user ID page... your id: {props.match.params.id} </div>*/}
     <div className="container">
       <div className="modal fade" id="myModal" role="dialog">
         <div className="modal-dialog modal-md">

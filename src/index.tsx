@@ -8,6 +8,7 @@ import sampleState from  "./constants/initialState"
 
 const store:any = (storeFactory(sampleState) as any);
 (window as any).React = React;
+(window as any).store = store;
 render(
   <Provider store={store}>
     <Routes/>

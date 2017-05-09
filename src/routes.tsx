@@ -6,7 +6,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
     export const Routes = () => (
         <Router>
             <Switch>
-              <Route path="/integrations/kasaye/update" component={Kaseya} />
+              <Route path="/integration/kaseya/update" component={Kaseya} />
             </Switch>
         </Router>
     );

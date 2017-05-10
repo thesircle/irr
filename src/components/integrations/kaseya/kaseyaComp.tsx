@@ -26,22 +26,7 @@ export const KaseyaComp = (props ) => {
   <div>
 
     {/*<div className="myClass">This is user ID page... your id: {props.match.params.id} </div>*/}
-    <div className="container">
-      <div className="modal fade" id="myModal" role="dialog">
-        <div className="modal-dialog modal-md">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
 
-            </div>
-            <div className="modal-body">
-              <img className="img-responsive" src="/img/cw_setup_large_1.jpg" />
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
     <div className="container-fluid container-fixed-lg container-margin">
       <div className="container-fixed-lg bg-white widgetborder">
         <div className="col-lg-12 col-md-12 col-xs-12">

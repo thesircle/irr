@@ -1,9 +1,16 @@
 export const IntegrationInfoComp = (prop) => {
 
-    var modifyString = (stringValue) => {
-        var bolded = [ "ConnectWise Client" , "System" , "Setup Tables" , '/"Integrator"/' , "Integrator Login" ,
-            '/"+"/' ,"Admin rights" ,"Access Level" , "All Records" , "Save" , "Close" ]
-    }
+    // var modifyString = (stringValue) => {
+    //     var bolded = [ "ConnectWise Client" , "System" , "Setup Tables" , '/"Integrator"/' , "Integrator Login" ,
+    //         '/"+"/' ,"Admin rights" ,"Access Level" , "All Records" , "Save" , "Close" ]
+    //     for(var b in bolded){
+    //         if(stringValue.indexOf(bolded[b]) > 0){
+    //             debugger
+    //         }
+    //     }
+    //     // var re = new RegExp(find, 'g');
+    //     // return str.replace(re, '<b>'+find+'</b>');
+    // }
 
   return(
       <div className="col-lg-6 col-xs-12 img-display">

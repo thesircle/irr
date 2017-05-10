@@ -8,8 +8,8 @@ export  const updateKaseya = (url, companyId, userName, password) => {
   }
 }
 export const viewKaseya = () => dispatch => {
-  // (fetch as any)('http://192.168.20.11:10969/KaseyaApi/',
-  (fetch as any)('http://localhost:3333/KaseyaApi',
+  (fetch as any)('http://192.168.20.11:10969/KaseyaApi/',
+  // (fetch as any)('http://localhost:3333/KaseyaApi',
   { method: 'get',
     headers: {
       'orgId': 'f5e7ee7d-125a-438d-9c20-06c32914431d',

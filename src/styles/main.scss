@@ -163,6 +163,10 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
   margin-left: 10px;
 }
+.subList{
+  column-count: 2;
+  column-gap: 40px;
+}
 .breadcrumb a, .breadcrumb i, .breadcrumb span, .breadcrumb li {
   color: #7b7d82;
   font-weight: 300;

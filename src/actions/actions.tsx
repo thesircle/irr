@@ -24,6 +24,7 @@ export const viewKaseya = () => dispatch => {
       type: T.INTEGRATIONS.KASEYA.VIEW,
       payload: {url,userName}
     })
+    return ({url,userName})
   })
   .catch(error => {
     console.log(error)

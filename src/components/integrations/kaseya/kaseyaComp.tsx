@@ -22,9 +22,48 @@ export class KaseyaComp extends Component<{},{}> {
   //   })
   // }
 
-componentDidMount(){
-  (this.props as any).onViewKaseya();
-}
+  constructor(props) {
+    super(props);
+    this.state = {url: '', userName: '', password: ''}
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e){
+    // if(e.target.name == "serverName"){
+    //   this.setState({url: e.target.value})
+    // }
+    // else if(e.target.name == "userName"){
+    //   this.setState({userName: e.target.value})
+    //
+    // }
+    // else if(e.target.name == "password"){
+    //   this.setState({password: e.target.value})
+    // }
+    const target = e.target;
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const name = e.target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + (this.state as any).value);
+    event.preventDefault();
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({url: nextProps.url})
+    this.setState({userName: nextProps.userName})
+    this.setState({password: nextProps.password})
+
+  }
+  componentDidMount(){
+    (this.props as any).onViewKaseya();
+  }
 
   render(){
     return(
@@ -99,7 +138,7 @@ componentDidMount(){
                     <div className="form-group form-group-default pg-form-group">
                       <label className="label-style">Server
                         URL</label>
-                      <input type="text" required={true} name="serverName" value={(this.props as any).url} className="form-control" placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net" />
+                      <input type="text" required={true} name="url" onChange={this.handleChange} value={(this.state as any).url} className="form-control" placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net" />
                     </div>
                     <label htmlFor="serverName" className="error">This field is
                       required.</label>
@@ -111,17 +150,8 @@ componentDidMount(){
                   <div>&nbsp;</div>
                   <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
                     <div className="form-group form-group-default pg-form-group">
-                      <label className="label-style">Company
-                        ID</label>
-                      <input type="text" required={true} name="CompID" value={(this.props as any).companyId}  className="form-control" placeholder="CW Company ID" />
-                    </div>
-                    <label htmlFor="CompID" className="error">This field is
-                      required.</label>
-                  </div>
-                  <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                    <div className="form-group form-group-default pg-form-group">
                       <label className="label-style">Username</label>
-                      <input type="text" required={true} name="username" value={(this.props as any).userName} className="form-control" placeholder="CW Integrator Login" />
+                      <input type="text" required={true} name="userName" onChange={this.handleChange} value={(this.state as any).userName} className="form-control" placeholder="CW Integrator Login" />
                     </div>
                     <label htmlFor="username" className="error">This field is
                       required.</label>
@@ -129,21 +159,21 @@ componentDidMount(){
                   <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
                     <div className="form-group form-group-default pg-form-group">
                       <label className="label-style">Password</label>
-                      <input type="password" required={true} name="password" value={(this.props as any).userPass} className="form-control" placeholder="CW Integrator Password" />
+                      <input type="password" required={true} name="password" onChange={this.handleChange} value={(this.state as any).password} className="form-control" placeholder="CW Integrator Password" />
                     </div>
                     <label htmlFor="password" className="error ">This field is
                       required.</label>
                   </div>
                 </div>
 
-                {/*<div className="row clearfix">*/}
-                {/*<div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">*/}
-                {/*<div role="alert" className="alert alr" id="lblFailed" style={{"display":"none; ","background-color":"#FDDDDD","color":"#A43432;"}}>*/}
-                {/*<button className="close"></button>*/}
-                {/*<strong>Invalid Credentials</strong>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*</div>*/}
+                <div className="row clearfix">
+                <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
+                <div role="alert" className="alert alr" id="lblFailed" style={{"display":"none; ","background-color":"#FDDDDD","color":"#A43432;"}}>
+                <button className="close"></button>
+                <strong>Invalid Credentials</strong>
+                </div>
+                </div>
+                </div>
 
               </div>
               <div className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 m-t-20">

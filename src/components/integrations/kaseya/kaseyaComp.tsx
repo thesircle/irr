@@ -31,28 +31,23 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   handleChange(e){
-    // if(e.target.name == "serverName"){
-    //   this.setState({url: e.target.value})
-    // }
-    // else if(e.target.name == "userName"){
-    //   this.setState({userName: e.target.value})
-    //
-    // }
-    // else if(e.target.name == "password"){
-    //   this.setState({password: e.target.value})
-    // }
     const target = e.target;
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     const name = e.target.name;
-
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit(e) {
     alert('A name was submitted: ' + (this.state as any).value);
-    event.preventDefault();
+    e.preventDefault();
+    (this.props as any).onUpdateKaseya
+    ({
+      url: (this.state as any).url,
+      userName: (this.state as any).userName,
+      password: (this.state as any).password
+    })
   }
 
   componentWillReceiveProps(nextProps){
@@ -183,6 +178,7 @@ export class KaseyaComp extends Component<{},{}> {
             </div>
           </div>
         </div>
+        button: <button onClick={this.handleSubmit} />
 
         <br />
         <br />

@@ -1,7 +1,6 @@
 const state = {
     "kaseya":{
       "url": "",
-      "companyId" : "",
       "userName"  : "",
       "password"  : "",
     }

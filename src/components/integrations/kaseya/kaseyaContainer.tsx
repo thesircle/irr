@@ -7,16 +7,15 @@ import {updateKaseya, viewKaseya} from '../../../actions/actions'
 const mapStateToProps = (state, props) =>
   ({
     url: state.kaseya.url,
-    companyId: state.kaseya.companyId,
     userName: state.kaseya.userName,
     password: state.kaseya.password
   })
 
 const mapDispatchToProps = dispatch =>
   ({
-    onUpdateKaseya({url, companyId, userName, password}) {
+    onUpdateKaseya({url, userName, password}) {
       dispatch(
-        updateKaseya(url, companyId, userName, password)
+        updateKaseya(url, userName, password)
       )
     },
     onViewKaseya() {

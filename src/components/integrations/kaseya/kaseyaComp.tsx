@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
-import lang from '../../../constants/lang'
+import L from '../../../constants/lang'
 
 var isUpdateMode = (props) => {
   return(// to be changed soon
@@ -75,16 +75,16 @@ componentDidMount(){
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
                 <div className="row">
-                  <IntegrationInfoComp object={lang.INTEGRATIOSN.KASEYA.TUT_1}/>
+                  <IntegrationInfoComp object={L.INTEGRATIOSN.KASEYA.TUT_1}/>
 
-                  <IntegrationInfoComp object={lang.INTEGRATIOSN.KASEYA.TUT_3}/>
+                  <IntegrationInfoComp object={L.INTEGRATIOSN.KASEYA.TUT_3}/>
                 </div>
 
                 <div>&nbsp;</div>
                 <div className="row">
-                  <IntegrationInfoComp object={lang.INTEGRATIOSN.KASEYA.TUT_2}/>
+                  <IntegrationInfoComp object={L.INTEGRATIOSN.KASEYA.TUT_2}/>
 
-                  <IntegrationInfoComp object={lang.INTEGRATIOSN.KASEYA.TUT_4}/>
+                  <IntegrationInfoComp object={L.INTEGRATIOSN.KASEYA.TUT_4}/>
                 </div>
 
               </div>

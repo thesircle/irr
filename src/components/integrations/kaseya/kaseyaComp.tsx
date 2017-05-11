@@ -40,13 +40,13 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   handleSubmit(e) {
-    alert('A name was submitted: ' + (this.state as any).value);
+    let state = this.state as any
     e.preventDefault();
     (this.props as any).onUpdateKaseya
     ({
-      url: (this.state as any).url,
-      userName: (this.state as any).userName,
-      password: (this.state as any).password
+      url: state.url,
+      userName: state.userName,
+      password: state.password
     })
   }
 
@@ -61,6 +61,7 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   render(){
+    let state = this.state as any
     return(
       <div>
         <div className="container">
@@ -133,7 +134,7 @@ export class KaseyaComp extends Component<{},{}> {
                     <div className="form-group form-group-default pg-form-group">
                       <label className="label-style">Server
                         URL</label>
-                      <input type="text" required={true} name="url" onChange={this.handleChange} value={(this.state as any).url} className="form-control" placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net" />
+                      <input type="text" required={true} name="url" onChange={this.handleChange} value={state.url} className="form-control" placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net" />
                     </div>
                     <label htmlFor="serverName" className="error">This field is
                       required.</label>
@@ -146,7 +147,7 @@ export class KaseyaComp extends Component<{},{}> {
                   <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
                     <div className="form-group form-group-default pg-form-group">
                       <label className="label-style">Username</label>
-                      <input type="text" required={true} name="userName" onChange={this.handleChange} value={(this.state as any).userName} className="form-control" placeholder="CW Integrator Login" />
+                      <input type="text" required={true} name="userName" onChange={this.handleChange} value={state.userName} className="form-control" placeholder="CW Integrator Login" />
                     </div>
                     <label htmlFor="username" className="error">This field is
                       required.</label>
@@ -154,7 +155,7 @@ export class KaseyaComp extends Component<{},{}> {
                   <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
                     <div className="form-group form-group-default pg-form-group">
                       <label className="label-style">Password</label>
-                      <input type="password" required={true} name="password" onChange={this.handleChange} value={(this.state as any).password} className="form-control" placeholder="CW Integrator Password" />
+                      <input type="password" required={true} name="password" onChange={this.handleChange} value={state.password} className="form-control" placeholder="CW Integrator Password" />
                     </div>
                     <label htmlFor="password" className="error ">This field is
                       required.</label>
@@ -163,7 +164,7 @@ export class KaseyaComp extends Component<{},{}> {
 
                 <div className="row clearfix">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                <div role="alert" className="alert alr" id="lblFailed" style={{"display":"none; ","background-color":"#FDDDDD","color":"#A43432;"}}>
+                <div role="alert" className="alert alr" id="lblFailed" style={{"display":"none","backgroundColor":"#FDDDDD","color":"#A43432"}}>
                 <button className="close"></button>
                 <strong>Invalid Credentials</strong>
                 </div>

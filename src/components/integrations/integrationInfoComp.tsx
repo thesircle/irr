@@ -25,9 +25,9 @@ export const IntegrationInfoComp = (prop) => {
         <div className="col-lg-6 col-xs-12">
           <div>&nbsp;</div>
           <ul>
-            {prop.object.props.map((obj,index) => <div>
-              <li className="list-style"><span
-                  className="badge bg-complete text-white" key={index.toString()}>{obj.key.toString()}</span>&nbsp;
+            {prop.object.props.map((obj,index) => <div key={index}>
+              <li className="list-style" ><span
+                  className="badge bg-complete text-white" >{obj.key}</span>&nbsp;
                   {typeof obj.value == "string" ?
                       obj.value :
                       (<span>{obj.value.head}<ul className="subList">

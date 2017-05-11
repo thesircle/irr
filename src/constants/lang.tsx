@@ -12,11 +12,11 @@ const lang = {
                 props:[
                     {
                         key : "1",
-                        value: "Login to Connect Wise Client."
+                        value: "Login to <span class='bold'>Connect Wise Client</span>."
                     },
                     {
                         key : "2",
-                        value: "Click on System on the navigation menu of ConnectWise."
+                        value: "Click on <span class='bold'>System</span> on the navigation menu of ConnectWise."
                     },
                     {
                         key : "3",

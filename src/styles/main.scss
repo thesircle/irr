@@ -173,6 +173,10 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   text-shadow: none;
   text-decoration: none;
 }
+
+.bold {
+  font-weight:bold;
+}
 $myColor : blue;
 .myClass{
   color: $myColor;

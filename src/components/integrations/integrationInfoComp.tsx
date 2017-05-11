@@ -29,7 +29,7 @@ export const IntegrationInfoComp = (prop) => {
               <li className="list-style" ><span
                   className="badge bg-complete text-white" >{obj.key}</span>&nbsp;
                   {typeof obj.value == "string" ?
-                      obj.value :
+                    <span dangerouslySetInnerHTML={{__html:obj.value}}></span> :
                       (<span>{obj.value.head}<ul className="subList">
                           {obj.value.detail_List.map((subValue,i) => <li key={i}>{subValue}</li>)}
                       </ul></span>)}

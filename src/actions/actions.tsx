@@ -8,7 +8,9 @@ export  const updateKaseya = (url, userName, password) => dispatch => {
       headers: {
         'Content-Type': 'application/json',
         'orgId': 'f5e7ee7d-125a-438d-9c20-06c32914431d',
-        'userId': '312'
+        'userId': '231',
+        'userName': 'junaid.malik@itboost.com',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bmFpZC5tYWxpa0BpdGJvb3N0LmNvbSIsImlhdCI6MTQ5NDU4NTExOX0.WvsA28bnETEcVmgS8OKG2CJzcKZK3K0guf1OilDduAs'
       },
       body: JSON.stringify({
         "KaseyaUrl":url,
@@ -23,13 +25,12 @@ export  const updateKaseya = (url, userName, password) => dispatch => {
         type: T.INTEGRATIONS.KASEYA.UPDATE,
         payload: {url, userName, password}
       })
+      dispatch (addSuccess("Updated!"))
     })
     .catch(error => {
       console.log(error)
-      // dispatch(
-      //   // addError(error.message)
-      // )
-      //
+      dispatch(addError(error.message))
+
       // dispatch({
       //   // type: T.CANCEL_FETCHING
       // })
@@ -41,7 +42,10 @@ export const viewKaseya = () => dispatch => {
   { method: 'get',
     headers: {
       'orgId': 'f5e7ee7d-125a-438d-9c20-06c32914431d',
-      'userId': '312'
+      'userId': '231',
+      'userName': 'junaid.malik@itboost.com',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bmFpZC5tYWxpa0BpdGJvb3N0LmNvbSIsImlhdCI6MTQ5NDU4NTExOX0.WvsA28bnETEcVmgS8OKG2CJzcKZK3K0guf1OilDduAs'
+
     }
   })
   .then(response => response.json())
@@ -55,12 +59,33 @@ export const viewKaseya = () => dispatch => {
   })
   .catch(error => {
     console.log(error)
-    // dispatch(
-    //   // addError(error.message)
-    // )
-    //
+    dispatch(addError(error.message))
+
     // dispatch({
     //   // type: T.CANCEL_FETCHING
     // })
   })
 }
+
+export const addError = message =>
+  ({
+    type: T.ERROR_MESSAGES.ADD,
+    payload: message
+  })
+
+export const clearError = index =>
+  ({
+    type: T.ERROR_MESSAGES.CLEAR,
+    payload: index
+  })
+export const addSuccess = message =>
+  ({
+    type: T.SUCCESS_MESSAGES.ADD,
+    payload: message
+  })
+
+export const clearSuccess = index =>
+  ({
+    type: T.SUCCESS_MESSAGES.CLEAR,
+    payload: index
+  })

@@ -3,6 +3,7 @@ const state = {
       "url": "",
       "userName"  : "",
       "password"  : "",
-    }
+    },
+    "errors":[]
 }
 export default state;

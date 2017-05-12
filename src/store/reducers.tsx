@@ -18,9 +18,37 @@ export const kaseya = (state={}, action) => {
   }
 }
 
+export const errors = (state=[], action) => {
+  switch(action.type) {
+    case T.ERROR_MESSAGES.ADD :
+      return [
+        ...state,
+        action.payload
+      ]
+    case T.ERROR_MESSAGES.CLEAR :
+      return state.filter((message, i) => i !== action.payload)
+    default:
+      return state
+  }
+}
+
+export const successes = (state=[], action) => {
+  switch(action.type) {
+    case T.SUCCESS_MESSAGES.ADD :
+      return [
+        ...state,
+        action.payload
+      ]
+    case T.SUCCESS_MESSAGES.CLEAR :
+      return state.filter((message, i) => i !== action.payload)
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  kaseya
-  // , fetching
+  kaseya,
+  errors
 })
 
 

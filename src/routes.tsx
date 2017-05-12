@@ -17,7 +17,7 @@ import * as React from 'react'
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Kaseya from './components/integrations/kaseya/kaseyaContainer'
 import Root from './components/root/rootContainer'
-let c:any;
+
 export const Routes = () => (
 
   <Router>

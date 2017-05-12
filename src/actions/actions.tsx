@@ -26,6 +26,7 @@ export  const updateKaseya = (url, userName, password) => dispatch => {
         payload: {url, userName, password}
       })
       dispatch (addSuccess("Updated!"))
+      dispatch(addError("testError"))
     })
     .catch(error => {
       console.log(error)

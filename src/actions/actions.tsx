@@ -30,8 +30,10 @@ export  const updateKaseya = (url, userName, password) => dispatch => {
     })
     .catch(error => {
       console.log(error)
-      dispatch(addError(error.message))
+      // dispatch(addError(error.message))
 
+      dispatch(addError("testError"))
+      dispatch (addSuccess("Updated!"))
       // dispatch({
       //   // type: T.CANCEL_FETCHING
       // })
@@ -57,36 +59,46 @@ export const viewKaseya = () => dispatch => {
       type: T.INTEGRATIONS.KASEYA.VIEW,
       payload: {url,userName}
     })
+    dispatch (addSuccess("Updated!"))
+    dispatch(addError("testError"))
   })
+
+  // dispatch(addError("testError"))
   .catch(error => {
     console.log(error)
-    dispatch(addError(error.message))
+    // dispatch(addError(error.message))
 
+    dispatch (addSuccess("Updated!"))
+    dispatch(addError("testError"))
     // dispatch({
     //   // type: T.CANCEL_FETCHING
     // })
   })
 }
 
-export const addError = message =>
-  ({
+export const addError = message => dispatch => {
+  dispatch({
     type: T.ERROR_MESSAGES.ADD,
     payload: message
   })
-
-export const clearError = index =>
-  ({
+}
+export const clearError = index => dispatch => {
+  dispatch({
     type: T.ERROR_MESSAGES.CLEAR,
     payload: index
   })
-export const addSuccess = message =>
-  ({
+}
+export const addSuccess = message => dispatch => {
+  dispatch({
     type: T.SUCCESS_MESSAGES.ADD,
     payload: message
   })
-
-export const clearSuccess = index =>
-  ({
+}
+export const clearSuccess = index => dispatch => {
+  dispatch({
     type: T.SUCCESS_MESSAGES.CLEAR,
     payload: index
   })
+}
+
+

@@ -1,9 +1,10 @@
 const system = {
-  BK_BASE: "http://site.com/",
+  // BK_BASE: "http://192.168.20.11:10969/",
+  BK_BASE: "http://localhost:3333/",
   BK : {
     API: {
-      KASEYA_STATUS: "url/here",
-      KASEYA_UPDATE: "url/here",
+      KASEYA_VIEW: "KaseyaApi",
+      KASEYA_UPDATE: "KaseyaApi/VerifyFirstTime",
     }
   }
 }

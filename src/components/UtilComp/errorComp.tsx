@@ -8,8 +8,7 @@ export class ShowErrors extends Component<{},{}> {
   }
   componentWillReceiveProps(nextProps){
     this.setState({
-      errors: nextProps.errors,
-      onClearError: nextProps.onClearError=f=>f
+      errors: nextProps.errors
     })
   }
   render(){

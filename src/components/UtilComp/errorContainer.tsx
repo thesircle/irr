@@ -1,5 +1,6 @@
 import {ShowErrors} from './errorComp'
 import { connect } from 'react-redux'
+import {clearError} from '../../actions/actions'
 
 const mapStateToProps = (state,props) => {
   return {
@@ -9,8 +10,11 @@ const mapStateToProps = (state,props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
-
+    onClearError(index) {
+      dispatch(
+        clearError(index)
+      )
+    }
   }
 }
 

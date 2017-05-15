@@ -1,12 +1,16 @@
 import {Component} from 'react'
+// import CloseButton from 'react-icons/lib/fa/close'
 
 export class ShowErrors extends Component<{},{}> {
   constructor(props) {
     super(props);
-    this.state = {errors: []}
+    this.state = {errors: [], onClearError: f=>f}
   }
   componentWillReceiveProps(nextProps){
-    this.setState({errors: nextProps.errors})
+    this.setState({
+      errors: nextProps.errors,
+      onClearError: nextProps.onClearError=f=>f
+    })
   }
   render(){
     return(
@@ -15,6 +19,7 @@ export class ShowErrors extends Component<{},{}> {
           (this.state as any).errors.map((message, i) =>
                     <div key={i} className="error">
                       <p>{message}</p>
+                      <p onClick={() => (this.state as any).onClearError(i)}>X</p>
                     </div>)
         : null
         }

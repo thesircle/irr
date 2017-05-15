@@ -3,12 +3,7 @@ import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
 
-var isUpdateMode = (props) => {
-  return(// to be changed soon
-    props.match.path.endsWith('/update')
-    || props.match.path.endsWith('/create')
-  )
-}
+
 export class KaseyaComp extends Component<{},{}> {
 
   // let _url, _companyId, _userName, _password;
@@ -40,6 +35,7 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   handleSubmit(e) {
+    console.log(`handleSubmit`)
     let state = this.state as any
     e.preventDefault();
     (this.props as any).onUpdateKaseya

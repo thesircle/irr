@@ -17,24 +17,45 @@
       var messageEventHandler = function(event){
         //preventing internal webpack interruption messages.
         // No security checks for now
+
         if(event.origin != window.location.origin){
-          if(event.data.name === "token"){
-            alert(`Token fetched from parent is: ${event.data.value}`)
+
+          if(event.data.name === "securityInfo"){
+            let securityObject = {
+              token: event.data.token,
+              userName: event.data.userName,
+              orgId: event.data.orgId,
+              userId: event.data.userId
+            }
+            window.securityObject = securityObject;
           }
         }
       }
       window.addEventListener('message', messageEventHandler,false);
+
     </script>
     <div id="react-container"></div>
     <script src="/dist/bundle.js"></script>
     <script>
+      var height = 0;
+      var sendPageSize = function() {
+        var body = document.body,
+          html = document.documentElement;
+        height = Math.max( body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight );
+        parent.postMessage({
+          name:"docInfo",
+          docHeight: height
+        },'*');
+      }
+      document.body.onresize = function () {
+        sendPageSize()
+      }
 
 
-        window.onload = function() {
-          var body = document.getElementById('body').contentWindow;
-          console.log("sending message from iframe")
-          parent.postMessage('Message from iframe!', '*');
-        }
+      window.onload = function() {
+        sendPageSize()
+      }
     </script>
   </body>
 </html>

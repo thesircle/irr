@@ -2,6 +2,8 @@ import {Component} from 'react'
 import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
+import formValidationUtils from '../../../utils/formValidationutils'
+import {FormField} from "../../common/formFieldComponent";
 
 
 export class KaseyaComp extends Component<{},{}> {
@@ -32,6 +34,7 @@ export class KaseyaComp extends Component<{},{}> {
     this.setState({
       [name]: value
     });
+    formValidationUtils(name,value)
   }
 
   handleSubmit(e) {
@@ -123,39 +126,37 @@ export class KaseyaComp extends Component<{},{}> {
             <hr className="hr-integration" />
 
             <div className="row form-background">
-
               <div className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div className="row clearfix">
-                  <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                    <div className="form-group form-group-default pg-form-group">
-                      <label className="label-style">Server
-                        URL</label>
-                      <input type="text" required={true} name="url" onChange={this.handleChange} value={state.url} className="form-control" placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net" />
-                    </div>
-                    <label htmlFor="serverName" className="error">This field is
-                      required.</label>
-                  </div>
+                  <FormField
+                    type="url"
+                    name="url"
+                    fieldName="Server Url"
+                    className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                    placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net"
+                    value={state.url}
+                    _onChange={this.handleChange} />
                 </div>
-
 
                 <div className="row clearfix">
                   <div>&nbsp;</div>
-                  <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                    <div className="form-group form-group-default pg-form-group">
-                      <label className="label-style">Username</label>
-                      <input type="text" required={true} name="userName" onChange={this.handleChange} value={state.userName} className="form-control" placeholder="CW Integrator Login" />
-                    </div>
-                    <label htmlFor="username" className="error">This field is
-                      required.</label>
-                  </div>
-                  <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                    <div className="form-group form-group-default pg-form-group">
-                      <label className="label-style">Password</label>
-                      <input type="password" required={true} name="password" onChange={this.handleChange} value={state.password} className="form-control" placeholder="CW Integrator Password" />
-                    </div>
-                    <label htmlFor="password" className="error ">This field is
-                      required.</label>
-                  </div>
+
+                  <FormField
+                    type="email"
+                    name="userName"
+                    fieldName="User Name"
+                    value={state.userName}
+                    placeholder="CW Integrator Login"
+                    _onChange={this.handleChange} />
+
+                  <FormField
+                    type="password"
+                    name="password"
+                    fieldName="Password"
+                    value={state.password}
+                    placeholder="Enter Password"
+                    _onChange={this.handleChange} />
+                  <button onClick={this.handleSubmit} >Update</button>
                 </div>
 
                 <div className="row clearfix">
@@ -175,14 +176,6 @@ export class KaseyaComp extends Component<{},{}> {
             </div>
           </div>
         </div>
-        button: <button onClick={this.handleSubmit} />
-
-        <br />
-        <br />
-        <hr />
-        <hr />
-        <br />
-        <br />
 
         {/*<form method="POST">*/}
           {/*<input*/}
@@ -213,11 +206,6 @@ export class KaseyaComp extends Component<{},{}> {
           {/*/>*/}
           {/*Update: <button name="update" value="Update" onClick={update}/>*/}
         {/*</form>*/}
-
-
-
-
-
 
       </div>
     )

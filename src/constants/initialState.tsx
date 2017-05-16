@@ -4,6 +4,6 @@ const state = {
       "userName"  : "",
       "password"  : "",
     },
-    "errors":[]
+    "wiseMessages":[]
 }
 export default state;

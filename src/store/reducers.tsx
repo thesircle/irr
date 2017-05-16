@@ -18,7 +18,7 @@ export const kaseya = (state={}, action) => {
   }
 }
 
-export const errors = (state=[], action) => {
+export const wiseMessages = (state=[], action) => {
   switch(action.type) {
     case T.ERROR_MESSAGES.ADD :
       return [
@@ -32,23 +32,11 @@ export const errors = (state=[], action) => {
   }
 }
 
-export const successes = (state=[], action) => {
-  switch(action.type) {
-    case T.SUCCESS_MESSAGES.ADD :
-      return [
-        ...state,
-        action.payload
-      ]
-    case T.SUCCESS_MESSAGES.CLEAR :
-      return state.filter((message, i) => i !== action.payload)
-    default:
-      return state
-  }
-}
+
 
 export default combineReducers({
   kaseya,
-  errors
+  wiseMessages
 })
 
 

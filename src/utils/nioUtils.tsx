@@ -12,13 +12,15 @@ export const api = (url, params) => {
     });
 }
 
+var securityObject = (window as any).securityObject;
+var headers = {
+  "Authorization" : "Bearer "+securityObject.token,
+  "orgId"         : securityObject.orgId,
+  "userId"        : securityObject.userId,
+  "userName"      : securityObject.userName
+}
+
 export const get = (url, params:any={}) => {
-  var headers = {// TODO: refactor on iframe implementation
-    'orgId': 'f5e7ee7d-125a-438d-9c20-06c32914431d',
-    'userId': '231',
-    'userName': 'junaid.malik@itboost.com',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bmFpZC5tYWxpa0BpdGJvb3N0LmNvbSIsImlhdCI6MTQ5NDU4NTExOX0.WvsA28bnETEcVmgS8OKG2CJzcKZK3K0guf1OilDduAs'
-  };
   if (params.headers) {
     Object.assign(headers, params.headers);
   }
@@ -30,14 +32,11 @@ export const get = (url, params:any={}) => {
   return api(url, finalParams);
 }
 
+
 export const post = (url, body, params:any={}) => {
-  var headers = {// TODO: refactor on iframe implementation
-    'Content-Type': 'application/json',
-    'orgId': 'f5e7ee7d-125a-438d-9c20-06c32914431d',
-    'userId': '231',
-    'userName': 'junaid.malik@itboost.com',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bmFpZC5tYWxpa0BpdGJvb3N0LmNvbSIsImlhdCI6MTQ5NDU4NTExOX0.WvsA28bnETEcVmgS8OKG2CJzcKZK3K0guf1OilDduAs'
-  };
+  Object.assign(headers, {
+    'Content-Type': 'application/json'
+  })
   if (params.headers) {
     Object.assign(headers, params.headers);
   }

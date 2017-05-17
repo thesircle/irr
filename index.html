@@ -10,7 +10,9 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script>
+      window.securityObject = {};
+    </script>
   </head>
   <body id="body">
     <script>
@@ -19,7 +21,6 @@
         // No security checks for now
 
         if(event.origin != window.location.origin){
-
           if(event.data.name === "securityInfo"){
             let securityObject = {
               token: event.data.token,
@@ -28,6 +29,7 @@
               userId: event.data.userId
             }
             window.securityObject = securityObject;
+            console.log(JSON.stringify(window.securityObject))
           }
         }
       }
@@ -38,11 +40,11 @@
     <script src="/dist/bundle.js"></script>
     <script>
       var height = 0;
-      var sendPageSize = function() {
-        var body = document.body,
-          html = document.documentElement;
-        height = Math.max( body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight );
+      sendPageSize = () => {
+        let body = document.body,
+            html = document.documentElement;
+            height = Math.max( body.scrollHeight, body.offsetHeight,
+              html.clientHeight, html.scrollHeight, html.offsetHeight );
         parent.postMessage({
           name:"docInfo",
           docHeight: height
@@ -51,7 +53,6 @@
       document.body.onresize = function () {
         sendPageSize()
       }
-
 
       window.onload = function() {
         sendPageSize()

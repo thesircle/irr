@@ -1,5 +1,5 @@
 import KaseyaContainer from "../integrations/kaseya/kaseyaContainer";
-import ShowErrors from "../UtilComp/errorContainer"
+import ShowErrors from "../UtilComp/wiseMessageContainer"
 export const RootComp = (props) =>
   (
     <div>

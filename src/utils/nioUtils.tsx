@@ -11,8 +11,8 @@ export const api = (url, params) => {
       }
     });
 }
-
 var securityObject = (window as any).securityObject;
+//window.securityObject = securityInfo;
 var headers = {
   "Authorization" : "Bearer "+securityObject.token,
   "orgId"         : securityObject.orgId,

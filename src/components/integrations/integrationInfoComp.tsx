@@ -1,11 +1,19 @@
 export const IntegrationInfoComp = (prop) => {
+    var popUp = () =>{
+        parent.postMessage({
+            name:"hide",
+        },'*');
+    }
+
+    var closePopup = () => {
+        parent.postMessage({name: "hidepopup"},'*');
+    }
 
     // var modifyString = (stringValue) => {
     //     var bolded = [ "ConnectWise Client" , "System" , "Setup Tables" , '/"Integrator"/' , "Integrator Login" ,
     //         '/"+"/' ,"Admin rights" ,"Access Level" , "All Records" , "Save" , "Close" ]
     //     for(var b in bolded){
     //         if(stringValue.indexOf(bolded[b]) > 0){
-    //             debugger
     //         }
     //     }
     //     // var re = new RegExp(find, 'g');
@@ -13,12 +21,13 @@ export const IntegrationInfoComp = (prop) => {
     // }
 
   return(
+      <div>
       <div className="col-lg-6 col-xs-12 img-display">
         <div className="widget-item f-w col-lg-4 hidden-xs">
           <img src={prop.object.sm_img} />
           <div
               className="overlayer widget-detail hover_img  bottom-left full-width">
-            <img src={prop.object.sm_hover_img} className="wm-logo" data-toggle="modal" data-target="#myModal" />
+            <img src={prop.object.sm_hover_img} className="wm-logo" onClick={popUp} data-toggle="modal" data-target="#myModal" />
           </div>
         </div>
 
@@ -38,6 +47,22 @@ export const IntegrationInfoComp = (prop) => {
             </div>)}
           </ul>
         </div>
+      </div>
+          <div>
+              <div className="modal fade" id="myModal" role="dialog">
+                  <div className="modal-dialog modal-md">
+                      <div className="modal-content">
+                          <div className="modal-header">
+                              <button type="button" className="close" onClick={closePopup} data-dismiss="modal">&times;</button>
+
+                          </div>
+                          <div className="modal-body">
+                              <img className="img-responsive" src={prop.object.lg_img} />
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
   )
 }

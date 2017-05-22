@@ -1,10 +1,10 @@
 import {Component} from 'react'
+import {PropTypes} from 'prop-types';
 import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
 import formValidationUtils from '../../../utils/formValidationutils'
 import {FormField} from "../../common/formFieldComponent";
-
 
 export class KaseyaComp extends Component<{},{}> {
 
@@ -21,10 +21,11 @@ export class KaseyaComp extends Component<{},{}> {
 
   constructor(props) {
     super(props);
-    this.state = {url: '', userName: '', password: ''}
+    this.state = {url: '', userName: '', password: '', isSubmitted:false, isValid:false}
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    //this.validator = this.validator.bind(this);
   }
 
   handleChange(e){
@@ -34,19 +35,33 @@ export class KaseyaComp extends Component<{},{}> {
     this.setState({
       [name]: value
     });
-    formValidationUtils(name,value)
   }
 
+  // validator(value){
+  //   this.setState({isValid:value});
+  // }
+
   handleSubmit(e) {
-    console.log(`handleSubmit`)
-    let state = this.state as any
+    let state = this.state as any;
+    if(state.url === "" || state.userName === "" || state.password === "") {
+      this.setState({isSubmitted: true});
+      return
+    }
     e.preventDefault();
+    // if (!url || name || password ||){
     (this.props as any).onUpdateKaseya
     ({
       url: state.url,
       userName: state.userName,
       password: state.password
     })
+  }
+
+  changeRouteState(e){
+    parent.postMessage({
+      name:"route",
+      route: e.target.innerText
+    },'*')
   }
 
   componentWillReceiveProps(nextProps){
@@ -56,6 +71,7 @@ export class KaseyaComp extends Component<{},{}> {
 
   }
   componentDidMount(){
+    console.log(this.refs["infoForm"]);
     (this.props as any).onViewKaseya();
   }
 
@@ -63,30 +79,14 @@ export class KaseyaComp extends Component<{},{}> {
     let state = this.state as any
     return(
       <div>
-        <div className="container">
-          <div className="modal fade" id="myModal" role="dialog">
-            <div className="modal-dialog modal-md">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div className="modal-body">
-                  <img className="img-responsive" src="/img/cw_setup_large_1.jpg" />
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="container-fluid container-fixed-lg container-margin">
           <div className="container-fixed-lg bg-white widgetborder">
             <div className="col-lg-12 col-md-12 col-xs-12">
               <ul className="breadcrumb role_list_breadcrumb p-t-0 p-r-0">
-                <li>
-                  <a>Dashboard</a>
+                <li onClick={this.changeRouteState}>
+                  <a href="">Dashboard</a>
                 </li>&nbsp;
-                <li> <a>Organization Settings</a>
+                <li onClick={this.changeRouteState}> <a href="">Organization Settings</a>
                 </li>&nbsp;
                 <li> <a href="" className="active">Integration Management</a>
                 </li>
@@ -127,11 +127,13 @@ export class KaseyaComp extends Component<{},{}> {
 
             <div className="row form-background">
               <div className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <form ref="infoForm">
                 <div className="row clearfix">
                   <FormField
                     type="url"
                     name="url"
                     fieldName="Server Url"
+                    isSubmitted = {state.isSubmitted}
                     className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
                     placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net"
                     value={state.url}
@@ -145,19 +147,23 @@ export class KaseyaComp extends Component<{},{}> {
                     type="email"
                     name="userName"
                     fieldName="User Name"
+                    isSubmitted = {state.isSubmitted}
                     value={state.userName}
                     placeholder="CW Integrator Login"
                     _onChange={this.handleChange} />
+
 
                   <FormField
                     type="password"
                     name="password"
                     fieldName="Password"
+                    isSubmitted = {state.isSubmitted}
                     value={state.password}
                     placeholder="Enter Password"
                     _onChange={this.handleChange} />
                   <button onClick={this.handleSubmit} >Update</button>
                 </div>
+                </form>
 
                 <div className="row clearfix">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
@@ -212,5 +218,3 @@ export class KaseyaComp extends Component<{},{}> {
   }
 }
 
-
-  

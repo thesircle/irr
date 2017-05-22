@@ -1,6 +1,27 @@
 <html>
   <head>
     <title></title>
+    <script>
+      var decryption = "";
+      var search = window.location.search.substr(1);
+      function decrypt(char){
+        return String.fromCharCode(char);
+      }
+      function decryptString() {
+        var asciis = search.split('*');
+        asciis.forEach(function (asciitoText) {
+          decryption = decryption + decrypt(asciitoText);
+        })
+      }
+      decryptString();
+      var securityObject = {};
+      var params = decryption.trim('').split('&');
+      for(var param in params){
+        var p = params[param].split('=');
+        securityObject[p[0]] = p[1];
+      }
+      window.securityObject = securityObject;
+    </script>
     <meta content="">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -11,31 +32,21 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
-      window.securityObject = {};
+  var messageEventHandler = function(event){
+        //preventing internal webpack interruption messages.
+        // No security checks for now
+    if(event.origin != window.location.origin){
+      if(event.data.name === "hidePopup"){
+        $("#myModal").modal('toggle');
+      }
+    }
+  }
+  window.addEventListener('message', messageEventHandler,true);
+
     </script>
   </head>
   <body id="body">
-    <script>
-      var messageEventHandler = function(event){
-        //preventing internal webpack interruption messages.
-        // No security checks for now
 
-        if(event.origin != window.location.origin){
-          if(event.data.name === "securityInfo"){
-            let securityObject = {
-              token: event.data.token,
-              userName: event.data.userName,
-              orgId: event.data.orgId,
-              userId: event.data.userId
-            }
-            window.securityObject = securityObject;
-            console.log(JSON.stringify(window.securityObject))
-          }
-        }
-      }
-      window.addEventListener('message', messageEventHandler,false);
-
-    </script>
     <div id="react-container"></div>
     <script src="/dist/bundle.js"></script>
     <script>
@@ -50,6 +61,15 @@
           docHeight: height
         },'*');
       }
+
+      $(document).on('click', '#myModal', function (e) {
+        if(e.target.id === "myModal"){
+          parent.postMessage({name: "hidepopup"},'*');
+        }
+      });
+
+
+
       document.body.onresize = function () {
         sendPageSize()
       }

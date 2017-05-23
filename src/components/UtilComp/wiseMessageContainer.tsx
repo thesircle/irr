@@ -10,7 +10,7 @@ const mapStateToProps = (state,props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClearError(index) {
+    onClearWiseMessage(index) {
       dispatch(
         clearWiseMessage(index)
       )

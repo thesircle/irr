@@ -5,7 +5,7 @@ import S from '../../constants/system'
 export class ShowWiseMessages extends Component<{},{}> {
   constructor(props) {
     super(props);
-    this.state = {wiseMessages: [], onClearError: f=>f}
+    this.state = {wiseMessages: [], onClearWiseMessage: f=>f}
   }
   componentWillReceiveProps(nextProps){
     this.setState({
@@ -59,7 +59,7 @@ export class ShowWiseMessages extends Component<{},{}> {
                         </div>
                       </div>
                     </div>
-                    <button type="button" className="close" onClick={() => (this.props as any).onClearError(i)}>
+                    <button type="button" className="close" onClick={() => (this.props as any).onClearWiseMessage(i)}>
                       <span aria-hidden="true">×</span>
                       <span className="sr-only">Close</span>
                     </button>

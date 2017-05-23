@@ -41,7 +41,7 @@ export class ShowWiseMessages extends Component<{},{}> {
       <div className="wise-message-wrapper">
         {(state.wiseMessages.length) ?
           state.wiseMessages.map((message, i) =>
-            <div className="pgn-wrapper slideLeft" data-position="top-right">
+            <div className="pgn-wrapper slideLeft" data-position="top-right" key={i}>
               <div className="pgn push-on-sidebar-open pgn-circle">
                 <div className={this.getClassAndHeading(message[0]).class + " alert"}  >
                   <div >

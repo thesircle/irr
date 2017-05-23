@@ -9,13 +9,9 @@ const types = {
       UPDATING: "KASEYA_UPDATING"
     }
   },
-  ERROR_MESSAGES: {
-    ADD: "ADD_ERROR_MESSAGE",
-    CLEAR: "CLEAR_ERROR_MESSAGE",
-  },
-  SUCCESS_MESSAGES: {
-    ADD: "ADD_SUCCESS_MESSAGE",
-    CLEAR: "CLEAR_SUCCESS_MESSAGE",
+  WISE_MESSAGE: {
+    ADD: "ADD_WISE_MESSAGE",
+    CLEAR: "CLEAR_WISE_MESSAGE",
   }
 }
 export default types;

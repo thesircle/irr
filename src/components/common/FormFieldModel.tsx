@@ -1,7 +1,5 @@
-export class FormField {
-  get onChange(): any {
-    return this._onChange;
-  }
+export class FormFields {
+
   private _name;
   private _value;
   private _type = "text";
@@ -66,5 +64,11 @@ export class FormField {
   set isFormateRequired(value) {
     this._isFormateRequired = value;
   }
+    get onChange(){
+        return this._onChange;
+    }
+    set onChange(value) {
+        this._onChange = value;
+    }
 
 }

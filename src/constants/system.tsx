@@ -6,6 +6,17 @@ const system = {
       KASEYA_VIEW: "KaseyaApi",
       KASEYA_UPDATE: "KaseyaApi/VerifyFirstTime",
     }
+  },
+  WISE_MESSAGE:{
+    WARNING: "wiseMessageWarning",
+    WARNING_HEADING: "Warning!",
+    INFO: "wiseMessageInfo",
+    INFO_HEADING: "Info!",
+    SUCCESS: "wiseMessageSuccess",
+    SUCCESS_HEADING: "Success!",
+    ERROR: "wiseMessageError",
+    ERROR_HEADING: "Error!",
+
   }
 }
 export default system;

@@ -20,12 +20,12 @@ export const kaseya = (state={}, action) => {
 
 export const wiseMessages = (state=[], action) => {
   switch(action.type) {
-    case T.ERROR_MESSAGES.ADD :
+    case T.WISE_MESSAGE.ADD :
       return [
         ...state,
         action.payload
       ]
-    case T.ERROR_MESSAGES.CLEAR :
+    case T.WISE_MESSAGE.CLEAR :
       return state.filter((message, i) => i !== action.payload)
     default:
       return state

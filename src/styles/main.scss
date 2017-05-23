@@ -193,11 +193,30 @@ p{
   float: right!important;
 }
 
-.alert-info {
+.wise-error {
+   color: #8f5c5e;
+   background-color: #f7d8db;
+   border-color: #f1cfd4;
+ }
+
+.wise-success {
+  color: #518f53;
+  background-color: #bef7c7;
+  border-color: #9af1a4;
+}
+
+.wise-info {
   color: #31708f;
   background-color: #d9edf7;
   border-color: #bce8f1;
 }
+
+.wise-warning {
+  color: #eee774;
+  background-color: #f6f7c9;
+  border-color: #f1e59e;
+}
+
 
 .alert {
 
@@ -214,7 +233,7 @@ button.close {
 .pgn-wrapper{
 
 }
-.show-errors{
+.wise-message-wrapper{
   float: right;
   position: absolute;
   right:0;
@@ -347,14 +366,6 @@ $myColor : blue;
   }
 }
 
-.wise-error{
-  background-color: hotpink;
-  width:100px;
-  animation-name: slideInLeft;
-}
-.wise-success{
-  background-color: limegreen;
-  width:100px;
-  animation-name: slideInLeft;
-}
+
+
 

@@ -24,12 +24,12 @@ export class ShowWiseMessages extends Component<{},{}> {
   render(){
     return(
 
-      <div className="show-errors">
+      <div className="wise-message-wrapper">
         {((this.state as any).wiseMessages.length) ?
           (this.state as any).wiseMessages.map((message, i) =>
               <div className="pgn-wrapper slideLeft" data-position="top-right">
                 <div className="pgn push-on-sidebar-open pgn-circle">
-                  <div className="alert alert-info">
+                  <div className={this.getClass(message[0]) + " alert"}  >
                     <div >
                       <div className="pgn-thumbnail">
                       </div>

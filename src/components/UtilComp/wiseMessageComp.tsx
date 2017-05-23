@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import S from '../../constants/system'
 // import CloseButton from 'react-icons/lib/fa/close'
 
 export class ShowWiseMessages extends Component<{},{}> {
@@ -11,39 +12,57 @@ export class ShowWiseMessages extends Component<{},{}> {
       wiseMessages: nextProps.wiseMessages
     })
   }
-  getClass(type){
+  getClassAndHeading(type):any{
     switch(type) {
-      case "w" : return "wise-warning"
-      case "i" : return "wise-info"
-      case "s" : return "wise-success"
-      case "e" : return "wise-error"
+      case S.WISE_MESSAGE.WARNING :
+        return {"class":"wise-warning",
+                "heading":S.WISE_MESSAGE.WARNING_HEADING
+                }
+      case S.WISE_MESSAGE.INFO :
+        return {"class":"wise-info",
+                "heading":S.WISE_MESSAGE.INFO_HEADING
+                }
+      case S.WISE_MESSAGE.SUCCESS :
+        return {"class":"wise-success",
+                "heading":S.WISE_MESSAGE.SUCCESS_HEADING
+                }
+      case S.WISE_MESSAGE.ERROR :
+        return {"class":"wise-error",
+                "heading":S.WISE_MESSAGE.ERROR_HEADING
+                }
       default:
         return ""
     }
   }
-  render(){
-    return(
 
+  render(){
+    let state = this.state as any;
+    return(
       <div className="wise-message-wrapper">
-        {((this.state as any).wiseMessages.length) ?
-          (this.state as any).wiseMessages.map((message, i) =>
-              <div className="pgn-wrapper slideLeft" data-position="top-right">
-                <div className="pgn push-on-sidebar-open pgn-circle">
-                  <div className={this.getClass(message[0]) + " alert"}  >
-                    <div >
-                      <div className="pgn-thumbnail">
-                      </div>
-                      <div className="pgn-message">
-                        <div>
-                          <p className="bold">{message[0]}</p>
-                          <p>{message[1]}</p>
-                        </div>
+        {(state.wiseMessages.length) ?
+          state.wiseMessages.map((message, i) =>
+            <div className="pgn-wrapper slideLeft" data-position="top-right">
+              <div className="pgn push-on-sidebar-open pgn-circle">
+                <div className={this.getClassAndHeading(message[0]).class + " alert"}  >
+                  <div >
+                    <div className="pgn-thumbnail">
+                    </div>
+                    <div className="pgn-message">
+                      <div>
+                        <p className="bold">
+                          {(message[2])?message[2]:this.getClassAndHeading(message[0]).heading}
+                        </p>
+                        <p>{message[1]}</p>
                       </div>
                     </div>
-                    <button type="button" className="close"  data-dismiss="alert"><span aria-hidden="true">×</span><span className="sr-only">Close</span></button>
                   </div>
+                  <button type="button" className="close" data-dismiss="alert">
+                    <span aria-hidden="true">×</span>
+                    <span className="sr-only">Close</span>
+                  </button>
                 </div>
               </div>
+            </div>
           )
         : null
         }

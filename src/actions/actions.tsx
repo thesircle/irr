@@ -22,8 +22,15 @@ export  const updateKaseya = (url, userName, password) => dispatch => {
   })
 }
 export const viewKaseya = () => dispatch => {
-  dispatch(addWiseMessage("e","newErrorMessage"))
-  dispatch(addWiseMessage("s","newSuccessMessage"))
+  dispatch(addWiseMessage(S.WISE_MESSAGE.ERROR,
+                          "newErrorMessage",
+                          "Custom Heading"))
+  dispatch(addWiseMessage(S.WISE_MESSAGE.SUCCESS,
+                          "newSuccessMessage"))
+  dispatch(addWiseMessage(S.WISE_MESSAGE.INFO,
+    "newInfoMessage"))
+  dispatch(addWiseMessage(S.WISE_MESSAGE.WARNING,
+    "newWarningMessage","Custom Warn Heading here"))
   // dispatch(addWiseMessage(`testError2`))
   // dispatch(addWiseMessage(`testError3`))
   get(S.BK.API.KASEYA_VIEW).then(({body}:any) => {
@@ -40,16 +47,15 @@ export const viewKaseya = () => dispatch => {
   })
 }
 
-export const addWiseMessage = (type,message) => dispatch => {
-  console.log(JSON.stringify(`---------${JSON.stringify({type,message})}`))
+export const addWiseMessage = (type,message,heading="") => dispatch => {
   dispatch({
-    type: T.ERROR_MESSAGES.ADD,
-    payload: [type,message]
+    type: T.WISE_MESSAGE.ADD,
+    payload: [type,message,heading]
   })
 }
 export const clearWiseMessage = index => dispatch => {
   dispatch({
-    type: T.ERROR_MESSAGES.CLEAR,
+    type: T.WISE_MESSAGE.CLEAR,
     payload: index
   })
 }

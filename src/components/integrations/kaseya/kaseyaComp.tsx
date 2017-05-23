@@ -3,26 +3,14 @@ import {PropTypes} from 'prop-types';
 import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
-import formValidationUtils from '../../../utils/formValidationutils'
 import {FormField} from "../../common/formFieldComponent";
 
 export class KaseyaComp extends Component<{},{}> {
 
-  // let _url, _companyId, _userName, _password;
-  // var update = (e) => {
-  //   e.preventDefault();
-  //   props.onUpdateKaseya({
-  //     url: _url.value,
-  //     companyId: _companyId.value,
-  //     userName: _userName.value,
-  //     password: _password.value
-  //   })
-  // }
 
   constructor(props) {
     super(props);
     this.state = {url: '', userName: '', password: '', isSubmitted:false, isValid:false}
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     //this.validator = this.validator.bind(this);
@@ -130,14 +118,15 @@ export class KaseyaComp extends Component<{},{}> {
                 <form ref="infoForm">
                 <div className="row clearfix">
                   <FormField
-                    type="url"
-                    name="url"
-                    fieldName="Server Url"
-                    isSubmitted = {state.isSubmitted}
-                    className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
-                    placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net"
-                    value={state.url}
-                    _onChange={this.handleChange} />
+                      type="url"
+                      name="url"
+                      required="true"
+                      fieldName="Server Url"
+                      isSubmitted = {state.isSubmitted}
+                      className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                      placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net"
+                      value={state.url}
+                      _onChange={this.handleChange} />
                 </div>
 
                 <div className="row clearfix">

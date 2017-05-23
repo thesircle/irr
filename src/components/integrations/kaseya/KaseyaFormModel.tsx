@@ -1,6 +1,6 @@
 import {FormField} from '../../common/FormFieldModel'
 
-class KaseyaForm {
+export class KaseyaForm {
   private _url;
   private _email;
 

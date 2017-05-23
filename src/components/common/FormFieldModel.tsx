@@ -1,4 +1,7 @@
 export class FormField {
+  get onChange(): any {
+    return this._onChange;
+  }
   private _name;
   private _value;
   private _type = "text";
@@ -6,6 +9,7 @@ export class FormField {
   private _placeHolder;
   private _isRequired = true;
   private _isFormateRequired = true;
+  private _onChange = null;
 
   get name() {
     return this._name;
@@ -63,13 +67,4 @@ export class FormField {
     this._isFormateRequired = value;
   }
 
-// constructor(name, value, type, label, isRequired, isFormateRequired){
-//     this.name = name;
-//     this.value = value;
-//     this.type = type;
-//     this.label = label;
-//     this.placeHolder;
-//     this.isRequired = isRequired;
-//     this.isFormateRequired = isFormateRequired;
-//   }
 }

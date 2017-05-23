@@ -37,34 +37,38 @@ export class ShowWiseMessages extends Component<{},{}> {
 
   render(){
     let state = this.state as any;
+    let classAndHeading;
     return(
       <div className="wise-message-wrapper">
         {(state.wiseMessages.length) ?
-          state.wiseMessages.map((message, i) =>
-            <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
-              <div className="pgn push-on-sidebar-open pgn-circle">
-                <div className={this.getClassAndHeading(message[0]).class + " alert"}  >
-                  <div >
-                    <div className="pgn-thumbnail">
-                    </div>
-                    <div className="pgn-message">
-                      <div>
-                        <p className="bold">
-                          {(message[2])?message[2]:this.getClassAndHeading(message[0]).heading}
-                        </p>
-                        <p>{message[1]}</p>
+          state.wiseMessages.map((message, i) => {
+            classAndHeading = this.getClassAndHeading(message[0])
+            return(
+              <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
+                <div className="pgn push-on-sidebar-open pgn-circle">
+                  <div className={classAndHeading.class + " alert"}  >
+                    <div >
+                      <div className="pgn-thumbnail">
+                      </div>
+                      <div className="pgn-message">
+                        <div>
+                          <p className="bold">
+                            {(message[2])?message[2]:classAndHeading.heading}
+                          </p>
+                          <p>{message[1]}</p>
+                        </div>
                       </div>
                     </div>
+                    <button type="button" className="close" onClick={() => (this.props as any).onClearError(i)}>
+                      <span aria-hidden="true">×</span>
+                      <span className="sr-only">Close</span>
+                    </button>
                   </div>
-                  <button type="button" className="close" data-dismiss="alert">
-                    <span aria-hidden="true">×</span>
-                    <span className="sr-only">Close</span>
-                  </button>
                 </div>
               </div>
-            </div>
-          )
-        : null
+            )
+          })
+          : null
         }
       </div>
     )

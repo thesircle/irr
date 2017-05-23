@@ -1,13 +1,13 @@
-export class FormFields {
-
+export class FormFieldAttributes {
   private _name;
   private _value;
   private _type = "text";
   private _label;
   private _placeHolder;
-  private _isRequired = true;
-  private _isFormateRequired = true;
+  private _isRequired;
+  private _isFormateRequired = null;
   private _onChange = null;
+  private _validationType;
 
   get name() {
     return this._name;
@@ -70,5 +70,11 @@ export class FormFields {
     set onChange(value) {
         this._onChange = value;
     }
+  set validationType(value) {
+    this._validationType = value;
+  }
+  get validationType() {
+    return this._validationType;
+  }
 
 }

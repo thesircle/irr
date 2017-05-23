@@ -4,6 +4,7 @@ import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
 import {FormField} from "../../common/formFieldComponent";
+import {KaseyaForm} from "./KaseyaFormModel";
 
 export class KaseyaComp extends Component<{},{}> {
 
@@ -118,24 +119,18 @@ export class KaseyaComp extends Component<{},{}> {
                 <form ref="infoForm">
                 <div className="row clearfix">
                   <FormField
-                      type="url"
-                      name="url"
-                      required="true"
-                      fieldName="Server Url"
+                      object = {new KaseyaForm().url}
                       isSubmitted = {state.isSubmitted}
                       className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
-                      placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net"
                       value={state.url}
-                      _onChange={this.handleChange} />
+                      onChange={this.handleChange} />
                 </div>
 
                 <div className="row clearfix">
                   <div>&nbsp;</div>
 
                   <FormField
-                    type="email"
-                    name="userName"
-                    fieldName="User Name"
+                    object = {new KaseyaForm().email}
                     isSubmitted = {state.isSubmitted}
                     value={state.userName}
                     placeholder="CW Integrator Login"
@@ -143,14 +138,12 @@ export class KaseyaComp extends Component<{},{}> {
 
 
                   <FormField
-                    type="password"
-                    name="password"
-                    fieldName="Password"
+                    object = {new KaseyaForm().password}
                     isSubmitted = {state.isSubmitted}
                     value={state.password}
                     placeholder="Enter Password"
                     _onChange={this.handleChange} />
-                  <button onClick={this.handleSubmit} >Update</button>
+                  <button onSubmit={this.handleSubmit} >Update</button>
                 </div>
                 </form>
 

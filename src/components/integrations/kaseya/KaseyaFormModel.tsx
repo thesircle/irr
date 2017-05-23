@@ -1,21 +1,37 @@
-import {FormFields} from '../../common/FormFieldModel'
+import {FormFieldAttributes} from '../../common/FormFieldModel'
 
 export class KaseyaForm {
   private _url;
   private _email;
+  private _password;
 
   constructor(){
-    this._url = new FormFields();
+    this._url = new FormFieldAttributes();
     this._url.name = "url";
     this._url.value = "";
     this._url.type = "text"
-    this._url.lable = "Enter Url";
+    this._url.label = "Server Url";
+    this._url.placeHolder = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
+    this._url.isRequired = "true";
+    this._url.validationType = "url"
 
-    this._email = new FormFields();
+    this._email = new FormFieldAttributes();
     this._email.name = "email";
     this._email.value = "";
     this._email.type = "text"
-    this._email.lable = "Enter Email";
+    this._email.placeHolder = "CW Integrator Login"
+    this._email.label = "Enter username";
+    this._email.isRequired = "true";
+    this._email.validationType = "email"
+
+    this._password = new FormFieldAttributes();
+    this._password.name = "password";
+    this._password.value = "";
+    this._password.type = "password"
+    this._password.placeHolder = "Enter Password"
+    this._password.label = "Enter Password";
+    this._password.isRequired = "true";
+    this._password.validationType = "password"
   }
 
   get url() {
@@ -32,6 +48,12 @@ export class KaseyaForm {
 
   set email(value) {
     this._email = value;
+  }
+  set password(value) {
+    this._password = value;
+  }
+  get password() {
+    return this._password;
   }
 
 }

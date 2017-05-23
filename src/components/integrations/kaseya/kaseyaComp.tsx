@@ -79,7 +79,7 @@ export class KaseyaComp extends Component<{},{}> {
     let state = this.state as any
     return(
       <div>
-        <div className="container-fluid container-fixed-lg container-margin">
+        <div className="container-fluid container-fixed-lg m-t-30">
           <div className="container-fixed-lg bg-white widgetborder">
             <div className="col-lg-12 col-md-12 col-xs-12">
               <ul className="breadcrumb role_list_breadcrumb p-t-0 p-r-0">

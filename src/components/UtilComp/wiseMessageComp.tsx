@@ -23,13 +23,28 @@ export class ShowWiseMessages extends Component<{},{}> {
   }
   render(){
     return(
+
       <div className="show-errors">
         {((this.state as any).wiseMessages.length) ?
           (this.state as any).wiseMessages.map((message, i) =>
-                    <div key={i} className={this.getClass(message[0])}>
-                      <p>{message[1]}</p>
-                      <button onClick={() => (this.props as any).onClearError(i)}>X</button>
-                    </div>)
+              <div className="pgn-wrapper slideLeft" data-position="top-right">
+                <div className="pgn push-on-sidebar-open pgn-circle">
+                  <div className="alert alert-info">
+                    <div >
+                      <div className="pgn-thumbnail">
+                      </div>
+                      <div className="pgn-message">
+                        <div>
+                          <p className="bold">{message[0]}</p>
+                          <p>{message[1]}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" className="close"  data-dismiss="alert"><span aria-hidden="true">×</span><span className="sr-only">Close</span></button>
+                  </div>
+                </div>
+              </div>
+          )
         : null
         }
       </div>

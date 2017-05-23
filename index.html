@@ -2,20 +2,20 @@
   <head>
     <title></title>
     <script>
-      var decryption = "";
+      var decryptedString = "";
       var search = window.location.search.substr(1);
-      function decrypt(char){
+      function decryptChar(char){
         return String.fromCharCode(char);
       }
       function decryptString() {
-        var asciis = search.split('*');
-        asciis.forEach(function (asciitoText) {
-          decryption = decryption + decrypt(asciitoText);
+        var asciis = search.split('{-$-}');
+        asciis.forEach(function (ascii) {
+          decryptedString = decryptedString + decryptChar(ascii);
         })
       }
       decryptString();
       var securityObject = {};
-      var params = decryption.trim('').split('&');
+      var params = decryption.split('&');
       for(var param in params){
         var p = params[param].split('=');
         securityObject[p[0]] = p[1];

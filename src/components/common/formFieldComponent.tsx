@@ -1,5 +1,4 @@
 import formValidationUtils from '../../utils/formValidationutils';
-import {PropTypes} from 'prop-types';
 import {Error} from './formFieldErrorComp';
 
 export const FormField = (prop) => {

@@ -1,11 +1,13 @@
-export class FormField {
+export class FormFieldBaseModel {
   private _name;
-  private _value;
+  private _value = "";
   private _type = "text";
   private _label;
-  private _placeHolder;
+  private _placeHolder = "Please fill the field";
   private _isRequired = true;
-  private _isFormateRequired = true;
+  private _isFormateRequired = null;
+  private _onChange = null;
+  private _validationType;
 
   get name() {
     return this._name;
@@ -62,14 +64,17 @@ export class FormField {
   set isFormateRequired(value) {
     this._isFormateRequired = value;
   }
+    get onChange(){
+        return this._onChange;
+    }
+    set onChange(value) {
+        this._onChange = value;
+    }
+  set validationType(value) {
+    this._validationType = value;
+  }
+  get validationType() {
+    return this._validationType;
+  }
 
-// constructor(name, value, type, label, isRequired, isFormateRequired){
-//     this.name = name;
-//     this.value = value;
-//     this.type = type;
-//     this.label = label;
-//     this.placeHolder;
-//     this.isRequired = isRequired;
-//     this.isFormateRequired = isFormateRequired;
-//   }
 }

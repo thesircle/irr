@@ -12,6 +12,7 @@
         asciis.forEach(function (ascii) {
           decryptedString = decryptedString + decryptChar(ascii);
         })
+        decryptedString = decryptedString.substr(1,decryptedString.length-2);
       }
       decryptString();
       var securityObject = {};

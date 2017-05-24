@@ -1,21 +1,29 @@
-import {FormField} from '../../common/FormFieldModel'
+import {FormFieldBaseModel} from '../../common/FormFieldBaseModel'
 
-class KaseyaForm {
+export class KaseyaFormModel {
   private _url;
   private _email;
+  private _password;
 
   constructor(){
-    this._url = new FormField();
+    this._url = new FormFieldBaseModel();
     this._url.name = "url";
-    this._url.value = "";
-    this._url.type = "text"
-    this._url.lable = "Enter Url";
+    this._url.label = "Server Url";
+    this._url.placeHolder = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
+    this._url.validationType = "url"
 
-    this._email = new FormField();
+    this._email = new FormFieldBaseModel();
     this._email.name = "email";
-    this._email.value = "";
-    this._email.type = "text"
-    this._email.lable = "Enter Email";
+    this._email.placeHolder = "CW Integrator Login"
+    this._email.label = "Enter username";
+    this._email.validationType = "email"
+
+    this._password = new FormFieldBaseModel();
+    this._password.name = "password";
+    this._password.type = "password"
+    this._password.placeHolder = "Enter Password"
+    this._password.label = "Enter Password";
+    this._password.validationType = "password"
   }
 
   get url() {
@@ -32,6 +40,12 @@ class KaseyaForm {
 
   set email(value) {
     this._email = value;
+  }
+  set password(value) {
+    this._password = value;
+  }
+  get password() {
+    return this._password;
   }
 
 }

@@ -3,41 +3,31 @@ import {PropTypes} from 'prop-types';
 import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
-import {FormField} from "../../common/formFieldComponent";
-import {KaseyaForm} from "./KaseyaFormModel";
+import {FormFieldBaseComp} from "../../common/FormFieldBaseComp";
+import {KaseyaFormModel} from "./KaseyaFormModel";
 
 export class KaseyaComp extends Component<{},{}> {
-
-
+  KaseyaFormModel: any;
   constructor(props) {
     super(props);
-    this.state = {url: '', userName: '', password: '', isSubmitted:false, isValid:false}
+    this.state = {url: '', userName: '', password: ''}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    //this.validator = this.validator.bind(this);
+    this.KaseyaFormModel = new KaseyaFormModel()
   }
 
   handleChange(e){
     const target = e.target;
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const value = e.target.value;
     const name = e.target.name;
     this.setState({
       [name]: value
     });
   }
 
-  // validator(value){
-  //   this.setState({isValid:value});
-  // }
-
   handleSubmit(e) {
     let state = this.state as any;
-    if(state.url === "" || state.userName === "" || state.password === "") {
-      this.setState({isSubmitted: true});
-      return
-    }
     e.preventDefault();
-    // if (!url || name || password ||){
     (this.props as any).onUpdateKaseya
     ({
       url: state.url,
@@ -116,33 +106,28 @@ export class KaseyaComp extends Component<{},{}> {
 
             <div className="row form-background">
               <div className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <form ref="infoForm">
+                <form ref="kaseyaForm" noValidate >
                 <div className="row clearfix">
-                  <FormField
-                      object = {new KaseyaForm().url}
-                      isSubmitted = {state.isSubmitted}
-                      className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+                  <FormFieldBaseComp
+                      object = {this.KaseyaFormModel.url}
+                      className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
                       value={state.url}
-                      onChange={this.handleChange} />
+                      events={{onChange:this.handleChange}}
+                  />
                 </div>
 
                 <div className="row clearfix">
                   <div>&nbsp;</div>
 
-                  <FormField
-                    object = {new KaseyaForm().email}
-                    isSubmitted = {state.isSubmitted}
+                  <FormFieldBaseComp
+                    object = {this.KaseyaFormModel.email}
                     value={state.userName}
-                    placeholder="CW Integrator Login"
-                    _onChange={this.handleChange} />
+                    events={{onChange:this.handleChange}} />
 
-
-                  <FormField
-                    object = {new KaseyaForm().password}
-                    isSubmitted = {state.isSubmitted}
+                  <FormFieldBaseComp
+                    object = {this.KaseyaFormModel.password}
                     value={state.password}
-                    placeholder="Enter Password"
-                    _onChange={this.handleChange} />
+                    events={{onChange:this.handleChange}} />
                   <button onSubmit={this.handleSubmit} >Update</button>
                 </div>
                 </form>
@@ -164,37 +149,6 @@ export class KaseyaComp extends Component<{},{}> {
             </div>
           </div>
         </div>
-
-        {/*<form method="POST">*/}
-          {/*<input*/}
-            {/*ref={input => _url = input}*/}
-            {/*type="text"*/}
-            {/*name="url"*/}
-            {/*readOnly={!isUpdateMode(props)}*/}
-            {/*className ="form-control"*/}
-            {/*placeholder="Enter your CW FQDN. E.g. https://api-na.myconnectwise.net"*/}
-          {/*/>*/}
-          {/*<input*/}
-            {/*ref={input => _companyId = input}*/}
-            {/*type="text"*/}
-            {/*name="companyId"*/}
-            {/*readOnly={!isUpdateMode(props)}*/}
-          {/*/>*/}
-          {/*<input*/}
-            {/*ref={input => _userName = input}*/}
-            {/*type="text"*/}
-            {/*name="userName"*/}
-            {/*readOnly={!isUpdateMode(props)}*/}
-          {/*/>*/}
-          {/*<input*/}
-            {/*ref={input => _password = input}*/}
-            {/*type="password"*/}
-            {/*name="password"*/}
-            {/*readOnly={!isUpdateMode(props)}*/}
-          {/*/>*/}
-          {/*Update: <button name="update" value="Update" onClick={update}/>*/}
-        {/*</form>*/}
-
       </div>
     )
   }

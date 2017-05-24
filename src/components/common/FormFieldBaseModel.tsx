@@ -1,10 +1,10 @@
-export class FormFieldAttributes {
+export class FormFieldBaseModel {
   private _name;
-  private _value;
+  private _value = "";
   private _type = "text";
   private _label;
-  private _placeHolder;
-  private _isRequired;
+  private _placeHolder = "Please fill the field";
+  private _isRequired = true;
   private _isFormateRequired = null;
   private _onChange = null;
   private _validationType;

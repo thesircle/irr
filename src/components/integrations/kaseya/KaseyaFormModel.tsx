@@ -1,4 +1,5 @@
 import {FormFieldBaseModel} from '../../common/FormFieldBaseModel'
+import {FormFieldUrlBaseModel} from "../../common/FormFieldUrlBaseModel";
 
 export class KaseyaFormModel {
   private _url;
@@ -6,11 +7,7 @@ export class KaseyaFormModel {
   private _password;
 
   constructor(){
-    this._url = new FormFieldBaseModel();
-    this._url.name = "url";
-    this._url.label = "Server Url";
-    this._url.placeHolder = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
-    this._url.validationType = "url"
+    this._url = new FormFieldUrlBaseModel()
 
     this._email = new FormFieldBaseModel();
     this._email.name = "email";

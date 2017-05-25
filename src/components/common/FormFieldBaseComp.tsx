@@ -14,8 +14,11 @@ export class FormFieldBaseComp extends Component<any,any>{
 
     componentWillReceiveProps(newProps){
         newProps.className ? this.setState({classNames:newProps.className}) : null;
-        newProps.value ? (this.props as any).object._value = newProps.value: null ;
-        newProps.events.onChange ? (this.props as any).object._onChange = newProps.events.onChange: null;
+        typeof  newProps.value != "undefined" ? (this.props as any).object._value = newProps.value: null ;
+        for(var event in newProps.events){
+            (this.props as any).object["_"+event] = newProps.events[event];
+        }
+
     }
 
 
@@ -34,7 +37,7 @@ export class FormFieldBaseComp extends Component<any,any>{
                         value={props.object._value}
                         className="form-control"
                         placeholder={props.object._placeHolder} />
-                    <Error value={props.object._value} validation={{type : props.object._validationType , value:formValidationUtils(props.object._validationType,props.object._value)}} />
+                    <Error  value={props.object._value} validation={{type : props.object._validationType , value:formValidationUtils(props.object._validationType,props.object._value)}} />
                 </div>
             </div>
         )

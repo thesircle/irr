@@ -1,4 +1,5 @@
 export class FormFieldBaseModel {
+
   protected _name;
   protected _value = "";
   protected _type = "text";
@@ -8,6 +9,7 @@ export class FormFieldBaseModel {
   protected _isFormateRequired = null;
   protected _onChange = null;
   protected _validationType;
+  protected _errorField = true;
 
   constructor(){
 
@@ -78,6 +80,12 @@ export class FormFieldBaseModel {
   }
   get validationType() {
     return this._validationType;
+  }
+  set errorField(value: boolean) {
+    this._errorField = value;
+  }
+  get errorField(): boolean {
+    return this._errorField;
   }
 
 }

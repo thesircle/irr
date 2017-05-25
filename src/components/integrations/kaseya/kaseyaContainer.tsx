@@ -8,7 +8,9 @@ const mapStateToProps = (state, props) =>
   ({
     url: state.kaseya.url,
     userName: state.kaseya.userName,
-    password: state.kaseya.password
+    password: state.kaseya.password,
+    kaseyaFetching: state.kaseyaFetching,
+    kaseyaTransmitting: state.kaseyaTransmitting
   })
 
 const mapDispatchToProps = dispatch =>

@@ -10,7 +10,11 @@ export class KaseyaComp extends Component<{},{}> {
   KaseyaFormModel: any;
   constructor(props) {
     super(props);
-    this.state = {url: '', userName: '', password: ''}
+    this.state = {url: '',
+                  userName: '',
+                  password: '',
+                  kaseyaFetching:false,
+                  kaseyaTransmitting: false }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.KaseyaFormModel = new KaseyaFormModel()
@@ -47,6 +51,8 @@ export class KaseyaComp extends Component<{},{}> {
     this.setState({url: nextProps.url})
     this.setState({userName: nextProps.userName})
     this.setState({password: nextProps.password})
+    this.setState({kaseyaFetching: nextProps.kaseyaFetching})
+    this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting})
 
   }
   componentDidMount(){
@@ -58,6 +64,7 @@ export class KaseyaComp extends Component<{},{}> {
     let state = this.state as any
     return(
       <div>
+        {(state.kaseyaFetching)? "fetching": "not fetching" }
         <div className="container-fluid container-fixed-lg m-t-30">
           <div className="container-fixed-lg bg-white widgetborder">
             <div className="col-lg-12 col-md-12 col-xs-12">

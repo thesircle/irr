@@ -33,6 +33,10 @@ export const viewKaseya = () => dispatch => {
     "newWarningMessage","Custom Warn Heading here"))
   // dispatch(addWiseMessage(`testError2`))
   // dispatch(addWiseMessage(`testError3`))
+  dispatch({
+    type: "fetching",
+    payload: {kaseyaFetching: true}
+  })
   get(S.BK.API.KASEYA_VIEW).then(({body}:any) => {
     let url = body.data.KaseyaUrl;
     let userName = body.data.KaseyaUser;
@@ -59,6 +63,7 @@ export const clearWiseMessage = index => dispatch => {
     payload: index
   })
 }
+
 
 // export const clearAllWiseMessages = () => dispatch => {
 

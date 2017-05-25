@@ -1,9 +1,11 @@
 const state = {
     "kaseya":{
-      "url": "",
+      "url": "the url",
       "userName"  : "",
-      "password"  : "",
+      "password"  : ""
     },
+    "kaseyaFetching": false,
+    "kaseyaTransmitting": false,
     "wiseMessages":[]
 }
 export default state;

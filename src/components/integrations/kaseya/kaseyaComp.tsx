@@ -3,7 +3,7 @@ import {PropTypes} from 'prop-types';
 import './../../../styles/main.scss'
 import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
-import {FormFieldBaseComp} from "../../common/FormFieldBaseComp";
+import {FormFieldBaseComp} from "../../common/formComp/formFieldBaseComp";
 import {KaseyaFormModel} from "./KaseyaFormModel";
 
 export class KaseyaComp extends Component<{},{}> {

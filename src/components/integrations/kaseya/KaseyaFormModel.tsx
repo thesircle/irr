@@ -1,7 +1,7 @@
-import {FormFieldBaseModel} from '../../common/FormFieldBaseModel'
-import {FormFieldUrlBaseModel} from "../../common/FormFieldUrlBaseModel";
-import {FormFieldEmailBaseModel} from "../../common/FormFieldEmailBaseModel"
-import {FormFieldPasswordBaseModel} from "../../common/FormFieldPasswordBaseModel"
+import {FormFieldBaseModel} from '../../common/formModel/FormFieldBaseModel'
+import {FormFieldUrlBaseModel} from "../../common/formModel/FormFieldUrlModel";
+import {FormFieldEmailBaseModel} from "../../common/formModel/FormFieldEmailModel"
+import {FormFieldPasswordBaseModel} from "../../common/formModel/FormFieldPasswordModel"
 
 export class KaseyaFormModel {
   private _url;

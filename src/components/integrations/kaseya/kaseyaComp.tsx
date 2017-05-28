@@ -5,28 +5,62 @@ import {IntegrationInfoComp} from '../integrationInfoComp';
 import L from '../../../constants/lang'
 import {FormFieldBaseComp} from "../../common/formComp/formFieldBaseComp";
 import {KaseyaFormModel} from "./KaseyaFormModel";
+import {validateField} from "../../common/validations/validateFormFields";
 
 export class KaseyaComp extends Component<{},{}> {
-  KaseyaFormModel: any;
+
   constructor(props) {
     super(props);
-    this.state = {url: '',
-                  userName: '',
-                  password: '',
+    this.state = {
                   kaseyaFetching:false,
-                  kaseyaTransmitting: false }
+                  kaseyaTransmitting: false,
+                  KaseyaFormModel: new KaseyaFormModel(),
+                  disableForm: true
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.KaseyaFormModel = new KaseyaFormModel()
+
   }
 
-  handleChange(e){
+  handleChange ( fieldObjectName, e ){
+    let state = this.state as any
     const target = e.target;
-    const value = e.target.value;
+    const inputValue = e.target.value;
     const name = e.target.name;
-    this.setState({
-      [name]: value
+    // this.setState({
+    //   [name]: value
+    // });
+
+    // state.KaseyaFormModel.url.value = inputValue;
+    console.log("state: "+state.KaseyaFormModel[fieldObjectName].value)
+    state.KaseyaFormModel[fieldObjectName].value = inputValue
+    this.setState(Object.assign( //TODO: {M.A}: efficiency optimization needed
+                                {},
+                                state,
+                                state.KaseyaFormModel[fieldObjectName].value,
+                                )
+    )
+
+    var disableForm = false;
+    //TODO, should work but is not
+    // for ( let field  in state.KaseyaFormModel){
+    //   // if (Object.hasOwnProperty(field)) {
+    //     if(!validateField(field).result){
+    //       disableForm = true;
+    //       break;// break if even on field failed check
+    //     }
+    //   // }
+    // }
+
+    //TODO: working but needs review
+    Object.keys(state.KaseyaFormModel).forEach(function (key) {
+      let field = state.KaseyaFormModel[key];
+      if(!validateField(field).result){
+        disableForm = true;
+        return;// break if even on field failed check
+      }
     });
+    this.setState({disableForm: disableForm})
   }
 
   handleSubmit(e) {
@@ -62,6 +96,7 @@ export class KaseyaComp extends Component<{},{}> {
 
   render(){
     let state = this.state as any
+    let e:any;
     return(
       <div>
         {(state.kaseyaFetching)? "fetching": "not fetching" }
@@ -116,10 +151,10 @@ export class KaseyaComp extends Component<{},{}> {
                 <form ref="kaseyaForm" noValidate >
                 <div className="row clearfix">
                   <FormFieldBaseComp
-                      object = {this.KaseyaFormModel.url}
+                      model = {state.KaseyaFormModel.url}
                       className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
-                      value={state.url}
-                      events={{onChange:this.handleChange}}
+                      value={state.KaseyaFormModel.url.value}
+                      onChange={(e) => this.handleChange("url", e) }
                   />
                 </div>
 
@@ -127,15 +162,15 @@ export class KaseyaComp extends Component<{},{}> {
                   <div>&nbsp;</div>
 
                   <FormFieldBaseComp
-                    object = {this.KaseyaFormModel.email}
-                    value={state.userName}
-                    events={{onChange:this.handleChange}} />
+                    model = {state.KaseyaFormModel.email}
+                    value={state.KaseyaFormModel.email.value}
+                    onChange={(e) => this.handleChange("email", e) } />
 
                   <FormFieldBaseComp
-                    object = {this.KaseyaFormModel.password}
-                    value={state.password}
-                    events={{onChange:this.handleChange}} />
-                  <button onSubmit={this.handleSubmit} >Update</button>
+                    model = {state.KaseyaFormModel.password}
+                    value={state.KaseyaFormModel.password.value}
+                    onChange={(e) => this.handleChange("password", e)} />
+                  <button onSubmit={this.handleSubmit} disabled={state.disableForm}>Update</button>
                 </div>
                 </form>
 

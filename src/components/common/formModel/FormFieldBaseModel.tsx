@@ -3,13 +3,12 @@ export class FormFieldBaseModel {
   protected _name;
   protected _value = "";
   protected _type = "text";
-  protected _label;
+  protected _label = '';
   protected _placeHolder = "Please fill the field";
   protected _isRequired = true;
-  protected _isFormateRequired = null;
+  protected _isFormateRequired = false;
   protected _onChange = null;
-  protected _validationType;
-  protected _errorField = true;
+
 
   constructor(){
 
@@ -75,17 +74,6 @@ export class FormFieldBaseModel {
   set onChange(value) {
     this._onChange = value;
   }
-  set validationType(value) {
-    this._validationType = value;
-  }
-  get validationType() {
-    return this._validationType;
-  }
-  set errorField(value: boolean) {
-    this._errorField = value;
-  }
-  get errorField(): boolean {
-    return this._errorField;
-  }
+
 
 }

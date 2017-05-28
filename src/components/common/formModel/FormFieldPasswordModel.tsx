@@ -8,7 +8,6 @@ export class FormFieldPasswordBaseModel extends FormFieldBaseModel{
     protected _type = "password";
     protected _label = "Password";
     protected _placeHolder = "Enter Password";
-    protected _validationType = "password"
 
     get name() {
         return this._name;
@@ -42,12 +41,4 @@ export class FormFieldPasswordBaseModel extends FormFieldBaseModel{
     set placeHolder(value) {
         this._placeHolder = value;
     }
-
-    set validationType(value) {
-        this._validationType = value;
-    }
-    get validationType() {
-        return this._validationType;
-    }
-
 }

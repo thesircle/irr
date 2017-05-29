@@ -79,9 +79,9 @@ export class KaseyaComp extends Component<{},{}> {
     e.preventDefault();
     (this.props as any).onUpdateKaseya
     ({
-      url: state.url,
-      userName: state.userName,
-      password: state.password
+      url: state.KaseyaFormModel.url.value,
+      userName: state.KaseyaFormModel.email.value,
+      password: state.KaseyaFormModel.password.value
     })
   }
 
@@ -92,6 +92,7 @@ export class KaseyaComp extends Component<{},{}> {
     },'*')
   }
 
+  //TODO: {M.A}: set state of url, email, pass etc in KaseyaForm model object
   componentWillReceiveProps(nextProps){
     this.setState({url: nextProps.url})
     this.setState({userName: nextProps.userName})

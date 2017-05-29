@@ -33,16 +33,27 @@ export class KaseyaComp extends Component<{},{}> {
 
     // state.KaseyaFormModel.url.value = inputValue;
     console.log("state: "+state.KaseyaFormModel[fieldObjectName].value)
-    state.KaseyaFormModel[fieldObjectName].value = inputValue
-    this.setState(Object.assign( //TODO: {M.A}: efficiency optimization needed
-                                {},
-                                state,
-                                state.KaseyaFormModel[fieldObjectName].value,
-                                )
-    )
+    state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
+    // this.setState(Object.assign( //TODO: {M.A}: efficiency optimization needed
+    //                             {},
+    //                             state,
+    //                             state.KaseyaFormModel[fieldObjectName].value,
+    //                             )
+    // )
+
+    // var newModel = Object.assign({},
+    //                             state.KaseyaFormModel,
+    //                             { [fieldObjectName]: Object.assign( //maybe issue here with [fieldObjectName]
+    //                                                   {},
+    //                                                   state.KaseyaFormModel[fieldObjectName],
+    //                                                   { _value: inputValue }
+    //                                                 )
+    //                             }
+    //               );
+    // this.setState({ KaseyaFormModel: newModel })
 
     var disableForm = false;
-    //TODO, should work but is not
+    //TODO, {M.A}: should work but is not
     // for ( let field  in state.KaseyaFormModel){
     //   // if (Object.hasOwnProperty(field)) {
     //     if(!validateField(field).result){
@@ -52,7 +63,7 @@ export class KaseyaComp extends Component<{},{}> {
     //   // }
     // }
 
-    //TODO: working but needs review
+    //TODO: {M.A}: working but needs review
     Object.keys(state.KaseyaFormModel).forEach(function (key) {
       let field = state.KaseyaFormModel[key];
       if(!validateField(field).result){

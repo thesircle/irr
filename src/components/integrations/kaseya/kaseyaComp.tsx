@@ -31,26 +31,16 @@ export class KaseyaComp extends Component<{},{}> {
     //   [name]: value
     // });
 
-    // state.KaseyaFormModel.url.value = inputValue;
-    console.log("state: "+state.KaseyaFormModel[fieldObjectName].value)
-    state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
-    // this.setState(Object.assign( //TODO: {M.A}: efficiency optimization needed
-    //                             {},
-    //                             state,
-    //                             state.KaseyaFormModel[fieldObjectName].value,
-    //                             )
-    // )
-
-    // var newModel = Object.assign({},
-    //                             state.KaseyaFormModel,
-    //                             { [fieldObjectName]: Object.assign( //maybe issue here with [fieldObjectName]
-    //                                                   {},
-    //                                                   state.KaseyaFormModel[fieldObjectName],
-    //                                                   { _value: inputValue }
-    //                                                 )
-    //                             }
-    //               );
-    // this.setState({ KaseyaFormModel: newModel })
+    console.log("state------: "+JSON.stringify(state))
+    // state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
+    this.setState(
+      { KaseyaFormModel:
+        { ...state.KaseyaFormModel, [fieldObjectName]
+          :
+          { ...state.KaseyaFormModel[fieldObjectName], value: inputValue }
+        }
+      }
+    )
 
     var disableForm = false;
     //TODO, {M.A}: should work but is not

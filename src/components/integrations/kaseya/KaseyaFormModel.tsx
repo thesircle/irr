@@ -4,40 +4,14 @@ import {FormFieldEmailBaseModel} from "../../common/formModel/FormFieldEmailMode
 import {FormFieldPasswordBaseModel} from "../../common/formModel/FormFieldPasswordModel"
 
 export class KaseyaFormModel {
-  private _url;
-  private _email;
-  private _password;
+   url;
+   email;
+   password;
 
   constructor(){
-    this._url = new FormFieldUrlBaseModel();
-
-    this._email = new FormFieldEmailBaseModel();
-    this._email.name = "userName";
-
-    this._password = new FormFieldPasswordBaseModel();
-
+    this.url = new FormFieldUrlBaseModel();
+    this.email = new FormFieldEmailBaseModel();
+    this.email.name = "userName";
+    this.password = new FormFieldPasswordBaseModel();
   }
-
-  get url() {
-    return this._url;
-  }
-
-  set url(value) {
-    this._url = value;
-  }
-
-  get email() {
-    return this._email;
-  }
-
-  set email(value) {
-    this._email = value;
-  }
-  set password(value) {
-    this._password = value;
-  }
-  get password() {
-    return this._password;
-  }
-
 }

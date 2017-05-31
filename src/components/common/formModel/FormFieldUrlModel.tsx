@@ -1,29 +1,16 @@
 import {FormFieldBaseModel} from './FormFieldBaseModel'
 export class FormFieldUrlBaseModel extends FormFieldBaseModel{
-  get isFormateRequired(): boolean {
-    return this._isFormateRequired;
-  }
 
-  set isFormateRequired(value: boolean) {
-    this._isFormateRequired = value;
-  }
-  get regex(): RegExp {
-    return this._regex;
-  }
-
-  set regex(value: RegExp) {
-    this._regex = value;
-  }
 
   constructor(){
     super()
   }
 
-  protected _name = "url";
-  protected _label = "Server Url";
-  protected _placeHolder = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
-  protected _isFormateRequired = true;
-  protected _regex = new RegExp(
+  name = "url";
+  label = "Server Url";
+  placeHolder = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
+  isFormateRequired = true;
+  regex = new RegExp(
     "^" +
     "(?:(?:https?|ftp)://)" +
     "(?:\\S+(?::\\S*)?@)?" +
@@ -46,36 +33,4 @@ export class FormFieldUrlBaseModel extends FormFieldBaseModel{
   );
 
 
-  get name() {
-    return this._name;
-  }
-
-  set name(value) {
-    this._name = value;
-  }
-
-
-  get type() {
-    return this._type;
-  }
-
-  set type(value) {
-    this._type = value;
-  }
-
-  get label() {
-    return this._label;
-  }
-
-  set label(value) {
-    this._label = value;
-  }
-
-  get placeHolder() {
-    return this._placeHolder;
-  }
-
-  set placeHolder(value) {
-    this._placeHolder = value;
-  }
 }

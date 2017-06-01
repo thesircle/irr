@@ -5,9 +5,9 @@ export class FormFieldEmailBaseModel extends FormFieldBaseModel{
       super()
   }
 
-  name = "email";
+  name = "userName";
   type = "text";
-  label = "User Name (email)";
+  label = "User Name (userName)";
   placeHolder = "CW Integrator Login";
   isFormateRequired = true;
   regex =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9])+)+\.(([a-zA-Z0-9])+)$/

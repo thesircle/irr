@@ -5,13 +5,13 @@ import {FormFieldPasswordBaseModel} from "../../common/formModel/FormFieldPasswo
 
 export class KaseyaFormModel {
    url;
-   email;
+   userName;
    password;
 
   constructor(){
     this.url = new FormFieldUrlBaseModel();
-    this.email = new FormFieldEmailBaseModel();
-    this.email.name = "userName";
+    this.userName = new FormFieldEmailBaseModel();
+    this.userName.name = "userName";
     this.password = new FormFieldPasswordBaseModel();
   }
 }

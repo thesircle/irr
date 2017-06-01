@@ -54,7 +54,7 @@ export const viewKaseya = () => dispatch => {
 export const addWiseMessage = (type,message,heading="") => dispatch => {
   dispatch({
     type: T.WISE_MESSAGE.ADD,
-    payload: [type,message,heading]
+    payload: {type,message,heading} // same as {type:type,message:message,heading:heading} in es6
   })
 }
 export const clearWiseMessage = index => dispatch => {

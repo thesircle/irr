@@ -1,5 +1,8 @@
 /*
  * This is the base class that every form field should inherit from.
+ * IMPORTANT: the field name of a form (<input name=<this name>..)
+ * should be the same as the property name of form model
+ * (this.userName.name = "userName" in formModel classes);
  *
  * Description: TBC
  *

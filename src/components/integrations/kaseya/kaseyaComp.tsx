@@ -22,11 +22,11 @@ export class KaseyaComp extends Component<{},{}> {
 
   }
 
-  handleChange ( fieldObjectName, e ){
+  handleChange ( e ){
     let state = this.state as any
     const target = e.target;
     const inputValue = e.target.value;
-    const name = e.target.name;
+    const fieldName = e.target.name;
     // this.setState({
     //   [name]: value
     // });
@@ -35,25 +35,25 @@ export class KaseyaComp extends Component<{},{}> {
     // state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
     this.setState(
       { KaseyaFormModel:
-        { ...state.KaseyaFormModel, [fieldObjectName]
+        { ...state.KaseyaFormModel, [fieldName]
           :
-          { ...state.KaseyaFormModel[fieldObjectName], value: inputValue }
+          { ...state.KaseyaFormModel[fieldName], value: inputValue }
         }
       }
     )
 
     var disableForm = false;
-    //TODO, {M.A}: should work but is not
+    // //TODO: {M.A}: has bug, type last char and backspace, see submit button
     // for ( let field  in state.KaseyaFormModel){
     //   // if (Object.hasOwnProperty(field)) {
-    //     if(!validateField(field).result){
+    //     if(!validateField(state.KaseyaFormModel[field]).result){
     //       disableForm = true;
     //       break;// break if even on field failed check
     //     }
     //   // }
     // }
 
-    //TODO: {M.A}: working but needs review
+    // //TODO: {M.A}: has bug, type last char and backspace, see submit button
     Object.keys(state.KaseyaFormModel).forEach(function (key) {
       let field = state.KaseyaFormModel[key];
       if(!validateField(field).result){
@@ -70,7 +70,7 @@ export class KaseyaComp extends Component<{},{}> {
     (this.props as any).onUpdateKaseya
     ({
       url: state.KaseyaFormModel.url.value,
-      userName: state.KaseyaFormModel.email.value,
+      userName: state.KaseyaFormModel.userName.value,
       password: state.KaseyaFormModel.password.value
     })
   }
@@ -82,17 +82,33 @@ export class KaseyaComp extends Component<{},{}> {
     },'*')
   }
 
-  //TODO: {M.A}: set state of url, email, pass etc in KaseyaForm model object
+  //TODO: {M.A}: set state of url, userName, pass etc in KaseyaForm model object
   componentWillReceiveProps(nextProps){
-    this.setState({url: nextProps.url})
-    this.setState({userName: nextProps.userName})
-    this.setState({password: nextProps.password})
+    let state:any = this.state
+    this.setState({ KaseyaFormModel:
+                     { ...state.KaseyaFormModel, url:
+                       { ...state.KaseyaFormModel.url, value: nextProps.url }
+                     }
+                 })
+
+    this.setState({ KaseyaFormModel:
+                     { ...state.KaseyaFormModel, userName:
+                       { ...state.KaseyaFormModel.userName, value: nextProps.userName }
+                     }
+                 })
+
+    this.setState({ KaseyaFormModel:
+                     { ...state.KaseyaFormModel, password:
+                       { ...state.KaseyaFormModel.password, value: nextProps.password }
+                     }
+                 })
+
+
     this.setState({kaseyaFetching: nextProps.kaseyaFetching})
     this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting})
 
   }
   componentDidMount(){
-    console.log(this.refs["infoForm"]);
     (this.props as any).onViewKaseya();
   }
 
@@ -156,7 +172,7 @@ export class KaseyaComp extends Component<{},{}> {
                       model = {state.KaseyaFormModel.url}
                       className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
                       value={state.KaseyaFormModel.url.value}
-                      onChange={(e) => this.handleChange("url", e) }
+                      onChange={(e) => this.handleChange(e) }
                   />
                 </div>
 
@@ -164,14 +180,14 @@ export class KaseyaComp extends Component<{},{}> {
                   <div>&nbsp;</div>
 
                   <FormFieldBaseComp
-                    model = {state.KaseyaFormModel.email}
-                    value={state.KaseyaFormModel.email.value}
-                    onChange={(e) => this.handleChange("email", e) } />
+                    model = {state.KaseyaFormModel.userName}
+                    value={state.KaseyaFormModel.userName.value}
+                    onChange={(e) => this.handleChange(e) } />
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.password}
                     value={state.KaseyaFormModel.password.value}
-                    onChange={(e) => this.handleChange("password", e)} />
+                    onChange={(e) => this.handleChange(e)} />
                   <button onSubmit={this.handleSubmit} disabled={state.disableForm}>Update</button>
                 </div>
                 </form>

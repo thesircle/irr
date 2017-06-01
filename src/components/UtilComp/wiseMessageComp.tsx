@@ -40,8 +40,8 @@ export class ShowWiseMessages extends Component<{},{}> {
     return(
       <div className="wise-message-wrapper">
         {(state.wiseMessages.length) ?
-          state.wiseMessages.map((message, i) => {
-            let classAndHeading = this.getClassAndHeading(message[0])
+          state.wiseMessages.map((wiseObj, i) => {
+            let classAndHeading = this.getClassAndHeading(wiseObj.type)
             return (
               <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
                 <div className="pgn push-on-sidebar-open pgn-circle">
@@ -52,9 +52,9 @@ export class ShowWiseMessages extends Component<{},{}> {
                       <div className="pgn-message">
                         <div>
                           <p className="bold">
-                            {(message[2])?message[2]:classAndHeading.heading}
+                            {(wiseObj.heading)?wiseObj.heading:classAndHeading.heading}
                           </p>
-                          <p>{message[1]}</p>
+                          <p>{wiseObj.message}</p>
                         </div>
                       </div>
                     </div>

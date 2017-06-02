@@ -33,14 +33,7 @@ export class KaseyaComp extends Component<{},{}> {
 
     console.log("state------: "+JSON.stringify(state))
     // state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
-    this.setState(
-      { KaseyaFormModel:
-        { ...state.KaseyaFormModel, [fieldName]
-          :
-          { ...state.KaseyaFormModel[fieldName], value: inputValue }
-        }
-      }
-    )
+    this.updateFormFieldInState(state.KaseyaFormModel[fieldName].name, inputValue)
 
     var disableForm = false;
     // //TODO: {M.A}: has bug, type last char and backspace, see submit button
@@ -82,32 +75,28 @@ export class KaseyaComp extends Component<{},{}> {
     },'*')
   }
 
+  /*
+   * formField: string value of form model field name
+   * value: value to be assigned to that field.value
+   */
+  updateFormFieldInState(formField, value){
+    let state:any = this.state
+    this.setState({ KaseyaFormModel:
+                         { ...state.KaseyaFormModel, [formField]:
+                           { ...state.KaseyaFormModel[formField], value: value }
+                         }
+                     })
+  }
   //TODO: {M.A}: set state of url, userName, pass etc in KaseyaForm model object
   componentWillReceiveProps(nextProps){
     let state:any = this.state
-    this.setState({ KaseyaFormModel:
-                     { ...state.KaseyaFormModel, url:
-                       { ...state.KaseyaFormModel.url, value: nextProps.url }
-                     }
-                 })
-
-    this.setState({ KaseyaFormModel:
-                     { ...state.KaseyaFormModel, userName:
-                       { ...state.KaseyaFormModel.userName, value: nextProps.userName }
-                     }
-                 })
-
-    this.setState({ KaseyaFormModel:
-                     { ...state.KaseyaFormModel, password:
-                       { ...state.KaseyaFormModel.password, value: nextProps.password }
-                     }
-                 })
-
-
+    this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.url)
+    this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.userName)
+    this.updateFormFieldInState(state.KaseyaFormModel.url.password, nextProps.password)
     this.setState({kaseyaFetching: nextProps.kaseyaFetching})
     this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting})
-
   }
+
   componentDidMount(){
     (this.props as any).onViewKaseya();
   }

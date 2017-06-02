@@ -24,6 +24,7 @@ export const Routes = () => (
     <div>
       {/*<Switch>*/}
       {/*<Route path="/" component={Root} />*/}
+        <Route path="/integration/domainTracker/view" component={Root}  />
       <Route path="/integration/kaseya/view" component={Root}  />
       {/*</Switch>*/}
     </div>

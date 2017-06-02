@@ -30,7 +30,14 @@ export const kaseyaFetching = (state={}, action) => {
       return state
   }
 }
-
+export const domainTracker=(state={},action)=>{
+  switch (action.type){
+    case T.INTEGRATIONS.DOMAINTRACKER.VIEW:
+      return action.payload
+    default:
+      return state
+  }
+}
 export const kaseyaTransmitting = (state={}, action) => {
   console.log(`state & payload: ${JSON.stringify(action)}`)
   switch(action.type) {
@@ -64,7 +71,8 @@ export default combineReducers({
   kaseya,
   kaseyaFetching,
   kaseyaTransmitting,
-  wiseMessages
+  wiseMessages,
+  domainTracker
 })
 
 

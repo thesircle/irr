@@ -27,7 +27,7 @@ export const IntegrationInfoComp = (prop) => {
           <img src={prop.object.sm_img} />
           <div
               className="overlayer widget-detail hover_img  bottom-left full-width">
-            <img src={prop.object.sm_hover_img} className="wm-logo" onClick={popUp} data-toggle="modal" data-target="#myModal" />
+            <img src={prop.object.sm_hover_img} className="search-icon-hover" onClick={popUp} data-toggle="modal" data-target="#myModal" />
           </div>
         </div>
 

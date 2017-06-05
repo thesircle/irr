@@ -1,13 +1,34 @@
 @import 'bootstrap-3.3.7';
 
-//var definition
+//Var Definition
 
 $font-style: "Open Sans", sans-serif;
 $font-size: 12px;
 $font-weight: 300;
 $border-color: rgba(0, 0, 0, 0.07);
+$color-white: #ffffff;
+$bg-transparent: transparent;
+$breadcrumb-color: #7b7d82;
+$wise-error-color: #8f5c5e;
+$wise-error-bgcolor: #f7d8db;
+$wise-success-color: #518f53;
+$wise-success-bgcolor: #bef7c7;
+$wise-info-color: #31708f;
+$wise-info-bgcolor: #d9edf7;
+$wise-warning-color: #eee774;
+$wise-warning-bgcolor: #f6f7c9;
+$primary-color-3: #f8f8f8;
+$bg-thead: #ebebeb;
+$color-th: #939393;
+$headerbg-color: #6ac259;
+$primary-color: #62c4b6;
+$warning-color: #faa732;
+$heading-color: #626262;
+$primary-color-2: #ff5649;
+$scrollbar-color: rgba(0, 0, 0, 0.1);
+$scrollbarthumb-color: rgba(0, 0, 0, 0.5);
 
-//function definition
+//Function Definition
 
 @mixin custom-border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -34,7 +55,17 @@ $border-color: rgba(0, 0, 0, 0.07);
   @include custom-border-radius(300px);
 }
 
-//CSS definition
+@mixin slideLeft {
+  animation-name: slideLeft;
+  -webkit-animation-name: slideLeft;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  visibility: visible !important;
+}
+
+//Integrations -> Kaseya start
 
 .page-wrapper {
   margin-top: 15px;
@@ -42,7 +73,7 @@ $border-color: rgba(0, 0, 0, 0.07);
   margin-bottom: 15px;
 
   .page-container {
-    background: #ffffff;
+    background: $color-white;
     @extend .container-fluid;
   }
 }
@@ -77,15 +108,78 @@ p {
   font-weight: $font-weight;
 }
 
-@mixin slideLeft {
-  animation-name: slideLeft;
-  -webkit-animation-name: slideLeft;
-  animation-duration: 1s;
-  -webkit-animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-timing-function: ease-in-out;
-  visibility: visible !important;
+.hr-integration {
+  border-width: 3px;
 }
+
+.breadcrumb {
+  background-color: $bg-transparent;
+  padding: 5px 0px;
+  margin: 0px;
+  text-transform: uppercase;
+
+  a {
+    color: $breadcrumb-color;
+    text-decoration: none;
+  }
+}
+
+.list-items {
+  display: flex;
+}
+
+.companyheader {
+  font-size: 28px !important;
+  font-weight: 200;
+  font-family: $font-style;
+  float: left;
+}
+
+button {
+  background: $bg-transparent;
+  border: none;
+  padding: 0px 10px;
+  outline: none;
+}
+
+.btn-bg {
+  background-color: $primary-color-3;
+  padding: 8px !important;
+  float: right;
+  @include custom-border(1px, $border-color, solid);
+  @include custom-border-radius(40px);
+}
+
+.alert {
+  display: none;
+  background-Color: $primary-color-2;
+  color: $primary-color-3;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.error {
+  font-size: $font-size;
+  color: $primary-color-2;
+  display: block;
+}
+
+.search-icon-hover {
+  position: absolute;
+  top: 73px;
+  left: 109px;
+}
+
+//Integrations -> Kaseya End
+
+
+//Wise Error Message Popup Start
 
 @keyframes slideLeft {
   0% {
@@ -134,7 +228,7 @@ p {
 }
 
 .wise-close {
-  background: url('http://pages.revox.io/dashboard/latest/html/pages/img/icons/noti-cross.png') no-repeat scroll 0 0 transparent;
+  background: url('//img/noti-cross.png') no-repeat scroll 0 0 transparent;
   background-position: -4px -10px;
   width: 10px;
   height: 9px;
@@ -147,12 +241,6 @@ p {
   border: 0;
 }
 
-.wm-logo {
-  position: absolute;
-  top: 73px;
-  left: 109px;
-}
-
 .wise-message-wrapper {
   position: absolute;
   right: 15px;
@@ -162,100 +250,40 @@ p {
 }
 
 .wise-error {
-  color: #8f5c5e;
-  background-color: #f7d8db;
+  color: $wise-error-color;
+  background-color: $wise-error-bgcolor;
   @include wiseContainer;
 }
 
 .wise-success {
-  color: #518f53;
-  background-color: #bef7c7;
+  color: $wise-success-color;
+  background-color: $wise-success-bgcolor;
   @include wiseContainer;
 }
 
 .wise-info {
-  color: #31708f;
-  background-color: #d9edf7;
+  color: $wise-info-color;
+  background-color: $wise-info-bgcolor;
   @include wiseContainer;
 }
 
 .wise-warning {
-  color: #eee774;
-  background-color: #f6f7c9;
+  color: $wise-warning-color;
+  background-color: $wise-warning-bgcolor;
   @include wiseContainer;
 }
 
-.hr-integration {
-  border-width: 3px;
-}
+//Wise Error Message Popup End
 
-.breadcrumb {
-  background-color: transparent;
-  padding: 5px 0px;
-  margin: 0px;
-  text-transform: uppercase;
+//Domain Tracker Start
 
-  a {
-    color: #7b7d82;
-    text-decoration: none;
-  }
-}
-
-.list-items {
-  display: flex;
-}
-
-.companyheader {
-  color: #555;
-  font-size: 28px !important;
-  font-weight: 200;
-  font-family: $font-style;
-  float: left;
-}
-
-button {
-  background: transparent;
-  border: none;
-  padding: 0px 10px;
-  outline: none;
-}
-
-.btn-bg {
-  background-color: #f8f8f8;
-  padding: 8px !important;
-  float: right;
-  @include custom-border(1px, #eee, solid);
-  @include custom-border-radius(40px);
-}
-
-.alert {
-  display: none;
-  background-Color: #FDDDDD;
-  color: #A43432;
-}
-
-.m-t-20 {
-  margin-top: 20px;
-}
-
-.m-b-15 {
-  margin-bottom: 15px;
-}
-
-.error {
-  font-size: $font-size;
-  color: #f55753;
-  display: block;
-}
-
-//doamin tracker css satrt here
 .fs-20 {
   font-size: 20px;
 }
 
-.header-bg {
-  background-color: #6ac259;
-  color: #fff;
+.table-header-bg {
+  background-color: $headerbg-color;
+  color: $color-white;
 
   .pull-right {
 
@@ -265,9 +293,9 @@ button {
   }
 }
 
-.reported {
-  background: #939393;
-  color: #fff;
+.table-footer {
+  background: $color-th;
+  color: $color-white;
   padding-top: 5px;
   padding-bottom: 5px;
   position: absolute;
@@ -278,9 +306,9 @@ button {
   margin-top: 15px;
 }
 
-.nth-child-even {
+.table-alternate-row {
   tr:nth-child(even) {
-    background: #f8f8f8;
+    background: $primary-color-3;
   }
 }
 
@@ -288,9 +316,9 @@ table {
   margin-bottom: 0px !important;
   thead {
     tr {
-      background-color: #ebebeb !important;
+      background-color: $bg-thead;
       th {
-        color: #939393;
+        color: $color-th;
         font-size: 12px;
         font-weight: 200;
         text-transform: uppercase;
@@ -299,35 +327,31 @@ table {
   }
 
   tbody {
-    @extend .nth-child-even;
+    @extend .table-alternate-row;
     tr {
       .fa-check-circle {
-        color: #6ac259;
+        color: $headerbg-color;
       }
       td {
         padding: 10px 10px !important;
         border-top: none !important;
         border-bottom: none !important;
         font-size: 12px;
-        color: #939393;
+        color: $color-th;
       }
       a, a:focus, a:hover {
         padding-right: 7px;
         text-decoration: underline;
-        color: #62c4b6;
+        color: $primary-color;
       }
     }
   }
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  color: #626262;
-  background-color: initial !important;
-  @include custom-border(0px 0px 5px 0px, #62c4b6, solid);
-}
-
-.font-weight-600 {
-  font-weight: 600;
+  color: $heading-color;
+  background: none;
+  @include custom-border(0px 0px 5px 0px, $primary-color, solid);
 }
 
 .scrollBar::-webkit-scrollbar {
@@ -335,15 +359,15 @@ table {
   height: 6px; /* for horizontal scrollbars */
 }
 
-.scrollBar::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+.scrollBar::-webkit-scrollbar-track{
+  background: $scrollbar-color;
 }
 
-.scrollBar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.5);
+.scrollBar::-webkit-scrollbar-thumb{
+  background: $scrollbarthumb-color;
 }
 
-.scroller {
+.table-scroller {
   position: relative;
   overflow: auto;
   height: 180px;
@@ -351,24 +375,25 @@ table {
   @extend .scrollBar;
 }
 
-.domain-img {
-  height: 364px;
-  width: 100%;
+.domain-view {
+  img {
+    height: 364px;
+    width: 100%;
+  }
 }
 
 .domain-info {
   height: 175px;
   line-height: 0.8;
   padding: 0px;
-  color: #939393;
+  color: $color-th;
 }
 
 .mx-record-column {
-  color: #939393;
+  color: $color-th;
 }
 
 .dns-column {
-
   height: 477px;
 }
 
@@ -376,9 +401,9 @@ table {
   padding: 0px !important;
 }
 
-.company-info {
+.whois-tab-info {
   height: 315px;
-  background: rgba(0, 0, 0, 0.03);
+  background: lighten($border-color, 70%);
   @include custom-border(0px 0px 0px 1px, $border-color, solid);
   ul {
     @include custom-border(0px 0px 1px 0px, $border-color, solid);
@@ -390,7 +415,7 @@ table {
         padding: 8px 25px !important;
         border-radius: inherit;
         font-size: 12px;
-        color: #626262;
+        color: $heading-color;
         font-weight: 600;
       }
     }
@@ -398,6 +423,7 @@ table {
   .tab-content {
     height: 245px;
     overflow: auto;
+    padding-left: 10px;
     @extend .scrollBar;
   }
   table {
@@ -408,7 +434,7 @@ table {
 }
 
 .fa-exclamation-circle {
-  color: #faa732;
+  color: $warning-color;
 }
 
 .result {
@@ -430,16 +456,16 @@ table {
 }
 
 .fa-times-circle {
-  color: #ff5649;
+  color: $primary-color-2;
 }
 
 @media (max-width: 1560px) and (min-width: 1200px) {
-  .lg-6-1560 {
+  .domain-view {
     width: 35%;
     left: 0px;
   }
-  .scroller{
-    height:150px;
+  .table-scroller {
+    height: 150px;
   }
 
   .registrar-info {
@@ -477,7 +503,7 @@ table {
 
   .dns-column {
     height: auto;
-    .reported{
+    .table-footer {
       position: relative;
     }
   }
@@ -491,8 +517,8 @@ table {
       padding-right: 0px;
     }
   }
-  .domain-img {
-    padding-left: 15px;
+  .domain-view {
+    padding-left: 15px !important;
   }
 }
 
@@ -534,10 +560,16 @@ table {
     }
   }
 
-  .lg-6-1560 {
+  .domain-view {
     clear: both;
   }
 
+  .table-header-bg {
+    overflow: hidden;
+    span:nth-child(1) {
+      font-size: 18px;
+    }
+  }
 }
 
-//Domain Tracker CSS end here
+//Domain Tracker End

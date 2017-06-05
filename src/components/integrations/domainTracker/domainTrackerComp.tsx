@@ -42,7 +42,7 @@ export class DomainTrackerComp extends Component<{},{}> {
           <div className="page-container">
             <div className="row">
               <div className="col-md-12 col-lg-7 col-xs-12 registrar-info widgetborder no-padding m-b-15">
-                <div className="panel-heading header-bg">
+                <div className="panel-heading table-header-bg">
                   <span className="fs-20">WHOIS:THEHELPDESK.COM</span>
                   <span className="pull-right"><span>Domain will expire in 670 days</span> <i className="fa fa-check-circle fa-2x"></i></span>
                 </div>
@@ -80,7 +80,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                     </tbody>
                   </table>
                 </div>
-                <div className="col-md-7 col-sm-7 company-info no-padding">
+                <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
                   <ul className="nav nav-pills">
                     <li className="active"><a data-toggle="pill" href=".home">REGISTRANRT INFO</a></li>
                     <li><a data-toggle="pill" href=".menu1">ADMIN INFO</a></li>
@@ -129,12 +129,12 @@ export class DomainTrackerComp extends Component<{},{}> {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-sm-12 col-xs-12 reported"><span>Reported by</span> <span>whois:godaddy.com</span>
+                <div className="col-md-12 col-sm-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com</span>
                   <span>on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                 </div>
               </div>
-              <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-2 col-md-push-6 col-sm-push-6 lg-6-1560 no-padding">
-                <img src="assets/img/domain-img.png" className="domain-img"/>
+              <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-2 col-md-push-6 col-sm-push-6 domain-view no-padding">
+                <img src="assets/img/domain-img.png"/>
               </div>
               <div className="col-lg-2 col-md-6 col-sm-6 col-lg-pull-3 col-sm-pull-6 col-md-pull-6 an-pttr-width">
                 <div className="col-md-12 col-lg-12  widgetborder domain-info">
@@ -184,12 +184,12 @@ export class DomainTrackerComp extends Component<{},{}> {
               <div className="col-md-12 col-lg-6 col-sm-12">
                 <div className="row">
                   <div className="col-md-12 widgetborder no-padding m-b-15 dns-column">
-                    <div className="panel-heading header-bg">
+                    <div className="panel-heading table-header-bg">
                       <span className="fs-20">DNS:THEHELPDESK.COM</span>
                       <span className="pull-right"><span>DNS Record Published</span> <i
                           className="fa fa-check-circle fa-2x"></i></span>
                     </div>
-                    <div className="scroller">
+                    <div className="table-scroller">
                       <table className="table table-bordered">
                         <thead>
                         <tr>
@@ -255,7 +255,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                     </div>
                     <div className="col-md-12 result fs-16">RESULT
                     </div>
-                    <div className="scroller">
+                    <div className="table-scroller">
                       <table className="table table-bordered">
                         <tbody>
                         <tr>
@@ -283,7 +283,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                    <div className="col-md-12 col-xs-12 reported"><span>Reported by</span> <span>whois:godaddy.com</span>
+                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com</span>
                       <span>on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                     </div>
                   </div>
@@ -294,7 +294,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <div className="panel-heading">
                     <span className="fs-20">MX RECORD</span>
                   </div>
-                  <div className="scroller">
+                  <div className="table-scroller">
                     <table className="table table-bordered">
                       <thead>
                       <tr >
@@ -361,7 +361,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <div className="panel-heading">
                         <span className="fs-20">SPF</span>
                       </div>
-                      <div className="scroller">
+                      <div className="table-scroller">
                         <table className="table table-bordered">
                           <thead>
                           <tr>
@@ -401,7 +401,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <div className="panel-heading">
                         <span className="fs-20">TXT</span>
                       </div>
-                      <div className="scroller">
+                      <div className="table-scroller">
                         <table className="table table-bordered">
                           <thead>
                           <tr>

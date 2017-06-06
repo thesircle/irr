@@ -258,7 +258,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <table className="table table-bordered">
                         <tbody>
                         <tr>
-                          <td className="text-center"><img src="/img/icon_circle_warning.svg" width="24px"/></td>
+                          <td className="text-center"><img src="/img/icon_circle_warning.svg" width="24px" height="24px"/></td>
                           <td>soa serail number format is invalid soa serail number format is
                             invalid soa serail number format is invalid soa serail number forma
                           </td>
@@ -370,7 +370,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                           </thead>
                           <tbody>
                           <tr>
-                            <td className="text-center"><img src="/img/icon_circle_error.svg" width="24px"/></td>
+                            <td className="text-center"><img src="/img/icon_circle_error.svg" width="24px" height="24px"/></td>
                             <td>john@example.com</td>
                             <td>john@example.com</td>
                           </tr>

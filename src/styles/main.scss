@@ -164,6 +164,9 @@ button {
 .m-b-5{
   margin-bottom: 5px;
 }
+.m-t-5{
+  margin-top:5px;
+}
 .error-txt-msg {
   font-size: $font-size;
   color: $secondary-color;
@@ -368,7 +371,7 @@ table {
 .table-scroller-dns {
   position: relative;
   overflow: auto;
-  height: 174px;
+  height: 172px;
   width: 100%;
   @extend .scrollBar;
 }

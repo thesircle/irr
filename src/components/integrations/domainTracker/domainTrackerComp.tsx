@@ -252,7 +252,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                      <div className="col-md-12 result fs-16"><div className="m-b-5">RESULT</div>
+                      <div className="col-md-12 result fs-16"><div className="m-b-5 m-t-5">RESULT</div>
                     </div>
                     <div className="table-scroller-dns">
                       <table className="table table-bordered">

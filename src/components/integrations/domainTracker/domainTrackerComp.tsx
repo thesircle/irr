@@ -44,7 +44,7 @@ export class DomainTrackerComp extends Component<{},{}> {
               <div className="col-md-12 col-lg-6 col-xs-12 registrar-info widgetborder no-padding m-b-15">
                 <div className="panel-heading table-header-bg">
                   <span className="fs-20">WHOIS:THEHELPDESK.COM</span>
-                  <span className="pull-right"><span>Domain will expire in 670 days</span>  <img src="/img/icon_circle_success_white.svg" width="24px"/></span>
+                  <span className="pull-right"><span>Domain will expire in 670 days</span>  <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></span>
                 </div>
                 <div className="col-md-5 col-sm-5 no-padding">
                   <table className="table">
@@ -186,7 +186,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <div className="col-md-12 widgetborder no-padding  dns-column">
                     <div className="panel-heading table-header-bg">
                       <span className="fs-20">DNS:THEHELPDESK.COM</span>
-                      <span className="pull-right"><span>DNS Record Published</span> <img src="/img/icon_circle_success_white.svg" width="24px"/></span>
+                      <span className="pull-right"><span>DNS Record Published</span> <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></span>
                     </div>
                     <div className="table-scroller-dns">
                       <table className="table table-bordered">

@@ -4,7 +4,9 @@ $font-style: "Open Sans", sans-serif;
 $font-size: 12px;
 $font-weight: 300;
 $border-color: rgba(0, 0, 0, 0.07);
-$color-white: #ffffff;
+$page-bgcolor:#ffffff;
+$table-footer-color:#ffffff;
+$table-header-bgcolor:#ffffff;
 $bg-transparent: transparent;
 $breadcrumb-color: #7b7d82;
 $wise-error-color: #8f5c5e;
@@ -71,7 +73,7 @@ $scrollbarthumb-color: rgba(0, 0, 0, 0.5);
   margin-bottom: 15px;
 
   .page-container {
-    background: $color-white;
+    background: $page-bgcolor;
     @extend .container-fluid;
   }
 }
@@ -286,12 +288,12 @@ button {
 
 .table-header-bg {
   background-color: $header-bgcolor;
-  color: $color-white;
+  color: $table-header-bgcolor;
 }
 
 .table-footer {
   background: $th-color;
-  color: $color-white;
+  color: $table-footer-color;
   padding-top: 5px;
   padding-bottom: 5px;
 }

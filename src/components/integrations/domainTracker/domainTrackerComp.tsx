@@ -82,12 +82,12 @@ export class DomainTrackerComp extends Component<{},{}> {
                 </div>
                 <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
                   <ul className="nav nav-pills">
-                    <li className="active"><a data-toggle="pill" href=".home">REGISTRANT INFO</a></li>
-                    <li><a data-toggle="pill" href=".menu1">ADMIN INFO</a></li>
-                    <li><a data-toggle="pill" href=".menu2">TECH INFO</a></li>
+                    <li className="active"><a data-toggle="pill" href=".whois-tab1">REGISTRANT INFO</a></li>
+                    <li><a data-toggle="pill" href=".whois-tab2">ADMIN INFO</a></li>
+                    <li><a data-toggle="pill" href=".whois-tab3">TECH INFO</a></li>
                   </ul>
                   <div className="tab-content">
-                    <div className="tab-pane fade in active home">
+                    <div className="tab-pane fade in active whois-tab1">
                       <table className="table">
                         <tbody>
                         <tr>
@@ -117,12 +117,12 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                    <div className="tab-pane fade menu1">
+                    <div className="tab-pane fade whois-tab2">
                       <h3>Menu 1</h3>
                       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         aliquip ex ea commodo consequat.</p>
                     </div>
-                    <div className="tab-pane fade menu2">
+                    <div className="tab-pane fade whois-tab3">
                       <h3>Menu 2</h3>
                       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
                         doloremque laudantium, totam rem aperiam.</p>

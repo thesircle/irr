@@ -560,8 +560,9 @@ table {
   }
 }
 @media(max-width: 530px){
-.table-header-bg .pull-right span{
-  font-size: 10px;
+.table-header-bg{
+  display: grid;
+  text-align: center;
 }
   .whois-tab-info{
     text-align: center;

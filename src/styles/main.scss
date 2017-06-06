@@ -555,6 +555,23 @@ table {
       font-size: 15px;
     }
   }
+  .domain-view{
+    clear: both;
+  }
+}
+@media(max-width: 530px){
+.table-header-bg .pull-right span{
+  font-size: 10px;
+}
+  .whois-tab-info{
+    text-align: center;
+    ul{
+      display: inline-grid;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
 }
 
 //Domain Tracker End

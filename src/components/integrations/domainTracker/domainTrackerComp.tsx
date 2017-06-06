@@ -82,7 +82,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                 </div>
                 <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
                   <ul className="nav nav-pills">
-                    <li className="active"><a data-toggle="pill" href=".home">REGISTRANRT INFO</a></li>
+                    <li className="active"><a data-toggle="pill" href=".home">REGISTRANT INFO</a></li>
                     <li><a data-toggle="pill" href=".menu1">ADMIN INFO</a></li>
                     <li><a data-toggle="pill" href=".menu2">TECH INFO</a></li>
                   </ul>
@@ -130,7 +130,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                   </div>
                 </div>
                 <div className="col-md-12 col-sm-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com</span>
-                  <span>on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
+                       <span>    on    4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                 </div>
               </div>
               <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">
@@ -281,8 +281,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com</span>
-                      <span>on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
+                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com </span>
+                        <span> on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                     </div>
                   </div>
                 </div>

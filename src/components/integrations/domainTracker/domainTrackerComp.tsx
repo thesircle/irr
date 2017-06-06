@@ -145,15 +145,15 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <table className="table">
                     <tbody>
                     <tr>
-                      <td>Domain name</td>
+                      <td>DOMAIN NAME</td>
                       <td>thehelpdesk.com</td>
                     </tr>
                     <tr>
-                      <td>IP address</td>
+                      <td>IP ADDRESS</td>
                       <td>56.63.202.48</td>
                     </tr>
                     <tr>
-                      <td>Ttl</td>
+                      <td>TTL</td>
                       <td>10 min</td>
                     </tr>
                     </tbody>
@@ -166,15 +166,15 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <table className="table">
                     <tbody>
                     <tr>
-                      <td>IP address</td>
+                      <td>IP ADDRESS</td>
                       <td>thehelpdesk.com</td>
                     </tr>
                     <tr>
-                      <td>Domain name</td>
+                      <td>DOMAIN NAME</td>
                       <td>56.63.202.48</td>
                     </tr>
                     <tr>
-                      <td>Ttl</td>
+                      <td>TTL</td>
                       <td>10 min</td>
                     </tr>
                     </tbody>
@@ -252,7 +252,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                    <div className="col-md-12 result fs-16">RESULT
+                      <div className="col-md-12 result fs-16"><div className="m-b-5">RESULT</div>
                     </div>
                     <div className="table-scroller-dns">
                       <table className="table table-bordered">

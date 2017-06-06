@@ -323,9 +323,6 @@ table {
   tbody {
     @extend .table-alternate-row;
     tr {
-      .fa-check-circle {
-        color: $header-bgcolor;
-      }
       td {
         padding: 10px 10px !important;
         border-top: none !important;
@@ -429,10 +426,6 @@ table {
   }
 }
 
-.fa-exclamation-circle {
-  color: $warning-color;
-}
-
 .result {
   @include custom-border(1px 0px 1px 0px, $border-color, solid);
   color: $th-color;
@@ -451,10 +444,6 @@ table {
     border-top: none !important;
     border-bottom:none;
   }
-}
-
-.fa-times-circle {
-  color: $secondary-color;
 }
 .dns-record{
   clear:both;

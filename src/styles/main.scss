@@ -284,13 +284,6 @@ button {
 .table-header-bg {
   background-color: $headerbg-color;
   color: $color-white;
-
-  .pull-right {
-
-    span {
-      vertical-align: super;
-    }
-  }
 }
 
 .table-footer {
@@ -298,8 +291,6 @@ button {
   color: $color-white;
   padding-top: 5px;
   padding-bottom: 5px;
-  position: absolute;
-  bottom: 0;
 }
 
 .m-t-15 {
@@ -370,7 +361,14 @@ table {
 .table-scroller {
   position: relative;
   overflow: auto;
-  height: 180px;
+  height: 169px;
+  width: 100%;
+  @extend .scrollBar;
+}
+.table-scroller-dns {
+  position: relative;
+  overflow: auto;
+  height: 177px;
   width: 100%;
   @extend .scrollBar;
 }
@@ -392,17 +390,12 @@ table {
 .mx-record-column {
   color: $color-th;
 }
-
-.dns-column {
-  height: 477px;
-}
-
 .no-padding {
   padding: 0px !important;
 }
 
 .whois-tab-info {
-  height: 315px;
+  height: 285px;
   background: lighten($border-color, 70%);
   @include custom-border(0px 0px 0px 1px, $border-color, solid);
   ul {
@@ -412,7 +405,7 @@ table {
       padding-right: 5px;
       padding-left: 5px;
       a {
-        padding: 8px 25px !important;
+        padding: 8px 20px !important;
         border-radius: inherit;
         font-size: 12px;
         color: $heading-color;
@@ -421,7 +414,7 @@ table {
     }
   }
   .tab-content {
-    height: 245px;
+    height: 240px;
     overflow: auto;
     padding-left: 10px;
     @extend .scrollBar;
@@ -458,11 +451,16 @@ table {
 .fa-times-circle {
   color: $primary-color-2;
 }
-
+.dns-record{
+  clear:both;
+}
 @media (max-width: 1560px) and (min-width: 1200px) {
   .domain-view {
     width: 35%;
     left: 0px;
+  }
+  .dns-record{
+    clear:initial;
   }
   .table-scroller {
     height: 150px;
@@ -500,14 +498,6 @@ table {
     bottom: 15px;
     right: 0px;
   }
-
-  .dns-column {
-    height: auto;
-    .table-footer {
-      position: relative;
-    }
-  }
-
   .spf-txt-column {
     position: absolute;
     margin-bottom: 15px;
@@ -519,6 +509,9 @@ table {
   }
   .domain-view {
     padding-left: 15px !important;
+  }
+  .table-scroller-dns{
+    height:144px;
   }
 }
 
@@ -567,7 +560,7 @@ table {
   .table-header-bg {
     overflow: hidden;
     span:nth-child(1) {
-      font-size: 18px;
+      font-size: 15px;
     }
   }
 }

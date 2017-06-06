@@ -364,14 +364,14 @@ table {
 .table-scroller {
   position: relative;
   overflow: auto;
-  height: 169px;
+  height: 165px;
   width: 100%;
   @extend .scrollBar;
 }
 .table-scroller-dns {
   position: relative;
   overflow: auto;
-  height: 172px;
+  height: 167px;
   width: 100%;
   @extend .scrollBar;
 }
@@ -434,7 +434,7 @@ table {
 }
 
 .result {
-  @include custom-border(0px 0px 1px 0px, $border-color, solid);
+  @include custom-border(1px 0px 1px 0px, $border-color, solid);
   color: $th-color;
 }
 
@@ -449,6 +449,7 @@ table {
 .dns-column {
   .table-bordered {
     border-top: none !important;
+    border-bottom:none;
   }
 }
 
@@ -467,7 +468,7 @@ table {
     clear:initial;
   }
   .table-scroller {
-    height: 150px;
+    height: 146px;
   }
 
   .registrar-info {

@@ -1,7 +1,5 @@
 @import 'bootstrap-3.3.7';
-
 //Var Definition
-
 $font-style: "Open Sans", sans-serif;
 $font-size: 12px;
 $font-weight: 300;
@@ -163,8 +161,7 @@ button {
 .m-b-15 {
   margin-bottom: 15px;
 }
-
-.error {
+.error-txt-msg {
   font-size: $font-size;
   color: $secondary-color;
   display: block;
@@ -552,11 +549,6 @@ table {
       margin-top: 15px;
     }
   }
-
-  .domain-view {
-    clear: both;
-  }
-
   .table-header-bg {
     overflow: hidden;
     span:nth-child(1) {

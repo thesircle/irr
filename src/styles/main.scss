@@ -566,9 +566,9 @@ table {
   .whois-tab-info{
     text-align: center;
     ul{
-      display: inline-grid;
-      text-align: center;
-      width: 100%;
+    li{
+      float:none;
+    }
     }
     .tab-content {
       height: 162px;

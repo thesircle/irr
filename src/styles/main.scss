@@ -560,8 +560,11 @@ table {
 }
 @media(max-width: 530px){
 .table-header-bg{
-  display: grid;
+  display: block;
   text-align: center;
+  .pull-right{
+    float: none!important;
+  }
 }
   .whois-tab-info{
     text-align: center;

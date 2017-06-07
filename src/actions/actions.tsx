@@ -3,7 +3,19 @@ import S from '../constants/system'
 import {get,post} from '../utils/nioUtils'
 import 'isomorphic-fetch'
 
-
+export const viewDomainTracker =() => dispatch =>{
+  dispatch({
+    type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
+    payload:{domainTrackerFetchingWhois:true}
+  })
+  setTimeout(function() {
+    get(S.BK.DOMAINTRACKER.GET).then(({body}:any) => {
+      dispatch({
+        type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
+        payload:{domainTrackerFetching:false,data:body}
+      })
+    })},10000);
+}
 export  const updateKaseya = (url, userName, password) => dispatch => {
   let postBody = {
     "KaseyaUrl":url,

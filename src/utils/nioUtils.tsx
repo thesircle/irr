@@ -1,6 +1,7 @@
 import S from '../constants/system'
 export const api = (url, params) => {
-  var fullUrl = S.BK_BASE + url;
+  // var fullUrl = S.BK_BASE + url;
+  var fullUrl = S.GET_BASE + url;
   return fetch(fullUrl, params)
     .then((res) => {
       if (res.ok) {//200 to 299

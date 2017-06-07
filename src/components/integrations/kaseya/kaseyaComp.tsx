@@ -183,7 +183,7 @@ export class KaseyaComp extends Component<{},{}> {
 
                 <div className="row clearfix">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                <div role="alert" className="alert alr" id="lblFailed" style={{"display":"none","backgroundColor":"#FDDDDD","color":"#A43432"}}>
+                <div role="alert" className="alert-wrapper alr" id="lblFailed" style={{"display":"none","backgroundColor":"#FDDDDD","color":"#A43432"}}>
                 <button className="close"></button>
                 <strong>Invalid Credentials</strong>
                 </div>

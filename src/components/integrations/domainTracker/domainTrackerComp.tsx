@@ -134,7 +134,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                 </div>
               </div>
               <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">
-                <img src="assets/img/domain-img.png"/>
+               <img src="/img/domain-img.png" / >
               </div>
               <div className="col-lg-3 col-md-6 col-sm-6 col-lg-pull-3 col-sm-pull-6 col-md-pull-6 an-pttr-width">
                 <div className="col-md-12 col-lg-12  widgetborder domain-info">
@@ -188,8 +188,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <span className="fs-20">DNS:THEHELPDESK.COM</span>
                       <div className="pull-right"><span>DNS Record Published</span> <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
                     </div>
-                    <div className="table-scroller-dns">
-                      <table className="table table-bordered">
+                    <div id="dns">
+                      <table className="table">
                         <thead>
                         <tr>
                           <th>Type</th>
@@ -292,8 +292,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <div className="panel-heading">
                     <span className="fs-20">MX RECORD</span>
                   </div>
-                  <div className="table-scroller">
-                    <table className="table table-bordered">
+                  <div id="mx-record">
+                    <table className="table">
                       <thead>
                       <tr >
                         <th>pref</th>
@@ -359,8 +359,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <div className="panel-heading">
                         <span className="fs-20">SPF</span>
                       </div>
-                      <div className="table-scroller">
-                        <table className="table table-bordered">
+                      <div id="spf">
+                        <table className="table">
                           <thead>
                           <tr>
                             <th></th>
@@ -399,8 +399,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <div className="panel-heading">
                         <span className="fs-20">TXT</span>
                       </div>
-                      <div className="table-scroller">
-                        <table className="table table-bordered">
+                      <div id="txt">
+                        <table className="table">
                           <thead>
                           <tr>
                             <th>domain name</th>
@@ -442,6 +442,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 

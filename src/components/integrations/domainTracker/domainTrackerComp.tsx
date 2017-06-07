@@ -41,10 +41,10 @@ export class DomainTrackerComp extends Component<{},{}> {
         <div className="page-wrapper">
           <div className="page-container">
             <div className="row">
-              <div className="col-md-12 col-lg-7 col-xs-12 registrar-info widgetborder no-padding m-b-15">
-                <div className="panel-heading header-bg">
+              <div className="col-md-12 col-lg-6 col-xs-12 registrar-info widgetborder no-padding m-b-15">
+                <div className="panel-heading table-header-bg">
                   <span className="fs-20">WHOIS:THEHELPDESK.COM</span>
-                  <span className="pull-right"><span>Domain will expire in 670 days</span> <i className="fa fa-check-circle fa-2x"></i></span>
+                  <div className="pull-right"><span>Domain will expire in 670 days</span>  <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
                 </div>
                 <div className="col-md-5 col-sm-5 no-padding">
                   <table className="table">
@@ -80,14 +80,14 @@ export class DomainTrackerComp extends Component<{},{}> {
                     </tbody>
                   </table>
                 </div>
-                <div className="col-md-7 col-sm-7 company-info no-padding">
+                <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
                   <ul className="nav nav-pills">
-                    <li className="active"><a data-toggle="pill" href=".home">REGISTRANRT INFO</a></li>
-                    <li><a data-toggle="pill" href=".menu1">ADMIN INFO</a></li>
-                    <li><a data-toggle="pill" href=".menu2">TECH INFO</a></li>
+                    <li className="active"><a data-toggle="pill" href=".whois-tab1">REGISTRANT INFO</a></li>
+                    <li><a data-toggle="pill" href=".whois-tab2">ADMIN INFO</a></li>
+                    <li><a data-toggle="pill" href=".whois-tab3">TECH INFO</a></li>
                   </ul>
                   <div className="tab-content">
-                    <div className="tab-pane fade in active home">
+                    <div className="tab-pane fade in active whois-tab1">
                       <table className="table">
                         <tbody>
                         <tr>
@@ -117,26 +117,26 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                    <div className="tab-pane fade menu1">
+                    <div className="tab-pane fade whois-tab2">
                       <h3>Menu 1</h3>
                       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         aliquip ex ea commodo consequat.</p>
                     </div>
-                    <div className="tab-pane fade menu2">
+                    <div className="tab-pane fade whois-tab3">
                       <h3>Menu 2</h3>
                       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
                         doloremque laudantium, totam rem aperiam.</p>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-sm-12 col-xs-12 reported"><span>Reported by</span> <span>whois:godaddy.com</span>
-                  <span>on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
+                <div className="col-md-12 col-sm-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com</span>
+                       <span>    on    4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                 </div>
               </div>
-              <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-2 col-md-push-6 col-sm-push-6 lg-6-1560 no-padding">
-                <img src="assets/img/domain-img.png" className="domain-img"/>
+              <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">
+                <img src="assets/img/domain-img.png"/>
               </div>
-              <div className="col-lg-2 col-md-6 col-sm-6 col-lg-pull-3 col-sm-pull-6 col-md-pull-6 an-pttr-width">
+              <div className="col-lg-3 col-md-6 col-sm-6 col-lg-pull-3 col-sm-pull-6 col-md-pull-6 an-pttr-width">
                 <div className="col-md-12 col-lg-12  widgetborder domain-info">
                   <div className="panel-heading">
                     <span className="fs-20">A NAME</span>
@@ -145,15 +145,15 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <table className="table">
                     <tbody>
                     <tr>
-                      <td>Domain name</td>
+                      <td>DOMAIN NAME</td>
                       <td>thehelpdesk.com</td>
                     </tr>
                     <tr>
-                      <td>IP address</td>
+                      <td>IP ADDRESS</td>
                       <td>56.63.202.48</td>
                     </tr>
                     <tr>
-                      <td>Ttl</td>
+                      <td>TTL</td>
                       <td>10 min</td>
                     </tr>
                     </tbody>
@@ -166,30 +166,29 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <table className="table">
                     <tbody>
                     <tr>
-                      <td>IP address</td>
+                      <td>IP ADDRESS</td>
                       <td>thehelpdesk.com</td>
                     </tr>
                     <tr>
-                      <td>Domain name</td>
+                      <td>DOMAIN NAME</td>
                       <td>56.63.202.48</td>
                     </tr>
                     <tr>
-                      <td>Ttl</td>
+                      <td>TTL</td>
                       <td>10 min</td>
                     </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div className="col-md-12 col-lg-6 col-sm-12">
+              <div className="col-md-12 col-lg-6 col-sm-12 m-b-15 dns-record">
                 <div className="row">
-                  <div className="col-md-12 widgetborder no-padding m-b-15 dns-column">
-                    <div className="panel-heading header-bg">
+                  <div className="col-md-12 widgetborder no-padding  dns-column">
+                    <div className="panel-heading table-header-bg">
                       <span className="fs-20">DNS:THEHELPDESK.COM</span>
-                      <span className="pull-right"><span>DNS Record Published</span> <i
-                          className="fa fa-check-circle fa-2x"></i></span>
+                      <div className="pull-right"><span>DNS Record Published</span> <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
                     </div>
-                    <div className="scroller">
+                    <div className="table-scroller-dns">
                       <table className="table table-bordered">
                         <thead>
                         <tr>
@@ -210,14 +209,14 @@ export class DomainTrackerComp extends Component<{},{}> {
                           <td>Doe</td>
                           <td>john@example.com</td>
                           <td>John</td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                           <td>john@example.com</td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                         </tr>
                         <tr>
@@ -225,14 +224,14 @@ export class DomainTrackerComp extends Component<{},{}> {
                           <td>Doe</td>
                           <td>john@example.com</td>
                           <td>John</td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                           <td>john@example.com</td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                         </tr>
                         <tr>
@@ -240,51 +239,50 @@ export class DomainTrackerComp extends Component<{},{}> {
                           <td>Doe</td>
                           <td>john@example.com</td>
                           <td>John</td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                           <td>john@example.com</td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                         </tr>
                         </tbody>
                       </table>
                     </div>
-                    <div className="col-md-12 result fs-16">RESULT
+                      <div className="col-md-12 result fs-16"><div className="m-b-5 m-t-5">RESULT</div>
                     </div>
-                    <div className="scroller">
+                    <div className="table-scroller-dns">
                       <table className="table table-bordered">
                         <tbody>
                         <tr>
-                          <td className="text-center"><i
-                              className="fa fa-exclamation-circle fa-2x"></i></td>
+                          <td className="text-center"><img src="/img/icon_circle_warning.svg" width="24px" height="24px"/></td>
                           <td>soa serail number format is invalid soa serail number format is
                             invalid soa serail number format is invalid soa serail number forma
                           </td>
                         </tr>
                         <tr>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                           <td>soa serail number format is invalid</td>
                         </tr>
                         <tr>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                           <td>soa serail number format is invalid</td>
                         </tr>
                         <tr>
-                          <td className="text-center"><i className="fa fa-check-circle fa-2x"></i>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
                           </td>
                           <td>soa serail number format is invalid</td>
                         </tr>
                         </tbody>
                       </table>
                     </div>
-                    <div className="col-md-12 col-xs-12 reported"><span>Reported by</span> <span>whois:godaddy.com</span>
-                      <span>on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
+                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com </span>
+                        <span> on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                     </div>
                   </div>
                 </div>
@@ -294,7 +292,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <div className="panel-heading">
                     <span className="fs-20">MX RECORD</span>
                   </div>
-                  <div className="scroller">
+                  <div className="table-scroller">
                     <table className="table table-bordered">
                       <thead>
                       <tr >
@@ -361,7 +359,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <div className="panel-heading">
                         <span className="fs-20">SPF</span>
                       </div>
-                      <div className="scroller">
+                      <div className="table-scroller">
                         <table className="table table-bordered">
                           <thead>
                           <tr>
@@ -372,22 +370,22 @@ export class DomainTrackerComp extends Component<{},{}> {
                           </thead>
                           <tbody>
                           <tr>
-                            <td className="text-center"><i className="fa fa-times-circle fa-2x"></i></td>
+                            <td className="text-center"><img src="/img/icon_circle_error.svg" width="24px" height="24px"/></td>
                             <td>john@example.com</td>
                             <td>john@example.com</td>
                           </tr>
                           <tr>
-                            <td className="text-center"><i className="fa fa-check-circle fa-2x"></i></td>
+                            <td className="text-center"><img src="/img/icon_circle_success.svg" /></td>
                             <td>john@example.com</td>
                             <td>john@example.com</td>
                           </tr>
                           <tr>
-                            <td className="text-center"><i className="fa fa-check-circle fa-2x"></i></td>
+                            <td className="text-center"><img src="/img/icon_circle_success.svg" /></td>
                             <td>john@example.com</td>
                             <td>john@example.com</td>
                           </tr>
                           <tr>
-                            <td className="text-center"><i className="fa fa-check-circle fa-2x"></i></td>
+                            <td className="text-center"><img src="/img/icon_circle_success.svg" /></td>
                             <td>john@example.com</td>
                             <td>john@example.com</td>
                           </tr>
@@ -401,7 +399,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <div className="panel-heading">
                         <span className="fs-20">TXT</span>
                       </div>
-                      <div className="scroller">
+                      <div className="table-scroller">
                         <table className="table table-bordered">
                           <thead>
                           <tr>

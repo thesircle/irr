@@ -48,4 +48,9 @@ module.exports = {
  resolve: {
    extensions: [".tsx", ".ts", ".js", "json"]
  },
+  devServer: {
+    host: '0', // 0.0.0.0 short
+    port: 8080,
+    disableHostCheck: true
+  }
 };

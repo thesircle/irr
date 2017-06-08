@@ -4,9 +4,9 @@ $font-style: "Open Sans", sans-serif;
 $font-size: 12px;
 $font-weight: 300;
 $border-color: rgba(0, 0, 0, 0.07);
-$page-bgcolor:#ffffff;
-$table-footer-color:#ffffff;
-$table-header-bgcolor:#ffffff;
+$page-bgcolor: #ffffff;
+$table-footer-color: #ffffff;
+$table-header-bgcolor: #ffffff;
 $bg-transparent: transparent;
 $breadcrumb-color: #7b7d82;
 $wise-error-color: #8f5c5e;
@@ -150,7 +150,7 @@ button {
   @include custom-border-radius(40px);
 }
 
-.alert {
+.alert-wrapper {
   display: none;
   background-Color: $secondary-color;
   color: $tablerow-bgcolor;
@@ -163,12 +163,15 @@ button {
 .m-b-15 {
   margin-bottom: 15px;
 }
-.m-b-5{
+
+.m-b-5 {
   margin-bottom: 5px;
 }
-.m-t-5{
-  margin-top:5px;
+
+.m-t-5 {
+  margin-top: 5px;
 }
+
 .error-txt-msg {
   font-size: $font-size;
   color: $secondary-color;
@@ -182,7 +185,6 @@ button {
 }
 
 //Integrations -> Kaseya End
-
 
 //Wise Error Message Popup Start
 
@@ -352,11 +354,11 @@ table {
   height: 6px; /* for horizontal scrollbars */
 }
 
-.scrollBar::-webkit-scrollbar-track{
+.scrollBar::-webkit-scrollbar-track {
   background: $scrollbar-color;
 }
 
-.scrollBar::-webkit-scrollbar-thumb{
+.scrollBar::-webkit-scrollbar-thumb {
   background: $scrollbarthumb-color;
 }
 
@@ -367,6 +369,7 @@ table {
   width: 100%;
   @extend .scrollBar;
 }
+
 .table-scroller-dns {
   position: relative;
   overflow: auto;
@@ -377,7 +380,7 @@ table {
 
 .domain-view {
   img {
-    height: 364px;
+    height: 372px;
     width: 100%;
   }
 }
@@ -392,6 +395,7 @@ table {
 .mx-record-column {
   color: $th-color;
 }
+
 .no-padding {
   padding: 0px !important;
 }
@@ -444,19 +448,21 @@ table {
 .dns-column {
   .table-bordered {
     border-top: none !important;
-    border-bottom:none;
+    border-bottom: none;
   }
 }
-.dns-record{
-  clear:both;
+
+.dns-record {
+  clear: both;
 }
+
 @media (max-width: 1560px) and (min-width: 1200px) {
   .domain-view {
     width: 35%;
     left: 0px;
   }
-  .dns-record{
-    clear:initial;
+  .dns-record {
+    clear: initial;
   }
   .table-scroller {
     height: 146px;
@@ -506,8 +512,8 @@ table {
   .domain-view {
     padding-left: 15px !important;
   }
-  .table-scroller-dns{
-    height:144px;
+  .table-scroller-dns {
+    height: 144px;
   }
 }
 
@@ -554,31 +560,202 @@ table {
       font-size: 15px;
     }
   }
-  .domain-view{
+  .domain-view {
     clear: both;
   }
 }
-@media(max-width: 530px){
-.table-header-bg{
-  display: block;
-  text-align: center;
-  .pull-right{
-    float: none!important;
-  }
-}
-  .whois-tab-info{
+
+@media(max-width: 530px) {
+  .table-header-bg {
+    display: block;
     text-align: center;
-    ul{
-    li{
-      float:none;
+    .pull-right {
+      float: none !important;
     }
+  }
+  .whois-tab-info {
+    text-align: center;
+    ul {
+      li {
+        float: none;
+      }
     }
     .tab-content {
       height: 162px;
     }
   }
 
-
 }
 
 //Domain Tracker End
+
+#mx-record tbody {
+  display: block;
+  height: 130px;
+  overflow: auto;
+  @extend .scrollBar;
+}
+
+#mx-record thead, #mx-record tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#mx-record thead {
+  width: 100%;
+}
+
+#mx-record thead th {
+  border-left: 1px solid #ddd;
+}
+
+#mx-record thead th:nth-child(1), #mx-record tbody td:nth-child(1) {
+  width: 15%;
+}
+
+#mx-record thead th:nth-child(2), #mx-record tbody td:nth-child(2) {
+  width: 15%;
+}
+
+#mx-record thead th:nth-child(3), #mx-record tbody td:nth-child(3) {
+  width: 35%;
+}
+
+#mx-record thead th:nth-child(4), #mx-record tbody td:nth-child(4) {
+  width: 15%;
+}
+
+#mx-record thead th:nth-child(5), #mx-record tbody td:nth-child(5) {
+  width: 30%;
+}
+
+
+#spf tbody {
+  display: block;
+  height: 130px;
+  overflow: auto;
+  @extend .scrollBar;
+}
+
+#spf thead, #spf tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#spf thead {
+  width: 100%;
+}
+
+#spf thead th {
+  border-left: 1px solid #ddd;
+}
+
+#spf thead th:nth-child(1), #spf tbody td:nth-child(1) {
+  width: 20%;
+}
+
+#spf thead th:nth-child(2), #spf tbody td:nth-child(2) {
+  width: 40%;
+}
+
+#spf thead th:nth-child(3), #spf tbody td:nth-child(3) {
+  width: 40%;
+}
+//txt//
+#txt tbody {
+  display: block;
+  height: 130px;
+  overflow: auto;
+  @extend .scrollBar;
+}
+
+#txt thead, #txt tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#spf thead {
+  width: 100%;
+}
+
+#txt thead th {
+  border-left: 1px solid #ddd;
+}
+
+#txt thead th:nth-child(1), #txt tbody td:nth-child(1) {
+  width: 40%;
+}
+
+#txt thead th:nth-child(2), #txt tbody td:nth-child(2) {
+  width: 40%;
+}
+
+#txt thead th:nth-child(3), #txt tbody td:nth-child(3) {
+  width: 20%;
+}
+//dns//
+
+#dns {
+  overflow: auto;
+  @extend .scrollBar;
+}
+
+#dns tbody {
+  display: block;
+  max-height: 167px;
+  overflow: auto;
+  @extend .scrollBar;
+  min-width: 800px;
+}
+
+#dns thead, #dns tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#dns thead {
+  width: 100%;
+  min-width: 800px;
+}
+
+#dns thead th {
+  border-left: 1px solid #ddd;
+}
+
+#dns thead th:nth-child(1), #dns tbody td:nth-child(1) {
+  width: 7%;
+}
+
+#dns thead th:nth-child(2), #dns tbody td:nth-child(2) {
+  width: 15%;
+}
+
+#dns thead th:nth-child(3), #dns tbody td:nth-child(3) {
+  width: 15%;
+}
+#dns thead th:nth-child(4), #dns tbody td:nth-child(4) {
+  width: 7%;
+}
+
+#dns thead th:nth-child(5), #dns tbody td:nth-child(5) {
+  width: 10%;
+}
+
+#dns thead th:nth-child(6), #dns tbody td:nth-child(6) {
+  width: 15%;
+}
+#dns thead th:nth-child(7), #dns tbody td:nth-child(7) {
+  width: 10%;
+}
+
+#dns thead th:nth-child(8), #dns tbody td:nth-child(8) {
+  width: 10%;
+}
+
+#dns thead th:nth-child(9), #dns tbody td:nth-child(9) {
+  width: 10%;
+}

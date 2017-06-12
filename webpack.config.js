@@ -2,6 +2,8 @@ const babelOptions = {
     "presets": ["es2015","react", "stage-0"]
 };
 const autoprefixer = require('autoprefixer')
+const tsLintConfig =  require('./tslint.json')
+
 
 module.exports = {
  entry: './src/index.tsx',
@@ -18,8 +20,21 @@ module.exports = {
               loader: 'babel-loader',
               options: babelOptions
             },
+
+            // {
+            //   loader: "eslint-loader",
+            //   options: {
+            //     // eslint options (if necessary)
+            //   }
+            // },
             {
               loader: 'ts-loader'
+            }
+            ,
+            {
+              loader: 'tslint-loader',
+              options: tsLintConfig
+
             }
           ]
       },{
@@ -30,6 +45,13 @@ module.exports = {
               loader: 'babel-loader',
               options: babelOptions
             }
+            // ,
+            // {
+            //   loader: "eslint-loader",
+            //   options: {
+            //     // eslint options (if necessary)
+            //   }
+            // }
           ]
       },{
           test: /\.json$/,

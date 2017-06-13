@@ -50,6 +50,10 @@
           "parameters": "first",
           "body": 1
         },
+        "CallExpression": {
+          "parameters": "first",
+          "body": 1
+        },
         "MemberExpression": 1
       }
     ],

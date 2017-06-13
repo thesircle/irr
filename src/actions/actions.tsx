@@ -76,6 +76,35 @@ export const clearWiseMessage = index => dispatch => {
     payload: index
   });
 };
+export const whoisDomainTracker = () => dispatch => {
+  dispatch({
+    type:T.INTEGRATIONS.DOMAINTRACKER.WHOIS,
+    payload:{fetching:true,data:{}}
+  });
+  setTimeout( () =>  {
+    get(S.BK.DOMAINTRACKER.MXTOOL+S.BK.DOMAINTRACKER.WHOIS+S.BK.DOMAINTRACKER.DOMAIN).then(({body}:any) => {
+      dispatch({
+        type:T.INTEGRATIONS.DOMAINTRACKER.WHOIS,
+        payload:{fetching:false,data:body}
+      });
+    });
+  },5000);
+};
+export const aDomainTracker = () => dispatch => {
+  dispatch({
+    type:T.INTEGRATIONS.DOMAINTRACKER.A,
+    payload:{fetching:true,data:{}}
+  });
+
+  setTimeout( () => {
+    get(S.BK.DOMAINTRACKER.MXTOOL+S.BK.DOMAINTRACKER.A+S.BK.DOMAINTRACKER.DOMAIN).then(({body}:any) => {
+      dispatch({
+        type:T.INTEGRATIONS.DOMAINTRACKER.A,
+        payload:{fetching:false,data:body}
+      });
+    });
+  },2000);
+};
 
 
 // export const clearAllWiseMessages = ()  =>  dispatch  =>  {

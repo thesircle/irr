@@ -1,13 +1,12 @@
 // import { KaseyaComp } from './kaseyaComp'
 import { connect }    from "react-redux";
 import { withRouter } from "react-router-dom";
-import {viewDomainTracker} from "../../../actions/actions";
+import {aDomainTracker,whoisDomainTracker} from "../../../actions/actions";
 import  {DomainTrackerComp} from "./domainTrackerComp";
 
-
 const mapStateToProps = (state, props) => ({
-  domainTrakerOBJ: state.domainTracker.data,
-  domainTrackerFetchingWhois:state.domainTracker.domainTrackerFetchingWhois,
+  domainTrackerWhois:state.domainTrackerWhois,
+  domainTrackerA:state.domainTrackerA,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,9 +16,8 @@ const mapDispatchToProps = dispatch => ({
     //   )
     // },
   onViewDomainTracker() {
-    dispatch(
-        viewDomainTracker()
-    );
+    dispatch(aDomainTracker());
+    dispatch(whoisDomainTracker());
   }
 });
 

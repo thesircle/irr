@@ -4,6 +4,9 @@ export const lang = {
     UPDATE: "Update"
   },
   INTEGRATIOSN: {
+    DOAMINTRACKER:{
+      LOADER:"/img/icon_settings.png"
+    },
     KASEYA: {
       TUT_1: {
         sm_img:"/img/cw_setup_1.png",

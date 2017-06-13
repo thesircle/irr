@@ -1,40 +1,44 @@
 import {PropTypes} from "prop-types";
 import {Component} from "react";
 import "./../../../styles/main.scss";
+import {DataTable} from "./dataTable";
+import {TabComp} from "./tabComp";
 
 export class DomainTrackerComp extends Component<{},{}> {
 
   constructor(props) {
     super(props);
     this.state = {
-      whoisFetchStatus:"",
-      DomainTrackerOBJ:"",
+      WhoisOBJ:{
+        fetching:true,
+        data:{
+          contact:{}
+        }
+      },
+      AOBJ:{
+        fetching:true,
+        data:{
+          information:{}
+        }
+      }
     };
   }
   componentWillReceiveProps(nextProps){
     let state = this.state as any;
-    if(typeof nextProps.domainTrackerFetchingWhois ==="undefined")
-    {
-      this.setState({whoisFetchStatus: ""});
-    }else{
-      this.setState({whoisFetchStatus: nextProps.domainTrackerFetchingWhois as any});
+    nextProps.domainTrackerWhois.data.contact ? this.setState({WhoisOBJ:nextProps.domainTrackerWhois}) : null;
+    if(nextProps.domainTrackerA.data.information && nextProps.domainTrackerA.data.information["IP Address"]) {
+      this.setState({AOBJ: nextProps.domainTrackerA});
+      (window as any).domainTrackerIp = nextProps.domainTrackerA.data.information["IP Address"];
     }
-    if(typeof nextProps.domainTrakerOBJ ==="undefined")
-    {
-      this.setState({DomainTrackerOBJ: ""});
-    }else{
-      this.setState({DomainTrackerOBJ:nextProps.domainTrakerOBJ as any});
-    }
-
   }
   componentDidMount(){
     (this.props as any).onViewDomainTracker();
   }
-
   render(){
 
     let state = this.state as any;
-    let s:any = ( (state.whoisFetchStatus)? "/img/load.gif" : "" );
+    state.bg="bg-success";
+    state.p_heading="panel-heading";
     return(
         <div className="page-wrapper">
           <div className="page-container">
@@ -46,38 +50,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                     <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
                 </div>
                 <div className="col-md-5 col-sm-5 no-padding">
-                  <table className="table">
-                    <tbody>
-                    <tr>
-                      <td>Registrar</td>
-                      <td>GODADDY.COM,LLC</td>
-                    </tr>
-                    <tr>
-                      <td>Registrar URL</td>
-                      <td>http://www.godaddy.com</td>
-                    </tr>
-                    <tr>
-                      <td>Expiration Date</td>
-                      <td>13-Feb-2019</td>
-                    </tr>
-                    <tr>
-                      <td>Creation Date</td>
-                      <td>13-feb-2017</td>
-                    </tr>
-                    <tr>
-                      <td>Updated Date</td>
-                      <td>12-Mar-2017</td>
-                    </tr>
-                    <tr>
-                      <td>Whois Server</td>
-                      <td>whois.godaddy.com</td>
-                    </tr>
-                    <tr>
-                      <td>Creation Date</td>
-                      <td>13-feb-2017</td>
-                    </tr>
-                    </tbody>
-                  </table>
+                  <TabComp data={state.WhoisOBJ.data.registrar || {}} loader={state.WhoisOBJ.fetching} />
                 </div>
                 <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
                   <ul className="nav nav-pills">
@@ -87,44 +60,13 @@ export class DomainTrackerComp extends Component<{},{}> {
                   </ul>
                   <div className="tab-content">
                     <div className="tab-pane fade in active whois-tab1">
-                      <table className="table">
-                        <tbody>
-                        <tr>
-                          <td>Registrar</td>
-                          <td>GODADDY.COM,LLC</td>
-                        </tr>
-                        <tr>
-                          <td>Registrar URL</td>
-                          <td>http://www.godaddy.com</td>
-                        </tr>
-                        <tr>
-                          <td>Expiration Date</td>
-                          <td>13-Feb-2019</td>
-                        </tr>
-                        <tr>
-                          <td>Creation Date</td>
-                          <td>13-feb-2017</td>
-                        </tr>
-                        <tr>
-                          <td>Updated Date</td>
-                          <td>12-Mar-2017</td>
-                        </tr>
-                        <tr>
-                          <td>Whois Server</td>
-                          <td>whois.godaddy.com</td>
-                        </tr>
-                        </tbody>
-                      </table>
+                      <TabComp data={state.WhoisOBJ.data.contact.registrant || {}} loader={state.WhoisOBJ.fetching} />
                     </div>
                     <div className="tab-pane fade whois-tab2">
-                      <h3>Menu 1</h3>
-                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip ex ea commodo consequat.</p>
+                      <TabComp data={state.WhoisOBJ.data.contact.admin || {}} loader={state.WhoisOBJ.fetching} />
                     </div>
                     <div className="tab-pane fade whois-tab3">
-                      <h3>Menu 2</h3>
-                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                        doloremque laudantium, totam rem aperiam.</p>
+                      <TabComp data={state.WhoisOBJ.data.contact.technical || {}} loader={state.WhoisOBJ.fetching} />
                     </div>
                   </div>
                 </div>
@@ -142,22 +84,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                     <span className="fs-20">A NAME</span>
 
                   </div>
-                  <table className="table">
-                    <tbody>
-                    <tr>
-                      <td>DOMAIN NAME</td>
-                      <td>thehelpdesk.com</td>
-                    </tr>
-                    <tr>
-                      <td>IP ADDRESS</td>
-                      <td>56.63.202.48</td>
-                    </tr>
-                    <tr>
-                      <td>TTL</td>
-                      <td>10 min</td>
-                    </tr>
-                    </tbody>
-                  </table>
+                  <TabComp data={state.AOBJ.data.information || {}} loader={state.AOBJ.fetching}/>
                 </div>
                 <div className="col-md-12 col-lg-12  widgetborder domain-info m-t-15">
                   <div className="panel-heading">

@@ -8,7 +8,11 @@ export const system = {
       KASEYA_UPDATE: "KaseyaApi/",
     },
     DOMAINTRACKER:{
-      GET:"domaintracker"
+      DOMAIN: "/thehelpdesk.com",
+      MXTOOL: "mxtoolbox",
+      GET: "domaintracker",
+      WHOIS: "/whois",
+      A: "/a"
     }
   },
   WISE_MESSAGE:{

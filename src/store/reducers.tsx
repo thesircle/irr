@@ -61,11 +61,32 @@ export const wiseMessages = (state=[], action) => {
   }
 };
 
+export const domainTrackerWhois=(state={},action) => {
+  switch (action.type){
+  case T.INTEGRATIONS.DOMAINTRACKER.WHOIS:
+    return action.payload;
+  default:
+    return state;
+  }
+};
+
+export const domainTrackerA = (state={},action) => {
+  switch (action.type){
+  case T.INTEGRATIONS.DOMAINTRACKER.A:
+    return action.payload;
+  default:
+    return state;
+  }
+};
+
 export const appReducer=combineReducers({
   kaseya,
   kaseyaFetching,
   kaseyaTransmitting,
   wiseMessages,
-  domainTracker
+  domainTracker,
+  domainTrackerWhois,
+  domainTrackerA
+
 });
 

@@ -9,8 +9,10 @@ export const types = {
       UPDATING: "KASEYA_UPDATING"
     },
     DOMAINTRACKER:{
-      VIEW:"DOMAINTRACKER_VIEW"
-    }
+      VIEW:"DOMAINTRACKER_VIEW",
+      WHOIS:"Whois",
+      A:"A"
+    },
   },
   WISE_MESSAGE: {
     ADD: "ADD_WISE_MESSAGE",

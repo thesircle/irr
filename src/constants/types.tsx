@@ -1,4 +1,4 @@
-const types = {
+export const types = {
   INTEGRATIONS : {
     KASEYA: {
       CREATE: "KASEYA_CREATE",
@@ -16,5 +16,4 @@ const types = {
     ADD: "ADD_WISE_MESSAGE",
     CLEAR: "CLEAR_WISE_MESSAGE",
   }
-}
-export default types;
+};

@@ -13,19 +13,19 @@
 //     );
 
 
-import * as React from 'react'
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Kaseya from './components/integrations/kaseya/kaseyaContainer'
-import Root from './components/root/rootContainer'
+import * as React from "react";
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {kaseyaContainer as KaseyaContainer} from "./components/integrations/kaseya/kaseyaContainer";
+import {container as Container} from "./components/root/rootContainer";
 
-export const Routes = () => (
+export const routes = ()=>(
 
   <Router>
     <div>
       {/*<Switch>*/}
       {/*<Route path="/" component={Root} />*/}
-        <Route path="/integration/domainTracker/view" component={Root}  />
-      <Route path="/integration/kaseya/view" component={Root}  />
+        <Route path="/integration/domainTracker/view" component={Container}  />
+      <Route path="/integration/kaseya/view" component={Container}  />
       {/*</Switch>*/}
     </div>
   </Router>

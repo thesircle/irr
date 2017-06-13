@@ -1,8 +1,8 @@
-import {FormFieldBaseModel} from './FormFieldBaseModel'
+import {FormFieldBaseModel} from "./FormFieldBaseModel";
 export class FormFieldEmailBaseModel extends FormFieldBaseModel{
 
   constructor(){
-      super()
+    super();
   }
 
   name = "userName";
@@ -10,5 +10,5 @@ export class FormFieldEmailBaseModel extends FormFieldBaseModel{
   label = "User Name (userName)";
   placeHolder = "CW Integrator Login";
   isFormateRequired = true;
-  regex =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9])+)+\.(([a-zA-Z0-9])+)$/
+  regex =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9])+)+\.(([a-zA-Z0-9])+)$/;
 }

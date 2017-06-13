@@ -1,29 +1,28 @@
-import {Component} from 'react'
-import {PropTypes} from 'prop-types';
-import './../../../styles/main.scss'
-import {IntegrationInfoComp} from '../integrationInfoComp';
-import L from '../../../constants/lang'
+import {Component} from "react";
+import {lang as L} from "../../../constants/lang";
+import {integrationInfoComp as IntegrationInfoComp} from "../integrationInfoComp";
+
+import "./../../../styles/main.scss";
+
 import {FormFieldBaseComp} from "../../common/formComp/formFieldBaseComp";
-import {KaseyaFormModel} from "./KaseyaFormModel";
 import {validateField} from "../../common/validations/validateFormFields";
+import {KaseyaFormModel} from "./KaseyaFormModel";
 
 export class KaseyaComp extends Component<{},{}> {
-
   constructor(props) {
     super(props);
-    this.state = {
-                  kaseyaFetching:false,
-                  kaseyaTransmitting: false,
-                  KaseyaFormModel: new KaseyaFormModel(),
-                  disableForm: true
-    }
+    this.state ={kaseyaFetching:false,
+      kaseyaTransmitting: false,
+      KaseyaFormModel: new KaseyaFormModel(),
+      disableForm: true
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
   handleChange ( e ){
-    let state = this.state as any
+    let state = this.state as any;
     const target = e.target;
     const inputValue = e.target.value;
     const fieldName = e.target.name;
@@ -31,11 +30,10 @@ export class KaseyaComp extends Component<{},{}> {
     //   [name]: value
     // });
 
-    console.log("state------: "+JSON.stringify(state))
     // state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
-    this.updateFormFieldInState(state.KaseyaFormModel[fieldName].name, inputValue)
+    this.updateFormFieldInState(state.KaseyaFormModel[fieldName].name, inputValue);
 
-    var disableForm = false;
+    let disableForm = false;
     // //TODO: {M.A}: has bug, type last char and backspace, see submit button
     // for ( let field  in state.KaseyaFormModel){
     //   // if (Object.hasOwnProperty(field)) {
@@ -47,14 +45,14 @@ export class KaseyaComp extends Component<{},{}> {
     // }
 
     // //TODO: {M.A}: has bug, type last char and backspace, see submit button
-    Object.keys(state.KaseyaFormModel).forEach(function (key) {
+    Object.keys(state.KaseyaFormModel).forEach(key=>{
       let field = state.KaseyaFormModel[key];
       if(!validateField(field).result){
         disableForm = true;
         return;// break if even on field failed check
       }
     });
-    this.setState({disableForm: disableForm})
+    this.setState({disableForm: disableForm});
   }
 
   handleSubmit(e) {
@@ -65,14 +63,14 @@ export class KaseyaComp extends Component<{},{}> {
       url: state.KaseyaFormModel.url.value,
       userName: state.KaseyaFormModel.userName.value,
       password: state.KaseyaFormModel.password.value
-    })
+    });
   }
 
   changeRouteState(e){
     parent.postMessage({
       name:"route",
       route: e.target.innerText
-    },'*')
+    },"*");
   }
 
   /*
@@ -80,21 +78,21 @@ export class KaseyaComp extends Component<{},{}> {
    * value: value to be assigned to that field.value
    */
   updateFormFieldInState(formField, value){
-    let state:any = this.state
+    let state = this.state as any;
     this.setState({ KaseyaFormModel:
-                         { ...state.KaseyaFormModel, [formField]:
-                           { ...state.KaseyaFormModel[formField], value: value }
-                         }
-                     })
+    { ...state.KaseyaFormModel, [formField]:
+      { ...state.KaseyaFormModel[formField], value: value }
+    }
+    });
   }
   //TODO: {M.A}: set state of url, userName, pass etc in KaseyaForm model object
   componentWillReceiveProps(nextProps){
-    let state:any = this.state
-    this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.url)
-    this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.userName)
-    this.updateFormFieldInState(state.KaseyaFormModel.url.password, nextProps.password)
-    this.setState({kaseyaFetching: nextProps.kaseyaFetching})
-    this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting})
+    let state = this.state as any;
+    this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.url);
+    this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.userName);
+    this.updateFormFieldInState(state.KaseyaFormModel.url.password, nextProps.password);
+    this.setState({kaseyaFetching: nextProps.kaseyaFetching});
+    this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting});
   }
 
   componentDidMount(){
@@ -102,8 +100,7 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   render(){
-    let state = this.state as any
-    let e:any;
+    let state=this.state as any;
     return(
       <div>
         {(state.kaseyaFetching)? "fetching": "not fetching" }
@@ -161,7 +158,7 @@ export class KaseyaComp extends Component<{},{}> {
                       model = {state.KaseyaFormModel.url}
                       className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
                       value={state.KaseyaFormModel.url.value}
-                      onChange={(e) => this.handleChange(e) }
+                      onChange={e=>this.handleChange(e) }
                   />
                 </div>
 
@@ -171,19 +168,20 @@ export class KaseyaComp extends Component<{},{}> {
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.userName}
                     value={state.KaseyaFormModel.userName.value}
-                    onChange={(e) => this.handleChange(e) } />
+                    onChange={e=>this.handleChange(e) } />
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.password}
                     value={state.KaseyaFormModel.password.value}
-                    onChange={(e) => this.handleChange(e)} />
+                    onChange={e=>this.handleChange(e)} />
                   <button onSubmit={this.handleSubmit} disabled={state.disableForm}>Update</button>
                 </div>
                 </form>
 
                 <div className="row clearfix">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0 ">
-                <div role="alert" className="alert-wrapper alr" id="lblFailed" style={{"display":"none","backgroundColor":"#FDDDDD","color":"#A43432"}}>
+                <div role="alert" className="alert-wrapper alr"
+                     id="lblFailed" style={{"display":"none","backgroundColor":"#FDDDDD","color":"#A43432"}}>
                 <button className="close"></button>
                 <strong>Invalid Credentials</strong>
                 </div>
@@ -199,7 +197,7 @@ export class KaseyaComp extends Component<{},{}> {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

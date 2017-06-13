@@ -1,6 +1,6 @@
-import {Component} from 'react'
-import {PropTypes} from 'prop-types';
-import './../../../styles/main.scss'
+import {PropTypes} from "prop-types";
+import {Component} from "react";
+import "./../../../styles/main.scss";
 
 export class DomainTrackerComp extends Component<{},{}> {
 
@@ -9,24 +9,22 @@ export class DomainTrackerComp extends Component<{},{}> {
     this.state = {
       whoisFetchStatus:"",
       DomainTrackerOBJ:"",
-    }
+    };
   }
   componentWillReceiveProps(nextProps){
-    let state = this.state as any
-    if(typeof nextProps.domainTrackerFetchingWhois =='undefined')
+    let state = this.state as any;
+    if(typeof nextProps.domainTrackerFetchingWhois ==="undefined")
     {
-      this.setState({whoisFetchStatus: ""})
+      this.setState({whoisFetchStatus: ""});
     }else{
-      this.setState({whoisFetchStatus: nextProps.domainTrackerFetchingWhois as any})
+      this.setState({whoisFetchStatus: nextProps.domainTrackerFetchingWhois as any});
     }
-    if(typeof nextProps.domainTrakerOBJ =='undefined')
+    if(typeof nextProps.domainTrakerOBJ ==="undefined")
     {
-      this.setState({DomainTrackerOBJ: ""})
+      this.setState({DomainTrackerOBJ: ""});
     }else{
-      this.setState({DomainTrackerOBJ:nextProps.domainTrakerOBJ as any})
+      this.setState({DomainTrackerOBJ:nextProps.domainTrakerOBJ as any});
     }
-
-
 
   }
   componentDidMount(){
@@ -35,8 +33,8 @@ export class DomainTrackerComp extends Component<{},{}> {
 
   render(){
 
-    let state = this.state as any
-    let s:any = ( (state.whoisFetchStatus)? "/img/load.gif" : "" )
+    let state = this.state as any;
+    let s:any = ( (state.whoisFetchStatus)? "/img/load.gif" : "" );
     return(
         <div className="page-wrapper">
           <div className="page-container">
@@ -44,7 +42,8 @@ export class DomainTrackerComp extends Component<{},{}> {
               <div className="col-md-12 col-lg-6 col-xs-12 registrar-info widgetborder no-padding m-b-15">
                 <div className="panel-heading table-header-bg">
                   <span className="fs-20">WHOIS:THEHELPDESK.COM</span>
-                  <div className="pull-right"><span>Domain will expire in 670 days</span>  <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
+                  <div className="pull-right"><span>Domain will expire in 670 days</span>
+                    <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
                 </div>
                 <div className="col-md-5 col-sm-5 no-padding">
                   <table className="table">
@@ -129,12 +128,13 @@ export class DomainTrackerComp extends Component<{},{}> {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-sm-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com</span>
+                <div className="col-md-12 col-sm-12 col-xs-12 table-footer"><span>
+                  Reported by</span> <span>whois:godaddy.com</span>
                        <span>    on    4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                 </div>
               </div>
               <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">
-               <img src="/img/domain-img.png" / >
+               <img src="/img/domain-img.png" />
               </div>
               <div className="col-lg-3 col-md-6 col-sm-6 col-lg-pull-3 col-sm-pull-6 col-md-pull-6 an-pttr-width">
                 <div className="col-md-12 col-lg-12  widgetborder domain-info">
@@ -186,7 +186,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                   <div className="col-md-12 widgetborder no-padding  dns-column">
                     <div className="panel-heading table-header-bg">
                       <span className="fs-20">DNS:THEHELPDESK.COM</span>
-                      <div className="pull-right"><span>DNS Record Published</span> <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
+                      <div className="pull-right"><span>DNS Record Published</span> <img
+                          src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
                     </div>
                     <div id="dns">
                       <table className="table">
@@ -258,7 +259,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                       <table className="table table-bordered">
                         <tbody>
                         <tr>
-                          <td className="text-center"><img src="/img/icon_circle_warning.svg" width="24px" height="24px"/></td>
+                          <td className="text-center"><img src="/img/icon_circle_warning.svg"
+                                                           width="24px" height="24px"/></td>
                           <td>soa serail number format is invalid soa serail number format is
                             invalid soa serail number format is invalid soa serail number forma
                           </td>
@@ -281,7 +283,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                         </tbody>
                       </table>
                     </div>
-                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span> <span>whois:godaddy.com </span>
+                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span>
+                      <span>whois:godaddy.com </span>
                         <span> on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                     </div>
                   </div>
@@ -370,7 +373,8 @@ export class DomainTrackerComp extends Component<{},{}> {
                           </thead>
                           <tbody>
                           <tr>
-                            <td className="text-center"><img src="/img/icon_circle_error.svg" width="24px" height="24px"/></td>
+                            <td className="text-center"><img src="/img/icon_circle_error.svg"
+                                                             width="24px" height="24px"/></td>
                             <td>john@example.com</td>
                             <td>john@example.com</td>
                           </tr>
@@ -446,7 +450,7 @@ export class DomainTrackerComp extends Component<{},{}> {
           </div>
         </div>
 
-    )
+    );
   }
 }
 

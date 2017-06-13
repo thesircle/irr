@@ -1,33 +1,28 @@
-import { KaseyaComp } from './kaseyaComp'
-import { withRouter } from 'react-router-dom'
-import { connect }    from 'react-redux'
-import {updateKaseya, viewKaseya} from '../../../actions/actions'
+import { connect }    from "react-redux";
+import { withRouter } from "react-router-dom";
+import {updateKaseya, viewKaseya} from "../../../actions/actions";
 
+import { KaseyaComp } from "./kaseyaComp";
 
-const mapStateToProps = (state, props) =>
-  ({
-    url: state.kaseya.url,
-    userName: state.kaseya.userName,
-    password: state.kaseya.password,
-    kaseyaFetching: state.kaseyaFetching,
-    kaseyaTransmitting: state.kaseyaTransmitting
-  })
+const mapStateToProps = (state, props)=>({
+  url: state.kaseya.url,
+  userName: state.kaseya.userName,
+  password: state.kaseya.password,
+  kaseyaFetching: state.kaseyaFetching,
+  kaseyaTransmitting: state.kaseyaTransmitting
+});
 
-const mapDispatchToProps = dispatch =>
-  ({
-    onUpdateKaseya({url, userName, password}) {
-      dispatch(
+const mapDispatchToProps = dispatch=>({
+  onUpdateKaseya({url, userName, password}) {
+    dispatch(
         updateKaseya(url, userName, password)
-      )
-    },
-    onViewKaseya() {
-      dispatch(
+    );
+  },
+  onViewKaseya() {
+    dispatch(
         viewKaseya()
-      )
-    }
-  })
+      );
+  }
+});
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp)
-
-export default (withRouter as any)(Container)
-
+export const kaseyaContainer = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp);

@@ -1,4 +1,4 @@
-export const error:any = props=>{
+export const error:any = props => {
   let defaultValue = "";
   return (
   <span className="error" >

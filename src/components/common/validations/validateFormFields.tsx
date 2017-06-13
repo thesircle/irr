@@ -1,7 +1,7 @@
 /*
  * We can use validatejs, ajv, joi later
  */
-export const validateField = model=>{
+export const validateField = model => {
   let result= true;//being permissive
   let message= "";
   if(model.isRequired && model.value === ""){

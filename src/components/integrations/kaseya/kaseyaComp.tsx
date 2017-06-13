@@ -45,7 +45,7 @@ export class KaseyaComp extends Component<{},{}> {
     // }
 
     // //TODO: {M.A}: has bug, type last char and backspace, see submit button
-    Object.keys(state.KaseyaFormModel).forEach(key=>{
+    Object.keys(state.KaseyaFormModel).forEach(key => {
       let field = state.KaseyaFormModel[key];
       if(!validateField(field).result){
         disableForm = true;
@@ -77,7 +77,7 @@ export class KaseyaComp extends Component<{},{}> {
    * formField: string value of form model field name
    * value: value to be assigned to that field.value
    */
-  updateFormFieldInState(formField, value){
+  updateFormFieldInState(formField, value) {
     let state = this.state as any;
     this.setState({ KaseyaFormModel:
     { ...state.KaseyaFormModel, [formField]:
@@ -158,7 +158,7 @@ export class KaseyaComp extends Component<{},{}> {
                       model = {state.KaseyaFormModel.url}
                       className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
                       value={state.KaseyaFormModel.url.value}
-                      onChange={e=>this.handleChange(e) }
+                      onChange={e => this.handleChange(e) }
                   />
                 </div>
 
@@ -168,12 +168,12 @@ export class KaseyaComp extends Component<{},{}> {
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.userName}
                     value={state.KaseyaFormModel.userName.value}
-                    onChange={e=>this.handleChange(e) } />
+                    onChange={e => this.handleChange(e) } />
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.password}
                     value={state.KaseyaFormModel.password.value}
-                    onChange={e=>this.handleChange(e)} />
+                    onChange={e => this.handleChange(e)} />
                   <button onSubmit={this.handleSubmit} disabled={state.disableForm}>Update</button>
                 </div>
                 </form>

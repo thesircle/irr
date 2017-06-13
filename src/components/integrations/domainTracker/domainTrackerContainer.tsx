@@ -5,12 +5,12 @@ import {viewDomainTracker} from "../../../actions/actions";
 import  {DomainTrackerComp} from "./domainTrackerComp";
 
 
-const mapStateToProps = (state, props)=>({
+const mapStateToProps = (state, props) => ({
   domainTrakerOBJ: state.domainTracker.data,
   domainTrackerFetchingWhois:state.domainTracker.domainTrackerFetchingWhois,
 });
 
-const mapDispatchToProps = dispatch=>({
+const mapDispatchToProps = dispatch => ({
     // onUpdateKaseya({url, userName, password}) {
     //   dispatch(
     //     updateKaseya(url, userName, password)

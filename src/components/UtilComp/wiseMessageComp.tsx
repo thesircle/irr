@@ -5,7 +5,7 @@ import {system as S} from "../../constants/system";
 export class ShowWiseMessages extends Component<{},{}> {
   constructor(props) {
     super(props);
-    this.state = {wiseMessages: [], onClearWiseMessage: f=>f};
+    this.state = {wiseMessages: [], onClearWiseMessage: f => f};
   }
   componentWillReceiveProps(nextProps){
     this.setState({
@@ -40,7 +40,7 @@ export class ShowWiseMessages extends Component<{},{}> {
     return(
       <div className="wise-message-wrapper">
         {(state.wiseMessages.length) ?
-          state.wiseMessages.map((wiseObj, i)=>{
+          state.wiseMessages.map((wiseObj, i) => {
             let classAndHeading = this.getClassAndHeading(wiseObj.type);
             return (
               <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
@@ -58,7 +58,7 @@ export class ShowWiseMessages extends Component<{},{}> {
                         </div>
                       </div>
                     </div>
-                    <button type="button" className="close" onClick={()=>(this.props as any).onClearWiseMessage(i)}>
+                    <button type="button" className="close" onClick={() => (this.props as any).onClearWiseMessage(i)}>
                       <span aria-hidden="true">×</span>
                       <span className="sr-only">Close</span>
                     </button>
@@ -76,14 +76,14 @@ export class ShowWiseMessages extends Component<{},{}> {
 
 // {(message[0] === "e")? "wise-error": "wise-success"}
 
-// export const ShowWiseMessages = ({ wiseMessages=["boom","boom-again"]}) =>
-// export const ShowWiseMessages = ({ wiseMessages=[]}) =>
+// export const ShowWiseMessages = ({ wiseMessages=["boom","boom-again"]})  => 
+// export const ShowWiseMessages = ({ wiseMessages=[]})  => 
 //working
-// export const ShowWiseMessages = ({ wiseMessages=["boom","error"]}) =>
+// export const ShowWiseMessages = ({ wiseMessages=["boom","error"]})  => 
 //
 //   <div className="show-wiseMessages">
 //     {(wiseMessages.length) ?
-//     wiseMessages.map((message, i) =>
+//     wiseMessages.map((message, i)  => 
 //                 <div key={i} className="error">
 //                   <p>{message}</p>
 //                 </div>)

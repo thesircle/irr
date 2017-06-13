@@ -1,10 +1,10 @@
-export const integrationInfoComp =prop=>{
-  let popUp =()=>{
+export const integrationInfoComp =prop => {
+  let popUp =() => {
     parent.postMessage({
       name:"hide",
     },"*");
   };
-  let closePopup = ()=>{
+  let closePopup = () => {
     parent.postMessage({name: "hidepopup"},"*");
   };
 
@@ -34,13 +34,13 @@ export const integrationInfoComp =prop=>{
         <div className="col-lg-6 col-xs-12">
           <div>&nbsp;</div>
           <ul>
-            {prop.object.props.map((obj,index)=><div key={index}>
+            {prop.object.props.map((obj,index) => <div key={index}>
               <li className="list-style" ><span
                   className="badge bg-complete text-white" >{obj.key}</span>&nbsp;
                   {typeof obj.value === "string" ?
                     <span dangerouslySetInnerHTML={{__html:obj.value}}></span> :
                       (<span>{obj.value.head}<ul className="subList">
-                          {obj.value.detail_List.map((subValue,i)=><li key={i}>{subValue}</li>)}
+                          {obj.value.detail_List.map((subValue,i) => <li key={i}>{subValue}</li>)}
                       </ul></span>)}
               </li>
               <div className="line-height">&nbsp;</div>

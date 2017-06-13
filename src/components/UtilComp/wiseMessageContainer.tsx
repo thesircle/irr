@@ -3,13 +3,13 @@ import {clearWiseMessage} from "../../actions/actions";
 import {ShowWiseMessages} from "./wiseMessageComp";
 
 
-const mapStateToProps = (state,props)=>{
+const mapStateToProps = (state,props) => {
   return {
     wiseMessages: state.wiseMessages
   };
 };
 
-const mapDispatchToProps = dispatch=>{
+const mapDispatchToProps = dispatch => {
   return {
     onClearWiseMessage(index) {
       dispatch(

@@ -54,8 +54,8 @@
       }
     ],
     "ter-arrow-spacing": [true, {
-      "before": false,
-      "after": false
+      "before": true,
+      "after": true
     }],
     "quotemark": [
       true,

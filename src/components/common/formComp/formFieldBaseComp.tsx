@@ -1,30 +1,29 @@
-import {Component} from 'react';
-import {validateField} from '../validations/validateFormFields'
-import {Error} from './formFieldErrorBaseComp';
+import {Component} from "react";
+import {validateField} from "../validations/validateFormFields";
+import {error as Error} from "./formFieldErrorBaseComp";
+
 
 export class FormFieldBaseComp extends Component<any,any>{
 
-    constructor(props){
-        super(props);
-        this.state = {
-             classNames: "col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
-        };
-    }
+  constructor(props){
+    super(props);
+    this.state = {
+      classNames: "col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
+    };
+  }
 
-    componentWillReceiveProps(newProps){
-        let props = this.props as any;
-        console.log(`value recieved:  ${newProps.value}`)
-        newProps.className ? this.setState({classNames:newProps.className}) : null;
-        typeof  newProps.value != "undefined" ? props.model.value = newProps.value: null ;
-        props.model.onChange = newProps.onChange
+  componentWillReceiveProps(newProps){
+    let props = this.props as any;
+    newProps.className ? this.setState({classNames:newProps.className}) : null;
+    typeof  newProps.value !== "undefined" ? props.model.value = newProps.value: null ;
+    props.model.onChange = newProps.onChange;
 
-        // props.model = newProps.model
-    }
+  }
 
-    render(){
-
-        let props = this.props as any;
-        return(
+  render(){
+    let error:any;
+    let props = this.props as any;
+    return(
             <div className={(this.state as any).classNames}>
                 <div className="form-group form-group-default pg-form-group">
                     <label className="label-style">{props.model.label}</label>
@@ -40,9 +39,7 @@ export class FormFieldBaseComp extends Component<any,any>{
                     <Error value={validateField(props.model).message} />
                 </div>
             </div>
-        )
-    }
+    );
+  }
 }
-
-
 

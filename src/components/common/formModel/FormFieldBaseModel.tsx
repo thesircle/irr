@@ -18,17 +18,10 @@ export class FormFieldBaseModel {
   name;
   value = "";
   type = "text";
-  label = '';
+  label = "";
   placeHolder = "Please fill the field";
   isRequired = true;
   isFormateRequired = false;
   onChange = null;
-
-
-  constructor(){
-
-  }
-
-
 
 }

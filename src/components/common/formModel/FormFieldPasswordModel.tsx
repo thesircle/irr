@@ -1,8 +1,8 @@
-import {FormFieldBaseModel} from './FormFieldBaseModel'
+import {FormFieldBaseModel} from "./FormFieldBaseModel";
 export class FormFieldPasswordBaseModel extends FormFieldBaseModel{
 
   constructor(){
-      super()
+    super();
   }
 
   name = "password";

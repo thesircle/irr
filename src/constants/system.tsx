@@ -1,4 +1,4 @@
-const system = {
+export const system = {
   BK_BASE: "http://thehelpdesk.localhost:3002/",
   GET_BASE:"http://localhost:3300/",
   // BK_BASE: "http://localhost:3333/",
@@ -22,5 +22,4 @@ const system = {
     ERROR_HEADING: "Error!",
 
   }
-}
-export default system;
+};

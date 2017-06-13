@@ -1,37 +1,37 @@
-import {Component} from 'react'
-import S from '../../constants/system'
+import {Component} from "react";
+import {system as S} from "../../constants/system";
 // import CloseButton from 'react-icons/lib/fa/close'
 
 export class ShowWiseMessages extends Component<{},{}> {
   constructor(props) {
     super(props);
-    this.state = {wiseMessages: [], onClearWiseMessage: f=>f}
+    this.state = {wiseMessages: [], onClearWiseMessage: f => f};
   }
   componentWillReceiveProps(nextProps){
     this.setState({
       wiseMessages: nextProps.wiseMessages
-    })
+    });
   }
   getClassAndHeading(type):any{
     switch(type) {
-      case S.WISE_MESSAGE.WARNING :
-        return {"class":"wise-warning",
-                "heading":S.WISE_MESSAGE.WARNING_HEADING
-                }
-      case S.WISE_MESSAGE.INFO :
-        return {"class":"wise-info",
-                "heading":S.WISE_MESSAGE.INFO_HEADING
-                }
-      case S.WISE_MESSAGE.SUCCESS :
-        return {"class":"wise-success",
-                "heading":S.WISE_MESSAGE.SUCCESS_HEADING
-                }
-      case S.WISE_MESSAGE.ERROR :
-        return {"class":"wise-error",
-                "heading":S.WISE_MESSAGE.ERROR_HEADING
-                }
-      default:
-        return ""
+    case S.WISE_MESSAGE.WARNING :
+      return {"class":"wise-warning",
+        "heading":S.WISE_MESSAGE.WARNING_HEADING
+      };
+    case S.WISE_MESSAGE.INFO :
+      return {"class":"wise-info",
+        "heading":S.WISE_MESSAGE.INFO_HEADING
+      };
+    case S.WISE_MESSAGE.SUCCESS :
+      return {"class":"wise-success",
+        "heading":S.WISE_MESSAGE.SUCCESS_HEADING
+      };
+    case S.WISE_MESSAGE.ERROR :
+      return {"class":"wise-error",
+        "heading":S.WISE_MESSAGE.ERROR_HEADING
+      };
+    default:
+      return "";
     }
   }
 
@@ -41,7 +41,7 @@ export class ShowWiseMessages extends Component<{},{}> {
       <div className="wise-message-wrapper">
         {(state.wiseMessages.length) ?
           state.wiseMessages.map((wiseObj, i) => {
-            let classAndHeading = this.getClassAndHeading(wiseObj.type)
+            let classAndHeading = this.getClassAndHeading(wiseObj.type);
             return (
               <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
                 <div className="pgn push-on-sidebar-open pgn-circle">
@@ -65,25 +65,25 @@ export class ShowWiseMessages extends Component<{},{}> {
                   </div>
                 </div>
               </div>
-            )
+            );
           })
         : null
         }
       </div>
-    )
+    );
   }
 }
 
 // {(message[0] === "e")? "wise-error": "wise-success"}
 
-// export const ShowWiseMessages = ({ wiseMessages=["boom","boom-again"]}) =>
-// export const ShowWiseMessages = ({ wiseMessages=[]}) =>
+// export const ShowWiseMessages = ({ wiseMessages=["boom","boom-again"]})  => 
+// export const ShowWiseMessages = ({ wiseMessages=[]})  => 
 //working
-// export const ShowWiseMessages = ({ wiseMessages=["boom","error"]}) =>
+// export const ShowWiseMessages = ({ wiseMessages=["boom","error"]})  => 
 //
 //   <div className="show-wiseMessages">
 //     {(wiseMessages.length) ?
-//     wiseMessages.map((message, i) =>
+//     wiseMessages.map((message, i)  => 
 //                 <div key={i} className="error">
 //                   <p>{message}</p>
 //                 </div>)

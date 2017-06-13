@@ -1,13 +1,12 @@
-export const IntegrationInfoComp = (prop) => {
-    var popUp = () =>{
-        parent.postMessage({
-            name:"hide",
-        },'*');
-    }
-
-    var closePopup = () => {
-        parent.postMessage({name: "hidepopup"},'*');
-    }
+export const integrationInfoComp =prop => {
+  let popUp =() => {
+    parent.postMessage({
+      name:"hide",
+    },"*");
+  };
+  let closePopup = () => {
+    parent.postMessage({name: "hidepopup"},"*");
+  };
 
     // var modifyString = (stringValue) => {
     //     var bolded = [ "ConnectWise Client" , "System" , "Setup Tables" , '/"Integrator"/' , "Integrator Login" ,
@@ -27,7 +26,8 @@ export const IntegrationInfoComp = (prop) => {
           <img src={prop.object.sm_img} />
           <div
               className="overlayer widget-detail hover_img  bottom-left full-width">
-            <img src={prop.object.sm_hover_img} className="search-icon-hover" onClick={popUp} data-toggle="modal" data-target="#myModal" />
+            <img src={prop.object.sm_hover_img} className="search-icon-hover"
+                 onClick={popUp} data-toggle="modal" data-target="#myModal" />
           </div>
         </div>
 
@@ -37,7 +37,7 @@ export const IntegrationInfoComp = (prop) => {
             {prop.object.props.map((obj,index) => <div key={index}>
               <li className="list-style" ><span
                   className="badge bg-complete text-white" >{obj.key}</span>&nbsp;
-                  {typeof obj.value == "string" ?
+                  {typeof obj.value === "string" ?
                     <span dangerouslySetInnerHTML={{__html:obj.value}}></span> :
                       (<span>{obj.value.head}<ul className="subList">
                           {obj.value.detail_List.map((subValue,i) => <li key={i}>{subValue}</li>)}
@@ -53,7 +53,8 @@ export const IntegrationInfoComp = (prop) => {
                   <div className="modal-dialog modal-md">
                       <div className="modal-content">
                           <div className="modal-header">
-                              <button type="button" className="close" onClick={closePopup} data-dismiss="modal">&times;</button>
+                              <button type="button" className="close"
+                                      onClick={closePopup} data-dismiss="modal">&times;</button>
 
                           </div>
                           <div className="modal-body">
@@ -64,5 +65,5 @@ export const IntegrationInfoComp = (prop) => {
               </div>
           </div>
       </div>
-  )
-}
+  );
+};

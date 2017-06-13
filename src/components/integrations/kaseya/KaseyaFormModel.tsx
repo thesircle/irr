@@ -1,12 +1,12 @@
-import {FormFieldBaseModel} from '../../common/formModel/FormFieldBaseModel'
+import {FormFieldBaseModel} from "../../common/formModel/FormFieldBaseModel";
+import {FormFieldEmailBaseModel} from "../../common/formModel/FormFieldEmailModel";
+import {FormFieldPasswordBaseModel} from "../../common/formModel/FormFieldPasswordModel";
 import {FormFieldUrlBaseModel} from "../../common/formModel/FormFieldUrlModel";
-import {FormFieldEmailBaseModel} from "../../common/formModel/FormFieldEmailModel"
-import {FormFieldPasswordBaseModel} from "../../common/formModel/FormFieldPasswordModel"
 
 export class KaseyaFormModel {
-   url;
-   userName;
-   password;
+  url;
+  userName;
+  password;
 
   constructor(){
     this.url = new FormFieldUrlBaseModel();

@@ -1,19 +1,14 @@
-import { RootComp } from './rootComp'
-import { withRouter } from 'react-router-dom'
-import { connect }    from 'react-redux'
+import { connect }    from "react-redux";
+import { withRouter } from "react-router-dom";
+import {rootComp as RootComp} from "./rootComp";
+
 import {KaseyaComp} from "../integrations/kaseya/kaseyaComp";
 
 
-const mapStateToProps = (state, props) =>
-  ({
-  })
+const mapStateToProps = (state, props) => ({
+});
 
-const mapDispatchToProps = dispatch =>
-  ({
+const mapDispatchToProps = dispatch => ({
 
-  })
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(RootComp)
-
-export default (withRouter as any)(Container)
-
+});
+export const container = connect(mapStateToProps, mapDispatchToProps)(RootComp);

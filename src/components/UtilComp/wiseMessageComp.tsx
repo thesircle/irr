@@ -15,19 +15,23 @@ export class ShowWiseMessages extends Component<{},{}> {
   getClassAndHeading(type):any{
     switch(type) {
     case S.WISE_MESSAGE.WARNING :
-      return {"class":"wise-warning",
+      return {
+        "class":"wise-warning",
         "heading":S.WISE_MESSAGE.WARNING_HEADING
       };
     case S.WISE_MESSAGE.INFO :
-      return {"class":"wise-info",
+      return {
+        "class":"wise-info",
         "heading":S.WISE_MESSAGE.INFO_HEADING
       };
     case S.WISE_MESSAGE.SUCCESS :
-      return {"class":"wise-success",
+      return {
+        "class":"wise-success",
         "heading":S.WISE_MESSAGE.SUCCESS_HEADING
       };
     case S.WISE_MESSAGE.ERROR :
-      return {"class":"wise-error",
+      return {
+        "class":"wise-error",
         "heading":S.WISE_MESSAGE.ERROR_HEADING
       };
     default:

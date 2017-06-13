@@ -4,7 +4,7 @@ import {types as T} from "../constants/types";
 import {get,post} from "../utils/nioUtils";
 
 
-export const viewDomainTracker =() => dispatch => {
+export const viewDomainTracker = () => dispatch => {
   dispatch({
     type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
     payload:{domainTrackerFetchingWhois:true}

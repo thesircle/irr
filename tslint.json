@@ -43,11 +43,11 @@
       true, 2,
       {
         "FunctionDeclaration": {
-          "parameters": 1,
+          "parameters": "first",
           "body": 1
         },
         "FunctionExpression": {
-          "parameters": 1,
+          "parameters": "first",
           "body": 1
         },
         "MemberExpression": 1

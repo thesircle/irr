@@ -36,7 +36,7 @@
     "sort-imports": [true,
       {
         "ignore-case":true ,
-        "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
+        "member-syntax-sort-order": ["none", "all", "single", "alias", "multiple"]
       }
     ],
     "prefer-template": [true, "allow-single-concat"],

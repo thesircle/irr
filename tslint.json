@@ -33,9 +33,7 @@
     "class-name": true,
     "jsdoc-format": true,
     "no-consecutive-blank-lines": [true, 2],
-    "ordered-imports": [
-      true, {"named-imports-order": "case-insensitive"}
-    ],
+    "sort-imports": [true, { "ignore-case":true }],
     "prefer-template": [true, "allow-single-concat"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case"],
     "no-extra-semi": true,

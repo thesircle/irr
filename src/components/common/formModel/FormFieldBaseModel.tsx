@@ -14,7 +14,7 @@
  * This class and subclasses are expected to change in nearby future
  * but the implementation would not get affected
  */
-export class FormFieldBaseModel {
+export abstract class FormFieldBaseModel {
   name;
   value = "";
   type = "text";

@@ -35,8 +35,7 @@
     "no-consecutive-blank-lines": [true, 2],
     "sort-imports": [true,
       {
-        "ignore-case":true ,
-        "member-syntax-sort-order": ["none", "all", "single", "alias", "multiple"]
+        "ignore-case":true
       }
     ],
     "prefer-template": [true, "allow-single-concat"],

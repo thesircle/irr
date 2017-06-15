@@ -1,12 +1,10 @@
-import {Component} from "react";
-import {lang as L} from "../../../constants/lang";
-import {integrationInfoComp as IntegrationInfoComp} from "../integrationInfoComp";
-
 import "./../../../styles/main.scss";
-
+import {Component} from "react";
 import {FormFieldBaseComp} from "../../common/formComp/formFieldBaseComp";
-import {validateField} from "../../common/validations/validateFormFields";
 import {KaseyaFormModel} from "./KaseyaFormModel";
+import {integrationInfoComp as IntegrationInfoComp} from "../integrationInfoComp";
+import {lang as L} from "../../../constants/lang";
+import {validateField} from "../../common/validations/validateFormFields";
 
 export class KaseyaComp extends Component<{},{}> {
   constructor(props) {

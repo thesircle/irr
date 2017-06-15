@@ -1,7 +1,6 @@
 import {Component} from "react";
-import {validateField} from "../validations/validateFormFields";
 import {error as Error} from "./formFieldErrorBaseComp";
-
+import {validateField} from "../validations/validateFormFields";
 
 export class FormFieldBaseComp extends Component<any,any>{
 

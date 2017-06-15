@@ -1,6 +1,6 @@
-import {PropTypes} from "prop-types";
-import {Component} from "react";
 import "./../../../styles/main.scss";
+import {Component} from "react";
+import {PropTypes} from "prop-types";
 
 export class DomainTrackerComp extends Component<{},{}> {
 

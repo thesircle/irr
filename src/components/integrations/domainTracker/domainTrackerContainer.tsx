@@ -1,8 +1,8 @@
 // import { KaseyaComp } from './kaseyaComp'
+import  {DomainTrackerComp} from "./domainTrackerComp";
 import { connect }    from "react-redux";
 import { withRouter } from "react-router-dom";
 import {viewDomainTracker} from "../../../actions/actions";
-import  {DomainTrackerComp} from "./domainTrackerComp";
 
 
 const mapStateToProps = (state, props) => ({

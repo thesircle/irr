@@ -1,7 +1,7 @@
 import "isomorphic-fetch";
+import {get,post} from "../utils/nioUtils";
 import {system as S} from "../constants/system";
 import {types as T} from "../constants/types";
-import {get,post} from "../utils/nioUtils";
 
 
 export const viewDomainTracker = () => dispatch => {

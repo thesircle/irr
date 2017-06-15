@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-import {clearWiseMessage} from "../../actions/actions";
 import {ShowWiseMessages} from "./wiseMessageComp";
-
+import {clearWiseMessage} from "../../actions/actions";
 
 const mapStateToProps = (state,props) => {
   return {

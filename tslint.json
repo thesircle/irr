@@ -29,7 +29,7 @@
     "max-line-length": [true, 125],
     "no-default-export": true,
     "no-require-imports": true,
-    "arrow-parens": [true, "ban-single-arg-parens"],
+    "arrow-parens": true,
     "class-name": true,
     "jsdoc-format": true,
     "no-consecutive-blank-lines": [true, 2],
@@ -71,10 +71,13 @@
     "semicolon": [
       true,
       "always"
-    ]
+    ],
+    "typedef": [true, "call-signature", "parameter", "member-variable-declaration"]
+
 
 
   },
+
 "rulesDirectory": []
 }
 

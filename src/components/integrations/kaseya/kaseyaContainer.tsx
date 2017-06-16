@@ -1,9 +1,6 @@
-import { connect }    from "react-redux";
-import { withRouter } from "react-router-dom";
 import {updateKaseya, viewKaseya} from "../../../actions/actions";
-
 import { KaseyaComp } from "./kaseyaComp";
-
+import { connect }    from "react-redux";
 const mapStateToProps = (state, props) => ({
   url: state.kaseya.url,
   userName: state.kaseya.userName,

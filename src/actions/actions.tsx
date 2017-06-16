@@ -18,6 +18,7 @@ export const viewDomainTracker:any= (): any => (dispatch:any) : void => {
     });},10000);
 };
 export  const updateKaseya:any = (url, userName, password):any => (dispatch):void => {
+  //TODO: resolve issue of any with variable invoking method
   let postBody:object = {
     "KaseyaUrl":url,
     "KaseyaUser":userName,

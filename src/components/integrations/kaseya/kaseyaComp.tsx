@@ -7,7 +7,7 @@ import {lang as L} from "../../../constants/lang";
 import {validateField} from "../../common/validations/validateFormFields";
 
 export class KaseyaComp extends Component<{},{}> {
-  constructor(props:any) {
+  constructor(props:any) {//TODO:resolve issue prop types should not be any
     super(props);
     this.state ={kaseyaFetching:false,
       kaseyaTransmitting: false,
@@ -20,7 +20,7 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   handleChange (e:any):void{
-
+//TODO: resolve issue of type of e instead of any
     let state:any = this.state as any;
     const target:EventTarget = e.target;
     const inputValue:string = e.target.value;

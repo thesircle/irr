@@ -1,7 +1,6 @@
 import {system as S} from "../constants/system";
 export const api = (url, params) => {
   let fullUrl = S.BK_BASE + url;
-  //let fullUrl = S.GET_BASE + url;
   return fetch(fullUrl, params)
     .then(res => {
       if (res.ok) {//200 to 299
@@ -13,13 +12,14 @@ export const api = (url, params) => {
     });
 };
 let securityObject = (window as any).securityObject;
-//window.securityObject = securityInfo;
+
 let headers = {
   "Authorization" : "Bearer "+securityObject.token,
   "orgId"         : securityObject.orgId,
   "userId"        : securityObject.userId,
   "userName"      : securityObject.userName
 };
+
 export const get = (url, params:any={}) => {
   if (params.headers) {
     Object.assign(headers, params.headers);

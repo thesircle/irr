@@ -1,20 +1,16 @@
-import {PropTypes} from "prop-types";
 import {Component} from "react";
+import {LoaderCog} from "../../UtilComp/loaderCog";
 import "./../../../styles/main.scss";
-import {DataTable} from "./dataTable";
-import {TabComp} from "./tabComp";
+import {TabContentComp} from "./tabContentComp";
+import {WhoisComp} from "./whoisComp";
 
 export class DomainTrackerComp extends Component<{},{}> {
 
   constructor(props) {
     super(props);
     this.state = {
-      WhoisOBJ:{
-        fetching:true,
-        data:{
-          contact:{}
-        }
-      },
+      header_whois:"",
+      WhoisOBJ:{},
       AOBJ:{
         fetching:true,
         data:{
@@ -23,57 +19,26 @@ export class DomainTrackerComp extends Component<{},{}> {
       }
     };
   }
+
   componentWillReceiveProps(nextProps){
     let state = this.state as any;
-    nextProps.domainTrackerWhois.data.contact ? this.setState({WhoisOBJ:nextProps.domainTrackerWhois}) : null;
-    if(nextProps.domainTrackerA.data.information && nextProps.domainTrackerA.data.information["IP Address"]) {
-      this.setState({AOBJ: nextProps.domainTrackerA});
-      (window as any).domainTrackerIp = nextProps.domainTrackerA.data.information["IP Address"];
-    }
+    this.setState({WhoisOBJ:nextProps.domainTrackerWhois});
+    nextProps.domainTrackerA.data ? this.setState({AOBJ: nextProps.domainTrackerA}): null;
+
   }
   componentDidMount(){
     (this.props as any).onViewDomainTracker();
   }
-  render(){
 
+  render(){
     let state = this.state as any;
-    state.bg="bg-success";
-    state.p_heading="panel-heading";
     return(
         <div className="page-wrapper">
           <div className="page-container">
             <div className="row">
               <div className="col-md-12 col-lg-6 col-xs-12 registrar-info widgetborder no-padding m-b-15">
-                <div className="panel-heading table-header-bg">
-                  <span className="fs-20">WHOIS:THEHELPDESK.COM</span>
-                  <div className="pull-right"><span>Domain will expire in 670 days</span>
-                    <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
-                </div>
-                <div className="col-md-5 col-sm-5 no-padding">
-                  <TabComp data={state.WhoisOBJ.data.registrar || {}} loader={state.WhoisOBJ.fetching} />
-                </div>
-                <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
-                  <ul className="nav nav-pills">
-                    <li className="active"><a data-toggle="pill" href=".whois-tab1">REGISTRANT INFO</a></li>
-                    <li><a data-toggle="pill" href=".whois-tab2">ADMIN INFO</a></li>
-                    <li><a data-toggle="pill" href=".whois-tab3">TECH INFO</a></li>
-                  </ul>
-                  <div className="tab-content">
-                    <div className="tab-pane fade in active whois-tab1">
-                      <TabComp data={state.WhoisOBJ.data.contact.registrant || {}} loader={state.WhoisOBJ.fetching} />
-                    </div>
-                    <div className="tab-pane fade whois-tab2">
-                      <TabComp data={state.WhoisOBJ.data.contact.admin || {}} loader={state.WhoisOBJ.fetching} />
-                    </div>
-                    <div className="tab-pane fade whois-tab3">
-                      <TabComp data={state.WhoisOBJ.data.contact.technical || {}} loader={state.WhoisOBJ.fetching} />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-12 col-sm-12 col-xs-12 table-footer"><span>
-                  Reported by</span> <span>whois:godaddy.com</span>
-                       <span>    on    4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
-                </div>
+                <WhoisComp data={state.WhoisOBJ || {}}/>
+
               </div>
               <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">
                <img src="/img/domain-img.png" />
@@ -84,7 +49,10 @@ export class DomainTrackerComp extends Component<{},{}> {
                     <span className="fs-20">A NAME</span>
 
                   </div>
-                  <TabComp data={state.AOBJ.data.information || {}} loader={state.AOBJ.fetching}/>
+                  {state.AOBJ.fetching ?
+                    <LoaderCog/>:
+                    <TabContentComp data={state.AOBJ.data.information || {}} />
+                  }
                 </div>
                 <div className="col-md-12 col-lg-12  widgetborder domain-info m-t-15">
                   <div className="panel-heading">
@@ -211,7 +179,7 @@ export class DomainTrackerComp extends Component<{},{}> {
                       </table>
                     </div>
                     <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span>
-                      <span>whois:godaddy.com </span>
+                      <span> </span>
                         <span> on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
                     </div>
                   </div>

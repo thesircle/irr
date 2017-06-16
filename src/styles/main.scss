@@ -309,8 +309,15 @@ button {
 
 .table-header-bg {
   background-color: $header-bgcolor;
- // background-color: red;
   color: $table-header-bgcolor;
+}
+.table-danger{
+  background-color: red;
+  color:$table-header-bgcolor;
+}
+.table-warning{
+  background-color: yellow;
+  color:$table-header-bgcolor;
 }
 
 .table-footer {

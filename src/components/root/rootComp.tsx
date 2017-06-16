@@ -3,7 +3,6 @@ import {kaseyaContainer as KaseyaContainer} from "../integrations/kaseya/kaseyaC
 import {showErrors as ShowErrors} from "../UtilComp/wiseMessageContainer";
 export const rootComp =props => (
     <div>
-      this is root
       <ShowErrors />
       {(props.match.url === "/integration/kaseya/view")? <KaseyaContainer/>:null}
         {(props.match.url === "/integration/domainTracker/view")? <DomainTracker/>:null}

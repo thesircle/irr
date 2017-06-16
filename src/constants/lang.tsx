@@ -4,9 +4,6 @@ export const lang = {
     UPDATE: "Update"
   },
   INTEGRATIOSN: {
-    DOAMINTRACKER:{
-      LOADER:"/img/icon_settings.png"
-    },
     KASEYA: {
       TUT_1: {
         sm_img:"/img/cw_setup_1.png",
@@ -92,6 +89,13 @@ export const lang = {
       }
 
     }
-  }
+  },
+  DOAMINTRACKER:{
+    HEADERS:{
+      SUCCESS:"panel-heading table-header-bg",
+      DANGER:"panel-heading bg-danger",
+      WARNING:"panel-heading bg-warning"
+    }
+  },
 
 };

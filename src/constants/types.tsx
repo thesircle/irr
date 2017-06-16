@@ -7,12 +7,14 @@ export const types = {
       FETCHING: "KASEYA_FETCHING",
       CANCELFETCHING: "KASEYA_CANCELFETCHING",
       UPDATING: "KASEYA_UPDATING"
-    },
+    }
+  },
+  COMPANY:{
     DOMAINTRACKER:{
       VIEW:"DOMAINTRACKER_VIEW",
-      WHOIS:"Whois",
-      A:"A"
-    },
+      WHOIS:"DOMAINTRACKER_WHOIS",
+      A:"DOMAINTRACKER_A"
+    }
   },
   WISE_MESSAGE: {
     ADD: "ADD_WISE_MESSAGE",

@@ -1,4 +1,3 @@
-// import { KaseyaComp } from './kaseyaComp'
 import { connect }    from "react-redux";
 import { withRouter } from "react-router-dom";
 import {aDomainTracker,whoisDomainTracker} from "../../../actions/actions";
@@ -6,7 +5,7 @@ import  {DomainTrackerComp} from "./domainTrackerComp";
 
 const mapStateToProps = (state, props) => ({
   domainTrackerWhois:state.domainTrackerWhois,
-  domainTrackerA:state.domainTrackerA,
+  domainTrackerA:state.domainTrackerA
 });
 
 const mapDispatchToProps = dispatch => ({

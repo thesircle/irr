@@ -6,5 +6,20 @@ export const state = {
   },
   kaseyaFetching:false,
   kaseyaTransmitting:false,
-  wiseMessages:[]
+  wiseMessages:[],
+  domainTracker:[{
+    WhoisOBJ:{
+      fetching:true,
+      data:{
+        registrar:{},
+        contact:{}
+      }
+    },
+    AOBJ:{
+      fetching:true,
+      data:{
+        information:{}
+      }
+    }
+  }]
 };

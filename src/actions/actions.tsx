@@ -6,16 +6,15 @@ import {get,post} from "../utils/nioUtils";
 
 export const viewDomainTracker = () => dispatch => {
   dispatch({
-    type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
+    type:T.COMPANY.DOMAINTRACKER.VIEW,
     payload:{domainTrackerFetchingWhois:true}
   });
-  setTimeout(() => {
-    get(S.BK.DOMAINTRACKER.GET).then(({body}:any) => {
-      dispatch({
-        type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
-        payload:{domainTrackerFetching:false,data:body}
-      });
-    });},10000);
+  get(S.BK.API.DOMAINTRACKER_VIEW).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.VIEW,
+      payload:{domainTrackerFetching:false,data:body}
+    });
+  });
 };
 export  const updateKaseya = (url, userName, password) => dispatch => {
   let postBody = {
@@ -78,32 +77,27 @@ export const clearWiseMessage = index => dispatch => {
 };
 export const whoisDomainTracker = () => dispatch => {
   dispatch({
-    type:T.INTEGRATIONS.DOMAINTRACKER.WHOIS,
-    payload:{fetching:true,data:{}}
+    type:T.COMPANY.DOMAINTRACKER.WHOIS,
+    payload:{fetching:true}
   });
-  setTimeout( () =>  {
-    get(S.BK.DOMAINTRACKER.MXTOOL+S.BK.DOMAINTRACKER.WHOIS+S.BK.DOMAINTRACKER.DOMAIN).then(({body}:any) => {
-      dispatch({
-        type:T.INTEGRATIONS.DOMAINTRACKER.WHOIS,
-        payload:{fetching:false,data:body}
-      });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.WHOIS+(window as any).domainName).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.WHOIS,
+      payload:{fetching:false,data:body}
     });
-  },5000);
+  });
 };
 export const aDomainTracker = () => dispatch => {
   dispatch({
-    type:T.INTEGRATIONS.DOMAINTRACKER.A,
-    payload:{fetching:true,data:{}}
+    type:T.COMPANY.DOMAINTRACKER.A,
+    payload:{fetching:true}
   });
-
-  setTimeout( () => {
-    get(S.BK.DOMAINTRACKER.MXTOOL+S.BK.DOMAINTRACKER.A+S.BK.DOMAINTRACKER.DOMAIN).then(({body}:any) => {
-      dispatch({
-        type:T.INTEGRATIONS.DOMAINTRACKER.A,
-        payload:{fetching:false,data:body}
-      });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.A+(window as any).domainName).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.A,
+      payload:{fetching:false,data:body}
     });
-  },2000);
+  });
 };
 
 

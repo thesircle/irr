@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import {state as initState} from "../constants/initialState";
 import {types as T} from "../constants/types";
 
 export const kaseya = (state={}, action) => {
@@ -27,9 +28,9 @@ export const kaseyaFetching = (state={}, action) => {
     return state;
   }
 };
-export const domainTracker=(state={},action) => {
+export const domainTracker=(state=initState.domainTracker,action) => {
   switch (action.type){
-  case T.INTEGRATIONS.DOMAINTRACKER.VIEW:
+  case T.COMPANY.DOMAINTRACKER.VIEW:
     return action.payload;
   default:
     return state;
@@ -61,9 +62,9 @@ export const wiseMessages = (state=[], action) => {
   }
 };
 
-export const domainTrackerWhois=(state={},action) => {
+export const domainTrackerWhois=(state=initState.domainTracker,action) => {
   switch (action.type){
-  case T.INTEGRATIONS.DOMAINTRACKER.WHOIS:
+  case T.COMPANY.DOMAINTRACKER.WHOIS:
     return action.payload;
   default:
     return state;
@@ -72,7 +73,7 @@ export const domainTrackerWhois=(state={},action) => {
 
 export const domainTrackerA = (state={},action) => {
   switch (action.type){
-  case T.INTEGRATIONS.DOMAINTRACKER.A:
+  case T.COMPANY.DOMAINTRACKER.A:
     return action.payload;
   default:
     return state;

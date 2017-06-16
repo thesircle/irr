@@ -1,7 +1,7 @@
 import {domainTracker as DomainTracker} from "../integrations/domainTracker/domainTrackerContainer";
 import {kaseyaContainer as KaseyaContainer} from "../integrations/kaseya/kaseyaContainer";
 import {showErrors as ShowErrors} from "../UtilComp/wiseMessageContainer";
-export const rootComp =props => (
+export const rootComp:any =(props):any => (
     <div>
       this is root
       <ShowErrors />

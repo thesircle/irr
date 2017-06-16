@@ -4,24 +4,24 @@ import {validateField} from "../validations/validateFormFields";
 
 export class FormFieldBaseComp extends Component<any,any>{
 
-  constructor(props){
+  constructor(props:any){
     super(props);
     this.state = {
       classNames: "col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
     };
   }
 
-  componentWillReceiveProps(newProps){
-    let props = this.props as any;
+  componentWillReceiveProps(newProps:any):void{
+    let props:any = this.props as any;
     newProps.className ? this.setState({classNames:newProps.className}) : null;
     typeof  newProps.value !== "undefined" ? props.model.value = newProps.value: null ;
     props.model.onChange = newProps.onChange;
 
   }
 
-  render(){
+  render():any{
     let error:any;
-    let props = this.props as any;
+    let props:any = this.props as any;
     return(
             <div className={(this.state as any).classNames}>
                 <div className="form-group form-group-default pg-form-group">

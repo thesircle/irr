@@ -5,8 +5,8 @@ export class FormFieldPasswordBaseModel extends FormFieldBaseModel{
     super();
   }
 
-  name = "password";
-  type = "password";
-  label = "Password";
-  placeHolder = "Enter Password";
+  name:string = "password";
+  type:string = "password";
+  label:string = "Password";
+  placeHolder:string = "Enter Password";
 }

@@ -3,16 +3,16 @@ import {system as S} from "../../constants/system";
 // import CloseButton from 'react-icons/lib/fa/close'
 
 export class ShowWiseMessages extends Component<{},{}> {
-  constructor(props) {
+  constructor(props:any) {
     super(props);
-    this.state = {wiseMessages: [], onClearWiseMessage: f => f};
+    this.state = {wiseMessages: [], onClearWiseMessage: (f):any => f};
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps:any):void{
     this.setState({
       wiseMessages: nextProps.wiseMessages
     });
   }
-  getClassAndHeading(type):any{
+  getClassAndHeading(type:string):any{
     switch(type) {
     case S.WISE_MESSAGE.WARNING :
       return {
@@ -39,13 +39,13 @@ export class ShowWiseMessages extends Component<{},{}> {
     }
   }
 
-  render(){
-    let state = this.state as any;
+  render():any{
+    let state:any = this.state as any;
     return(
       <div className="wise-message-wrapper">
         {(state.wiseMessages.length) ?
           state.wiseMessages.map((wiseObj, i) => {
-            let classAndHeading = this.getClassAndHeading(wiseObj.type);
+            let classAndHeading:any = this.getClassAndHeading(wiseObj.type);
             return (
               <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
                 <div className="pgn push-on-sidebar-open pgn-circle">
@@ -62,7 +62,7 @@ export class ShowWiseMessages extends Component<{},{}> {
                         </div>
                       </div>
                     </div>
-                    <button type="button" className="close" onClick={() => (this.props as any).onClearWiseMessage(i)}>
+                    <button type="button" className="close" onClick={():void => (this.props as any).onClearWiseMessage(i)}>
                       <span aria-hidden="true">×</span>
                       <span className="sr-only">Close</span>
                     </button>

@@ -4,7 +4,7 @@ import {system as S} from "../constants/system";
 import {types as T} from "../constants/types";
 
 
-export const viewDomainTracker = () => dispatch => {
+export const viewDomainTracker:any= (): any => (dispatch:any) : void => {
   dispatch({
     type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
     payload:{domainTrackerFetchingWhois:true}
@@ -17,8 +17,8 @@ export const viewDomainTracker = () => dispatch => {
       });
     });},10000);
 };
-export  const updateKaseya = (url, userName, password) => dispatch => {
-  let postBody = {
+export  const updateKaseya:any = (url, userName, password):any => (dispatch):void => {
+  let postBody:object = {
     "KaseyaUrl":url,
     "KaseyaUser":userName,
     "KaseyaUserPass":password
@@ -29,12 +29,12 @@ export  const updateKaseya = (url, userName, password) => dispatch => {
       payload: {url, userName, password}
     });
   })
-    .catch(error => {
+    .catch((error) => {
   // dispatch(addWiseMessage(error.message))
   // dispatch({type: T.CANCEL_FETCHING}) //TODO
     });
 };
-export const viewKaseya = () => dispatch => {
+export const viewKaseya:any = ():any => (dispatch):void => {
   dispatch(addWiseMessage(S.WISE_MESSAGE.ERROR,
                           "newErrorMessage",
                           "Custom Heading"));
@@ -51,26 +51,26 @@ export const viewKaseya = () => dispatch => {
     payload: {kaseyaFetching: true}
   });
   get(S.BK.API.KASEYA_VIEW).then(({body}:any) => {
-    let url = body.data.KaseyaUrl;
-    let userName = body.data.KaseyaUser;
+    let url:string = body.data.KaseyaUrl;
+    let userName:string = body.data.KaseyaUser;
     dispatch ({
       type: T.INTEGRATIONS.KASEYA.VIEW,
       payload: {url,userName}
     });
   })
-    .catch(error => {
+    .catch((error) => {
     // dispatch(addWiseMessage(error.message))
     // dispatch({type: T.CANCEL_FETCHING}) //TODO
     });
 };
 
-export const addWiseMessage = (type, message, heading="") => dispatch => {
+export const addWiseMessage:any = (type, message, heading=""):any => (dispatch):void => {
   dispatch({
     type: T.WISE_MESSAGE.ADD,
     payload: {type,message,heading} // same as {type:type,message:message,heading:heading} in es6
   });
 };
-export const clearWiseMessage = index => dispatch => {
+export const clearWiseMessage:any = (index):any => (dispatch):void => {
   dispatch({
     type: T.WISE_MESSAGE.CLEAR,
     payload: index

@@ -4,15 +4,15 @@ import {PropTypes} from "prop-types";
 
 export class DomainTrackerComp extends Component<{},{}> {
 
-  constructor(props) {
+  constructor(props:any) {
     super(props);
     this.state = {
       whoisFetchStatus:"",
       DomainTrackerOBJ:"",
     };
   }
-  componentWillReceiveProps(nextProps){
-    let state = this.state as any;
+  componentWillReceiveProps(nextProps:any):void{
+    let state:any = this.state as any;
     if(typeof nextProps.domainTrackerFetchingWhois ==="undefined")
     {
       this.setState({whoisFetchStatus: ""});
@@ -27,13 +27,13 @@ export class DomainTrackerComp extends Component<{},{}> {
     }
 
   }
-  componentDidMount(){
+  componentDidMount():void{
     (this.props as any).onViewDomainTracker();
   }
 
-  render(){
+  render():any{
 
-    let state = this.state as any;
+    let state:any = this.state as any;
     let s:any = ( (state.whoisFetchStatus)? "/img/load.gif" : "" );
     return(
         <div className="page-wrapper">

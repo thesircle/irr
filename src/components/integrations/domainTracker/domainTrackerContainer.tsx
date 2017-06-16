@@ -5,18 +5,18 @@ import { withRouter } from "react-router-dom";
 import {viewDomainTracker} from "../../../actions/actions";
 
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps:any = (state, props):any => ({
   domainTrakerOBJ: state.domainTracker.data,
   domainTrackerFetchingWhois:state.domainTracker.domainTrackerFetchingWhois,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps:any = (dispatch):any => ({
     // onUpdateKaseya({url, userName, password}) {
     //   dispatch(
     //     updateKaseya(url, userName, password)
     //   )
     // },
-  onViewDomainTracker() {
+  onViewDomainTracker():void {
     dispatch(
         viewDomainTracker()
     );
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // const Container = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp)
-export const domainTracker = connect(mapStateToProps, mapDispatchToProps)(DomainTrackerComp);
+export const domainTracker:any = connect(mapStateToProps, mapDispatchToProps)(DomainTrackerComp);

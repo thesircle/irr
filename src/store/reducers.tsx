@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import {types as T} from "../constants/types";
 
-export const kaseya = (state={}, action) => {
+export const kaseya:any = (state={}, action):any => {
   switch(action.type) {
 
   case T.INTEGRATIONS.KASEYA.VIEW :
@@ -16,7 +16,7 @@ export const kaseya = (state={}, action) => {
   }
 };
 
-export const kaseyaFetching = (state={}, action) => {
+export const kaseyaFetching:any = (state={}, action):any => {
   switch(action.type) {
 
   case "fetching" :
@@ -27,7 +27,7 @@ export const kaseyaFetching = (state={}, action) => {
     return state;
   }
 };
-export const domainTracker=(state={},action) => {
+export const domainTracker:any=(state={},action):any => {
   switch (action.type){
   case T.INTEGRATIONS.DOMAINTRACKER.VIEW:
     return action.payload;
@@ -35,7 +35,7 @@ export const domainTracker=(state={},action) => {
     return state;
   }
 };
-export const kaseyaTransmitting = (state={}, action) => {
+export const kaseyaTransmitting:any = (state={}, action):any => {
   switch(action.type) {
 
   case "transmitting" :
@@ -47,7 +47,7 @@ export const kaseyaTransmitting = (state={}, action) => {
   }
 };
 
-export const wiseMessages = (state=[], action) => {
+export const wiseMessages:any = (state=[], action):any => {
   switch(action.type) {
   case T.WISE_MESSAGE.ADD :
     return [
@@ -61,7 +61,7 @@ export const wiseMessages = (state=[], action) => {
   }
 };
 
-export const appReducer=combineReducers({
+export const appReducer:any=combineReducers({
   kaseya,
   kaseyaFetching,
   kaseyaTransmitting,

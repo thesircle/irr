@@ -6,11 +6,11 @@ export class FormFieldUrlBaseModel extends FormFieldBaseModel{
     super();
   }
 
-  name = "url";
-  label = "Server Url";
-  placeHolder = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
-  isFormateRequired = true;
-  regex = new RegExp(
+  name:string = "url";
+  label:string = "Server Url";
+  placeHolder:string = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
+  isFormateRequired:boolean = true;
+  regex:RegExp = new RegExp(
     "^" +
     "(?:(?:https?|ftp)://)" +
     "(?:\\S+(?::\\S*)?@)?" +

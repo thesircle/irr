@@ -2,7 +2,7 @@ import * as React from "react";
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
 import {container as Container} from "./components/root/rootContainer";
 
-export const routes = () => (
+export const routes:any = ():any => (
 
   <Router>
     <div>

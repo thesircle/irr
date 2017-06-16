@@ -5,10 +5,10 @@ export class FormFieldEmailBaseModel extends FormFieldBaseModel{
     super();
   }
 
-  name = "userName";
-  type = "text";
-  label = "User Name (userName)";
-  placeHolder = "CW Integrator Login";
-  isFormateRequired = true;
-  regex =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9])+)+\.(([a-zA-Z0-9])+)$/;
+  name:string = "userName";
+  type:string = "text";
+  label:string = "User Name (userName)";
+  placeHolder:string = "CW Integrator Login";
+  isFormateRequired:boolean = true;
+  regex:RegExp =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9])+)+\.(([a-zA-Z0-9])+)$/;
 }

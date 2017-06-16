@@ -1,10 +1,10 @@
-export const integrationInfoComp =prop => {
-  let popUp =() => {
+export const integrationInfoComp:any =(prop):any => {
+  let popUp:any =():void => {
     parent.postMessage({
       name:"hide",
     },"*");
   };
-  let closePopup = () => {
+  let closePopup:any = ():void => {
     parent.postMessage({name: "hidepopup"},"*");
   };
 

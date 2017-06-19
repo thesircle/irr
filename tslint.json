@@ -72,16 +72,7 @@
       true,
       "always"
     ],
-    "typedef": [true,
-      "call-signature",
-      "arrow-call-signature",
-      "parameter",
-      "property-declaration",
-      "variable-declaration",
-      "member-variable-declaration",
-      "object-destructuring",
-      "array-destructuring"
-    ]
+    "no-any": true
   },
 "rulesDirectory": []
 }

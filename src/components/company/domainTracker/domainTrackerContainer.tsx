@@ -4,8 +4,9 @@ import {aDomainTracker,whoisDomainTracker} from "../../../actions/actions";
 import  {DomainTrackerComp} from "./domainTrackerComp";
 
 const mapStateToProps = (state, props) => ({
-  domainTrackerWhois:state.domainTrackerWhois,
-  domainTrackerA:state.domainTrackerA
+  // domainTrackerWhois:state.domainTrackerWhois,
+  // domainTrackerA:state.domainTrackerA
+  domainTracker:state
 });
 
 const mapDispatchToProps = dispatch => ({

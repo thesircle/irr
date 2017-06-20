@@ -4,13 +4,13 @@ export const system = {
     API: {
       KASEYA_VIEW: "KaseyaApi/",
       KASEYA_UPDATE: "KaseyaApi/",
-      DOMAINTRACKER_VIEW: "domaintracker"
+      DOMAINTRACKER_VIEW: "domaintracker/"
     },
     DOMAINTRACKER:{
-      URL: "mxtoolbox",
+      URL: "mxtoolbox/vRR2/",
       DOMAINS:{
-        WHOIS: "/whois/",
-        A: "/a/"
+        WHOIS: "whois/",
+        A: "a/"
       }
 
     }

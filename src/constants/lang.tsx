@@ -90,12 +90,23 @@ export const lang = {
 
     }
   },
-  DOAMINTRACKER:{
-    HEADERS:{
-      SUCCESS:"panel-heading table-header-bg",
-      DANGER:"panel-heading bg-danger",
-      WARNING:"panel-heading bg-warning"
+  COMPANY:{
+    DOAMINTRACKER:{
+      ICONS:{
+        SUCCESS_WHITE:"/img/icon_circle_success_white.svg",
+        SUCCESS:"/img/icon_circle_success.svg",
+        DANGER:"/img/icon_circle_error.svg",
+        WARNING:"/img/icon_circle_warning.svg"
+      },
+      HEADERS:{
+        CLASS:{
+          SUCCESS:"panel-heading table-header-bg",
+          DANGER:"panel-heading bg-danger",
+          WARNING:"panel-heading bg-warning"
+        }
+      }
     }
-  },
+  }
+
 
 };

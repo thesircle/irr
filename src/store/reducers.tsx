@@ -28,14 +28,7 @@ export const kaseyaFetching = (state={}, action) => {
     return state;
   }
 };
-export const domainTracker=(state=initState.domainTracker,action) => {
-  switch (action.type){
-  case T.COMPANY.DOMAINTRACKER.VIEW:
-    return action.payload;
-  default:
-    return state;
-  }
-};
+
 export const kaseyaTransmitting = (state={}, action) => {
   switch(action.type) {
 
@@ -62,23 +55,34 @@ export const wiseMessages = (state=[], action) => {
   }
 };
 
-export const domainTrackerWhois=(state=initState.domainTracker,action) => {
+export const domainTracker=(state=initState.domainTracker,action) => {
   switch (action.type){
   case T.COMPANY.DOMAINTRACKER.WHOIS:
-    return action.payload;
+    return Object.assign({},state,{whois:Object.assign({},state.whois,action.payload)});
+  case T.COMPANY.DOMAINTRACKER.A:
+    return Object.assign({},state, {aName:Object.assign({},state.aName,action.payload)});
   default:
     return state;
   }
 };
 
-export const domainTrackerA = (state={},action) => {
-  switch (action.type){
-  case T.COMPANY.DOMAINTRACKER.A:
-    return action.payload;
-  default:
-    return state;
-  }
-};
+// export const domainTrackerWhois=(state=initState.domainTracker,action) => {
+//   switch (action.type){
+//   case T.COMPANY.DOMAINTRACKER.WHOIS:
+//     return action.payload;
+//   default:
+//     return state;
+//   }
+// };
+//
+// export const domainTrackerA = (state={},action) => {
+//   switch (action.type){
+//   case T.COMPANY.DOMAINTRACKER.A:
+//     return action.payload;
+//   default:
+//     return state;
+//   }
+// };
 
 export const appReducer=combineReducers({
   kaseya,
@@ -86,8 +90,7 @@ export const appReducer=combineReducers({
   kaseyaTransmitting,
   wiseMessages,
   domainTracker,
-  domainTrackerWhois,
-  domainTrackerA
-
+  // domainTrackerWhois,
+  // domainTrackerA
 });
 

@@ -7,10 +7,22 @@ export class WhoisComp extends Component<any,any>{
   constructor(props){
     super(props);
     this.state = {
-      header_whois:"",
-      days_to_expire: ""
+      whoisHeader:{
+        className:"",
+        icon:"",
+        daysToExpire: 0
+      }
     };
     this.setWhoisHeaderState = this.setWhoisHeaderState.bind(this);
+    this.updateFieldInState = this.updateFieldInState.bind(this);
+  }
+
+  updateFieldInState(field:any, value:any):any{
+    this.setState((state:any) => ({
+      whoisHeader: { ...state.whoisHeader,
+        [field]: value
+      }
+    }));
   }
 
   componentWillReceiveProps(nextProps){
@@ -22,17 +34,23 @@ export class WhoisComp extends Component<any,any>{
   setWhoisHeaderState(expiration_Date){
     let current_Date=new Date();
     let days = Math.round((expiration_Date-(current_Date as any))/(1000*60*60*24));
-    this.setState({days_to_expire : days});
+    this.updateFieldInState("daysToExpire",days);
     if(current_Date > expiration_Date)
     {
-      this.setState({header_whois:L.DOAMINTRACKER.HEADERS.DANGER});
+      this.updateFieldInState("className",L.COMPANY.DOAMINTRACKER.HEADERS.CLASS.DANGER);
+      this.updateFieldInState("icon",L.COMPANY.DOAMINTRACKER.ICONS.DANGER);
     }
     else
     {
       current_Date.setMonth(current_Date.getMonth() + 3);
-      current_Date <= expiration_Date ?
-        this.setState({header_whois:L.DOAMINTRACKER.HEADERS.SUCCESS}) :
-        this.setState({header_whois:L.DOAMINTRACKER.HEADERS.SUCCESS});
+      if(current_Date <= expiration_Date){
+        this.updateFieldInState("className",L.COMPANY.DOAMINTRACKER.HEADERS.CLASS.SUCCESS);
+        this.updateFieldInState("icon",L.COMPANY.DOAMINTRACKER.ICONS.SUCCESS_WHITE);
+      }
+      else{
+        this.updateFieldInState("className",L.COMPANY.DOAMINTRACKER.HEADERS.CLASS.WARNING);
+        this.updateFieldInState("icon",L.COMPANY.DOAMINTRACKER.ICONS.WARNING);
+      }
     }
   }
 
@@ -42,12 +60,16 @@ export class WhoisComp extends Component<any,any>{
     let state = this.state as any;
     return(
       <div>
-      <div className={state.header_whois}>
+      <div className={state.whoisHeader.className}>
         <span className="fs-20">
           WHOIS: {props.data.data && props.data.data.registrar["Domain Name"] as any ?
           props.data.data.registrar["Domain Name"].toUpperCase() as any : ""}</span>
-        <div className="pull-right"><span>Domain will expire in {state.days_to_expire} days</span>
-          <img src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
+        {state.whoisHeader.daysToExpire >= 0 ?
+          <div className="pull-right"><span>Domain will expire in {state.whoisHeader.daysToExpire} days </span>
+            <img src={state.whoisHeader.icon} width="24px" height="24px"/></div> :
+          <div className="pull-right"><span>Domain is expired </span>
+            <img src={state.whoisHeader.icon} width="24px" height="24px"/></div>
+        }
       </div>
         <div className="col-md-5 col-sm-5 no-padding">
         < TabContentComp

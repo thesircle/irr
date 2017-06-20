@@ -8,5 +8,5 @@ export const state = {
   kaseyaFetching:false,
   kaseyaTransmitting:false,
   wiseMessages:[],
-  domainTracker: new DomainTrackerBaseModel()
+  companyDomainTracker: new DomainTrackerBaseModel()
 };

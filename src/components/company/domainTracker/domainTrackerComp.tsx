@@ -2,7 +2,6 @@ import {Component} from "react";
 import "../../../styles/main.scss";
 import {TabContentComp} from "./tabContentComp";
 import {WhoisComp} from "./whoisComp";
-import {DomainTrackerBaseModel} from "./Models/DomainTrackerBaseModel";
 
 export class DomainTrackerComp extends Component<{},{}> {
 

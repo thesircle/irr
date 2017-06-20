@@ -10,7 +10,12 @@ export const system = {
       URL: "mxtoolbox/vRR2/",
       DOMAINS:{
         WHOIS: "whois/",
-        A: "a/"
+        A: "a/",
+        DNS:"dns/",
+        PTR:"ptr/",
+        MX:"mx/",
+        SPF:"spf/",
+        TXT:"txt/"
       }
 
     }

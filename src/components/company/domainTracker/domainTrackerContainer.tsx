@@ -1,5 +1,5 @@
 import { connect }    from "react-redux";
-import {aDomainTracker,whoisDomainTracker} from "../../../actions/actions";
+import {aDomainTracker,whoisDomainTracker,dnsDomainTracker} from "../../../actions/actions";
 import  {DomainTrackerComp} from "./domainTrackerComp";
 
 const mapStateToProps = (state, props) => ({
@@ -11,6 +11,7 @@ const mapDispatchToProps = dispatch => ({
   onViewDomainTracker() {
     dispatch(aDomainTracker());
     dispatch(whoisDomainTracker());
+    dispatch(dnsDomainTracker());
   }
 });
 

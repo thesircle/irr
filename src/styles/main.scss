@@ -27,6 +27,8 @@ $heading-color: #626262;
 $secondary-color: #ff5649;
 $scrollbar-color: rgba(0, 0, 0, 0.1);
 $scrollbarthumb-color: rgba(0, 0, 0, 0.5);
+$bg-danger:red;
+$bg-warning:yellow;
 
 //Function Definition
 
@@ -312,11 +314,11 @@ button {
   color: $table-header-bgcolor;
 }
 .table-danger{
-  background-color: red;
+  background-color:$bg-danger;
   color:$table-header-bgcolor;
 }
 .table-warning{
-  background-color: yellow;
+  background-color:$bg-warning;
   color:$table-header-bgcolor;
 }
 

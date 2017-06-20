@@ -1,43 +1,27 @@
 import {Component} from "react";
 import "../../../styles/main.scss";
-import {LoaderCog} from "../../UtilComp/loaderCog";
-import {DNSComp} from "./dnsComp";
 import {TabContentComp} from "./tabContentComp";
 import {WhoisComp} from "./whoisComp";
+import {DomainTrackerBaseModel} from "./Models/DomainTrackerBaseModel";
 
 export class DomainTrackerComp extends Component<{},{}> {
 
   constructor(props) {
     super(props);
-    this.state = {
-      header_whois:"",
-      WhoisOBJ:{},
-      AOBJ:{
-        fetching:true,
-        data:{
-          data:{}
-        }
-      }
-    };
   }
 
-  componentWillReceiveProps(nextProps){
-    debugger
-    this.setState({WhoisOBJ:nextProps.domainTrackerWhois});
-    nextProps.domainTrackerA.data ? this.setState({AOBJ: nextProps.domainTrackerA}): null;
-  }
   componentDidMount(){
     (this.props as any).onViewDomainTracker();
   }
 
   render(){
-    let state = this.state as any;
+    let props = this.props as any;
     return(
         <div className="page-wrapper">
           <div className="page-container">
             <div className="row">
               <div className="col-md-12 col-lg-6 col-xs-12 registrar-info widgetborder no-padding m-b-15">
-                <WhoisComp data={state.WhoisOBJ || {}}/>
+                <WhoisComp data={props.domainTracker.whois}/>
 
               </div>
               <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">
@@ -49,10 +33,10 @@ export class DomainTrackerComp extends Component<{},{}> {
                     <span className="fs-20">A NAME</span>
 
                   </div>
-                  {state.AOBJ.fetching ?
-                    <LoaderCog/>:
-                    <TabContentComp data={state.AOBJ.data.data || {}} loader={state.AOBJ.fetching} />
-                  }
+                    <TabContentComp
+                      data={props.domainTracker.aName.data}
+                      loader={props.domainTracker.aName.fetching} />
+
                 </div>
                 <div className="col-md-12 col-lg-12  widgetborder domain-info m-t-15">
                   <div className="panel-heading">
@@ -78,7 +62,111 @@ export class DomainTrackerComp extends Component<{},{}> {
               </div>
               <div className="col-md-12 col-lg-6 col-sm-12 m-b-15 dns-record">
                 <div className="row">
-                  <DNSComp />
+                  <div className="col-md-12 widgetborder no-padding  dns-column">
+                    <div className="panel-heading table-header-bg">
+                      <span className="fs-20">DNS:THEHELPDESK.COM</span>
+                      <div className="pull-right"><span>DNS Record Published</span> <img
+                        src="/img/icon_circle_success_white.svg" width="24px" height="24px"/></div>
+                    </div>
+                    <div id="dns">
+                      <table className="table">
+                        <thead>
+                        <tr>
+                          <th>Type</th>
+                          <th>Domain Name</th>
+                          <th>ip address</th>
+                          <th>ttl</th>
+                          <th>status</th>
+                          <th>time</th>
+                          <th>auth</th>
+                          <th>parent</th>
+                          <th>local</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                          <td>John</td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td>john@example.com</td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                          <td>John</td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td>john@example.com</td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                          <td>John</td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td>john@example.com</td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="col-md-12 result fs-16"><div className="m-b-5 m-t-5">RESULT</div>
+                    </div>
+                    <div className="table-scroller-dns">
+                      <table className="table table-bordered">
+                        <tbody>
+                        <tr>
+                          <td className="text-center"><img src="/img/icon_circle_warning.svg"
+                                                           width="24px" height="24px"/></td>
+                          <td>soa serail number format is invalid soa serail number format is
+                            invalid soa serail number format is invalid soa serail number forma
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td>soa serail number format is invalid</td>
+                        </tr>
+                        <tr>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td>soa serail number format is invalid</td>
+                        </tr>
+                        <tr>
+                          <td className="text-center"><img src="/img/icon_circle_success.svg" />
+                          </td>
+                          <td>soa serail number format is invalid</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="col-md-12 col-xs-12 table-footer"><span>Reported by</span>
+                      <span> </span>
+                      <span> on 4-4-2017 at</span> <span>6:45:32 AM (UTC-5)</span>
+                    </div>
+                  </div>
               </div>
               </div>
               <div className="col-md-12 col-sm-12 col-lg-6 p-r-0 mx-record-column">

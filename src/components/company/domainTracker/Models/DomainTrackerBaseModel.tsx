@@ -36,5 +36,7 @@ export class DomainTrackerBaseModel {
   constructor(){
     this.whois = new WHOIS();
     this.aName = new ANAME();
+    this.ptr = new PTR();
+    this.dns = new DNS();
   }
 }

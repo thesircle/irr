@@ -9,6 +9,7 @@ export class TabContentComp extends Component<any,any>{
 
   render(){
     let props = this.props as any;
+    debugger
     let headings = Object.keys(props.data);
     return (
       props.loader ?

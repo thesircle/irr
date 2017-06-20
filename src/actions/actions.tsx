@@ -95,12 +95,9 @@ export const aDomainTracker = () => dispatch => {
   get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.A+(window as any).domainName).then(({body}:any) => {
     dispatch({
       type:T.COMPANY.DOMAINTRACKER.A,
-      payload:{fetching:false,data:body}
+      payload:{fetching:false,data:body.data}
     });
   });
 };
 
 
-// export const clearAllWiseMessages = ()  =>  dispatch  =>  {
-
-//}

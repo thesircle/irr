@@ -29,12 +29,14 @@
     "max-line-length": [true, 125],
     "no-default-export": true,
     "no-require-imports": true,
-    "arrow-parens": [true, "ban-single-arg-parens"],
+    "arrow-parens": true,
     "class-name": true,
     "jsdoc-format": true,
     "no-consecutive-blank-lines": [true, 2],
-    "ordered-imports": [
-      true, {"named-imports-order": "case-insensitive"}
+    "sort-imports": [true,
+      {
+        "ignore-case":true
+      }
     ],
     "prefer-template": [true, "allow-single-concat"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case"],
@@ -69,9 +71,17 @@
     "semicolon": [
       true,
       "always"
+    ],
+    "typedef": [true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
     ]
-
-
   },
 "rulesDirectory": []
 }

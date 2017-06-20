@@ -56,41 +56,24 @@ export const wiseMessages = (state=[], action) => {
 };
 
 export const domainTracker=(state=initState.domainTracker,action) => {
+  debugger
   switch (action.type){
   case T.COMPANY.DOMAINTRACKER.WHOIS:
     return Object.assign({},state,{whois:Object.assign({},state.whois,action.payload)});
   case T.COMPANY.DOMAINTRACKER.A:
-    return Object.assign({},state, {aName:Object.assign({},state.aName,action.payload)});
+    return Object.assign({},state,
+      {aName:Object.assign({},state.aName,
+        {data:Object.assign({},state.aName.data,action.payload.data),fetching:action.payload.fetching})});
   default:
     return state;
   }
 };
-
-// export const domainTrackerWhois=(state=initState.domainTracker,action) => {
-//   switch (action.type){
-//   case T.COMPANY.DOMAINTRACKER.WHOIS:
-//     return action.payload;
-//   default:
-//     return state;
-//   }
-// };
-//
-// export const domainTrackerA = (state={},action) => {
-//   switch (action.type){
-//   case T.COMPANY.DOMAINTRACKER.A:
-//     return action.payload;
-//   default:
-//     return state;
-//   }
-// };
 
 export const appReducer=combineReducers({
   kaseya,
   kaseyaFetching,
   kaseyaTransmitting,
   wiseMessages,
-  domainTracker,
-  // domainTrackerWhois,
-  // domainTrackerA
+  domainTracker
 });
 

@@ -22,7 +22,7 @@ export abstract class FormFieldBaseModel {
   placeHolder: string = "Please fill the field";
   isRequired: boolean = true;
   isFormateRequired: boolean = false;
-  onChange = (): any => {
+  onChange = () => {
     //todo
   }
 

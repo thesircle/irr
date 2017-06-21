@@ -1,42 +1,37 @@
-class WHOIS {
-  fetching:boolean = true;
-  data:object = {
-    registrar: {},
-    contact:{
-      registrant:{},
-      admin:{},
-      technical:{}
-    }
-  };
-}
-
-class ANAME {
-  fetching:boolean = true;
+class DomainTrackerBaseDataModel {
+  fetching: boolean = true;
   data:object = {};
-}
-
-class PTR {
-  fetching:boolean = true;
-  data:object = {};
-}
-
-class DNS {
-  fetching:boolean = true;
-  data:object = {
-    dns : [],
-    result:[]
-  };
 }
 
 export class DomainTrackerBaseModel {
-  whois:WHOIS;
-  aName: ANAME;
-  ptr: PTR;
-  dns:DNS;
+  whois:DomainTrackerBaseDataModel;
+  aName: DomainTrackerBaseDataModel;
+  ptr: DomainTrackerBaseDataModel;
+  dns:DomainTrackerBaseDataModel;
+
   constructor(){
-    this.whois = new WHOIS();
-    this.aName = new ANAME();
-    this.ptr = new PTR();
-    this.dns = new DNS();
+    //Whois Model object
+    this.whois = new DomainTrackerBaseDataModel();
+    this.whois.data = {
+      registrar:{},
+      contact:{
+        registrant:{},
+        admin:{},
+        technical:{}
+      }
+    };
+
+    //ANAME Model object
+    this.aName = new DomainTrackerBaseDataModel();
+
+    //PTR Model object
+    this.ptr = new DomainTrackerBaseDataModel();
+
+    //DNS Model object
+    this.dns = new DomainTrackerBaseDataModel();
+    this.dns.data = {
+      dns:[],
+      result:[]
+    };
   }
 }

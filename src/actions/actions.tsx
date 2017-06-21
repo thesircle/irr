@@ -75,36 +75,36 @@ export const clearWiseMessage = index => dispatch => {
     payload: index
   });
 };
-export const whoisDomainTracker = () => dispatch => {
+export const whoisDomainTracker = (domainName) => dispatch => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.WHOIS,
     payload:{fetching:true}
   });
-  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.WHOIS+(window as any).domainName).then(({body}:any) => {
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.WHOIS+domainName).then(({body}:any) => {
     dispatch({
       type:T.COMPANY.DOMAINTRACKER.WHOIS,
       payload:{fetching:false,data:body}
     });
   });
 };
-export const aDomainTracker = () => dispatch => {
+export const aDomainTracker = (domainName) => dispatch => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.A,
     payload:{fetching:true}
   });
-  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.A+(window as any).domainName).then(({body}:any) => {
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.A+domainName).then(({body}:any) => {
     dispatch({
       type:T.COMPANY.DOMAINTRACKER.A,
       payload:{fetching:false,data:body.data}
     });
   });
 };
-export const dnsDomainTracker = () => dispatch => {
+export const dnsDomainTracker = (domainName) => dispatch => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.DNS,
     payload:{fetching:true}
   });
-  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.DNS+(window as any).domainName).then(({body}:any) => {
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.DNS+domainName).then(({body}:any) => {
     dispatch({
       type:T.COMPANY.DOMAINTRACKER.DNS,
       payload:{fetching:false,data:body.data}

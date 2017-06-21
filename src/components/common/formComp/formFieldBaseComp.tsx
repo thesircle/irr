@@ -12,10 +12,13 @@ export class FormFieldBaseComp extends Component<any,any>{
   }
 
   componentWillReceiveProps(newProps){
-    let props = this.props as any;
-    newProps.className ? this.setState({classNames:newProps.className}) : null;
-    typeof  newProps.value !== "undefined" ? props.model.value = newProps.value: null ;
-    props.model.onChange = newProps.onChange;
+    // let onChange;
+    // let value;
+    // let className;
+    // let props = this.props as any;
+    // newProps.className ? this.setState({classNames:newProps.className}) : null;
+    // typeof  newProps.value !== "undefined" ? value = newProps.value: null ;
+    // onChange = newProps.onChange;
 
   }
 
@@ -31,7 +34,7 @@ export class FormFieldBaseComp extends Component<any,any>{
                         type={props.model.type}
                         required={props.model.isRequired}
                         name={props.model.name}
-                        onChange={props.model.onChange}
+                        onChange={props.onChange}
                         value={props.model.value}
                         className="form-control"
                         placeholder={props.model.placeHolder} />

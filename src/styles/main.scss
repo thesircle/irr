@@ -27,6 +27,8 @@ $heading-color: #626262;
 $secondary-color: #ff5649;
 $scrollbar-color: rgba(0, 0, 0, 0.1);
 $scrollbarthumb-color: rgba(0, 0, 0, 0.5);
+$bg-danger:red;
+$bg-warning:yellow;
 
 //Function Definition
 
@@ -80,6 +82,25 @@ $scrollbarthumb-color: rgba(0, 0, 0, 0.5);
 
 .widgetborder {
   @include custom-border(1px, $border-color, solid);
+}
+
+.imgLoader{
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 3000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 3000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 3000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .bold {
@@ -291,6 +312,14 @@ button {
 .table-header-bg {
   background-color: $header-bgcolor;
   color: $table-header-bgcolor;
+}
+.table-danger{
+  background-color:$bg-danger;
+  color:$table-header-bgcolor;
+}
+.table-warning{
+  background-color:$bg-warning;
+  color:$table-header-bgcolor;
 }
 
 .table-footer {

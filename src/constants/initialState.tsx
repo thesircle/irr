@@ -1,3 +1,4 @@
+import {DomainTrackerBaseModel} from "../components/company/domainTracker/Models/DomainTrackerBaseModel";
 export const state = {
   kaseya:{
     url:"",
@@ -6,5 +7,6 @@ export const state = {
   },
   kaseyaFetching:false,
   kaseyaTransmitting:false,
-  wiseMessages:[]
+  wiseMessages:[],
+  companyDomainTracker: new DomainTrackerBaseModel()
 };

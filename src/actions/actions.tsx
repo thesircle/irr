@@ -6,16 +6,15 @@ import {types as T} from "../constants/types";
 
 export const viewDomainTracker = () => dispatch => {
   dispatch({
-    type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
+    type:T.COMPANY.DOMAINTRACKER.VIEW,
     payload:{domainTrackerFetchingWhois:true}
   });
-  setTimeout(() => {
-    get(S.BK.DOMAINTRACKER.GET).then(({body}:any) => {
-      dispatch({
-        type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
-        payload:{domainTrackerFetching:false,data:body}
-      });
-    });},10000);
+  get(S.BK.API.DOMAINTRACKER_VIEW).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.VIEW,
+      payload:{domainTrackerFetching:false,data:body}
+    });
+  });
 };
 export  const updateKaseya = (url, userName, password) => dispatch => {
   let postBody = {
@@ -76,8 +75,40 @@ export const clearWiseMessage = index => dispatch => {
     payload: index
   });
 };
+export const whoisDomainTracker = (domainName) => dispatch => {
+  dispatch({
+    type:T.COMPANY.DOMAINTRACKER.WHOIS,
+    payload:{fetching:true}
+  });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.WHOIS+domainName).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.WHOIS,
+      payload:{fetching:false,data:body}
+    });
+  });
+};
+export const aDomainTracker = (domainName) => dispatch => {
+  dispatch({
+    type:T.COMPANY.DOMAINTRACKER.A,
+    payload:{fetching:true}
+  });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.A+domainName).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.A,
+      payload:{fetching:false,data:body.data}
+    });
+  });
+};
+export const dnsDomainTracker = (domainName) => dispatch => {
+  dispatch({
+    type:T.COMPANY.DOMAINTRACKER.DNS,
+    payload:{fetching:true}
+  });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.DNS+domainName).then(({body}:any) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.DNS,
+      payload:{fetching:false,data:body.data}
+    });
+  });
+};
 
-
-// export const clearAllWiseMessages = ()  =>  dispatch  =>  {
-
-//}

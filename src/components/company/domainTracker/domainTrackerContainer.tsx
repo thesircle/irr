@@ -8,10 +8,10 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = dispatch => ({
 
-  onViewDomainTracker() {
-    dispatch(aDomainTracker());
-    dispatch(whoisDomainTracker());
-    dispatch(dnsDomainTracker());
+  onViewDomainTracker(domainName) {
+    dispatch(aDomainTracker(domainName));
+    dispatch(whoisDomainTracker(domainName));
+    dispatch(dnsDomainTracker(domainName));
   }
 });
 

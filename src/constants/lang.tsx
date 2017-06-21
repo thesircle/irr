@@ -1,4 +1,4 @@
-export const lang:any = {
+export const lang = {
   BUTTON: {
     SAVE: "Save",
     UPDATE: "Update"

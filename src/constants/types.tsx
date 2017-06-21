@@ -1,4 +1,4 @@
-export const types:any = {
+export const types = {
   INTEGRATIONS : {
     KASEYA: {
       CREATE: "KASEYA_CREATE",

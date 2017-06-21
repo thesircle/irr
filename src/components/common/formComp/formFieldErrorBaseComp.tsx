@@ -1,4 +1,7 @@
-export const error:any = (props):any => {
+interface MyProps{
+  value:string;
+}
+export const error = (props:MyProps) => {
   let defaultValue:string = "";
   return (
   <span className="error" >
@@ -6,4 +9,5 @@ export const error:any = (props):any => {
   </span>
   );
 };
+
 

@@ -1,16 +1,23 @@
 // import { KaseyaComp } from './kaseyaComp'
 import  {DomainTrackerComp} from "./domainTrackerComp";
 import { connect }    from "react-redux";
-import { withRouter } from "react-router-dom";
 import {viewDomainTracker} from "../../../actions/actions";
+interface Props{
 
-
-const mapStateToProps:any = (state, props):any => ({
+}
+interface State{
+  domainTracker:DomainTrackerr;
+}
+interface DomainTrackerr{
+  data:{};
+  domainTrackerFetchingWhois:{};
+}
+const mapStateToProps = (state:State, props:Props) => ({
   domainTrakerOBJ: state.domainTracker.data,
   domainTrackerFetchingWhois:state.domainTracker.domainTrackerFetchingWhois,
 });
 
-const mapDispatchToProps:any = (dispatch):any => ({
+const mapDispatchToProps = (dispatch:Function) => ({
     // onUpdateKaseya({url, userName, password}) {
     //   dispatch(
     //     updateKaseya(url, userName, password)
@@ -24,4 +31,4 @@ const mapDispatchToProps:any = (dispatch):any => ({
 });
 
 // const Container = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp)
-export const domainTracker:any = connect(mapStateToProps, mapDispatchToProps)(DomainTrackerComp);
+export const domainTracker = connect(mapStateToProps, mapDispatchToProps)(DomainTrackerComp as any);

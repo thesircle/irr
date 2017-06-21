@@ -6,10 +6,17 @@ import {integrationInfoComp as IntegrationInfoComp} from "../integrationInfoComp
 import {lang as L} from "../../../constants/lang";
 import {validateField} from "../../common/validations/validateFormFields";
 
-export class KaseyaComp extends Component<{},{}> {
-  constructor(props:any) {//TODO:resolve issue prop types should not be any
-    super(props);
-    this.state ={kaseyaFetching:false,
+interface State{
+  kaseyaFetching:boolean;
+  kaseyaTransmitting:boolean;
+  KaseyaFormModel:KaseyaFormModel;
+  disableForm:boolean;
+}
+export class KaseyaComp extends Component<{},State> {
+  constructor() {//TODO:resolve issue prop types should not be any
+    super();
+    this.state ={
+      kaseyaFetching:false,
       kaseyaTransmitting: false,
       KaseyaFormModel: new KaseyaFormModel(),
       disableForm: true
@@ -19,16 +26,16 @@ export class KaseyaComp extends Component<{},{}> {
 
   }
 
-  handleChange (e:any):void{
+
+  handleChange (e:Event):void{
 //TODO: resolve issue of type of e instead of any
-    let state:any = this.state as any;
-    const target:EventTarget = e.target;
-    const inputValue:string = e.target.value;
-    const fieldName:string = e.target.name;
+    const target:HTMLInputElement= e.target as HTMLInputElement;
+    const inputValue:string = target.value;
+    const fieldName:string = target.name;
     // this.setState({
     //   [name]: value
     // });
-
+    let state=this.state;
     // state.KaseyaFormModel[fieldObjectName].value = inputValue //{M.A}: TODO: bad approach
     this.updateFormFieldInState(state.KaseyaFormModel[fieldName].name, inputValue);
 
@@ -46,7 +53,7 @@ export class KaseyaComp extends Component<{},{}> {
     // //TODO: {M.A}: has bug, type last char and backspace, see submit button
     Object.keys(state.KaseyaFormModel).forEach((key) => {
       let field:KaseyaFormModel = state.KaseyaFormModel[key];
-      if(!validateField(field).result){
+      if(!validateField(field as any).result){
         disableForm = true;
         return;// break if even on field failed check
       }
@@ -55,7 +62,7 @@ export class KaseyaComp extends Component<{},{}> {
   }
 
   handleSubmit(e:any):void {
-    let state:any = this.state as any;
+    let state = this.state;
     e.preventDefault();
     (this.props as any).onUpdateKaseya
     ({
@@ -77,7 +84,7 @@ export class KaseyaComp extends Component<{},{}> {
    * value: value to be assigned to that field.value
    */
   updateFormFieldInState(formField:string, value:string):void {
-    let state:any = this.state as any;
+    let state = this.state as any;
     this.setState({ KaseyaFormModel:
     { ...state.KaseyaFormModel, [formField]:
       { ...state.KaseyaFormModel[formField], value: value }
@@ -86,7 +93,7 @@ export class KaseyaComp extends Component<{},{}> {
   }
   //TODO: {M.A}: set state of url, userName, pass etc in KaseyaForm model object
   componentWillReceiveProps(nextProps:any):void{
-    let state:any = this.state as any;
+    let state = this.state as any;
     this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.url);
     this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.userName);
     this.updateFormFieldInState(state.KaseyaFormModel.url.password, nextProps.password);
@@ -98,8 +105,8 @@ export class KaseyaComp extends Component<{},{}> {
     (this.props as any).onViewKaseya();
   }
 
-  render():any{
-    let state:any=this.state as any;
+  render(){
+    let state=this.state as any;
     return(
       <div>
         {(state.kaseyaFetching)? "fetching": "not fetching" }
@@ -155,9 +162,9 @@ export class KaseyaComp extends Component<{},{}> {
                 <div className="row clearfix">
                   <FormFieldBaseComp
                       model = {state.KaseyaFormModel.url}
-                      className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
+                       className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
                       value={state.KaseyaFormModel.url.value}
-                      onChange={(e):void => this.handleChange(e) }
+                      onChange={(e:Event):void => this.handleChange(e) }
                   />
                 </div>
 
@@ -167,12 +174,16 @@ export class KaseyaComp extends Component<{},{}> {
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.userName}
                     value={state.KaseyaFormModel.userName.value}
-                    onChange={(e):void => this.handleChange(e) } />
+                    className=""
+                    onChange={(e:any) => this.handleChange(e) }
+                  />
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.password}
                     value={state.KaseyaFormModel.password.value}
-                    onChange={(e):void => this.handleChange(e)} />
+                    className=""
+                    onChange={(e:Event) => this.handleChange(e)}
+                  />
                   <button onSubmit={this.handleSubmit} disabled={state.disableForm}>Update</button>
                 </div>
                 </form>

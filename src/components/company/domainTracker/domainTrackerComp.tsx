@@ -10,7 +10,7 @@ export class DomainTrackerComp extends Component<{},{}> {
   }
 
   componentDidMount(){
-    (this.props as any).onViewDomainTracker();
+    (this.props as any).onViewDomainTracker("thehelpdesk.com");
   }
 
   render(){

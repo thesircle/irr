@@ -1,29 +1,36 @@
 import "./../../../styles/main.scss";
 import {Component} from "react";
-import {PropTypes} from "prop-types";
+// import {PropTypes} from "prop-types";
+interface MyState{
+  whoisFetchStatus:string;
+  DomainTrackerOBJ:string;
+}
+interface MyProps{
+  domainTrackerFetchingWhois:string;
+  domainTrakerOBJ:string;
+}
+export class DomainTrackerComp extends Component<MyProps,MyState> {
 
-export class DomainTrackerComp extends Component<{},{}> {
-
-  constructor(props:any) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       whoisFetchStatus:"",
       DomainTrackerOBJ:"",
     };
   }
-  componentWillReceiveProps(nextProps:any):void{
-    let state:any = this.state as any;
+  componentWillReceiveProps(nextProps:MyProps){
+    let state = this.state;
     if(typeof nextProps.domainTrackerFetchingWhois ==="undefined")
     {
       this.setState({whoisFetchStatus: ""});
     }else{
-      this.setState({whoisFetchStatus: nextProps.domainTrackerFetchingWhois as any});
+      this.setState({whoisFetchStatus: nextProps.domainTrackerFetchingWhois});
     }
     if(typeof nextProps.domainTrakerOBJ ==="undefined")
     {
       this.setState({DomainTrackerOBJ: ""});
     }else{
-      this.setState({DomainTrackerOBJ:nextProps.domainTrakerOBJ as any});
+      this.setState({DomainTrackerOBJ:nextProps.domainTrakerOBJ});
     }
 
   }
@@ -31,10 +38,9 @@ export class DomainTrackerComp extends Component<{},{}> {
     (this.props as any).onViewDomainTracker();
   }
 
-  render():any{
-
-    let state:any = this.state as any;
-    let s:any = ( (state.whoisFetchStatus)? "/img/load.gif" : "" );
+  render(){
+    let state = this.state;
+    let s:string = ( (state.whoisFetchStatus)? "/img/load.gif" : "" );
     return(
         <div className="page-wrapper">
           <div className="page-container">

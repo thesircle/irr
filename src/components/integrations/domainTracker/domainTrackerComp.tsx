@@ -2,12 +2,12 @@ import "./../../../styles/main.scss";
 import {Component} from "react";
 // import {PropTypes} from "prop-types";
 interface MyState{
-  whoisFetchStatus:string;
-  DomainTrackerOBJ:string;
+  whoisFetchStatus:{};
+  DomainTrackerOBJ:{};
 }
 interface MyProps{
-  domainTrackerFetchingWhois:string;
-  domainTrakerOBJ:string;
+  domainTrackerFetchingWhois:{};
+  domainTrakerOBJ:{};
 }
 export class DomainTrackerComp extends Component<MyProps,MyState> {
 

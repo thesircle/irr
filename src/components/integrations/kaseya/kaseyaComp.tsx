@@ -88,7 +88,7 @@ export class KaseyaComp extends Component<{},{}> {
     let state = this.state as any;
     this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.url);
     this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.userName);
-    this.updateFormFieldInState(state.KaseyaFormModel.url.password, nextProps.password);
+    this.updateFormFieldInState(state.KaseyaFormModel.password.name, nextProps.password);
     this.setState({kaseyaFetching: nextProps.kaseyaFetching});
     this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting});
   }
@@ -154,8 +154,7 @@ export class KaseyaComp extends Component<{},{}> {
                 <div className="row clearfix">
                   <FormFieldBaseComp
                       model = {state.KaseyaFormModel.url}
-                      className="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
-                      value={state.KaseyaFormModel.url.value}
+                      classNames="col-lg-6 col-md-6 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
                       onChange={e => this.handleChange(e) }
                   />
                 </div>
@@ -165,12 +164,10 @@ export class KaseyaComp extends Component<{},{}> {
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.userName}
-                    value={state.KaseyaFormModel.userName.value}
                     onChange={e => this.handleChange(e) } />
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.password}
-                    value={state.KaseyaFormModel.password.value}
                     onChange={e => this.handleChange(e)} />
                   <button onSubmit={this.handleSubmit} disabled={state.disableForm}>Update</button>
                 </div>

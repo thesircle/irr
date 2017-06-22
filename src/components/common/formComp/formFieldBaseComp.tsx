@@ -11,22 +11,12 @@ export class FormFieldBaseComp extends Component<any,any>{
     };
   }
 
-  componentWillReceiveProps(newProps){
-    // let onChange;
-    // let value;
-    // let className;
-    // let props = this.props as any;
-    // newProps.className ? this.setState({classNames:newProps.className}) : null;
-    // typeof  newProps.value !== "undefined" ? value = newProps.value: null ;
-    // onChange = newProps.onChange;
-
-  }
-
   render(){
     let error:any;
     let props = this.props as any;
+    let state = this.state as any;
     return(
-            <div className={(this.state as any).classNames}>
+            <div className={(props.classNames) ? props.classNames : state.classNames}>
                 <div className="form-group form-group-default pg-form-group">
                     <label className="label-style">{props.model.label}</label>
                     <input

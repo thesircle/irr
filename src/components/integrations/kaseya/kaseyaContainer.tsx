@@ -1,7 +1,21 @@
 import {updateKaseya, viewKaseya} from "../../../actions/actions";
 import { KaseyaComp } from "./kaseyaComp";
-import { connect }    from "react-redux";
-const mapStateToProps:any = (state, props):any => ({
+import { connect}    from "react-redux";
+interface State{
+  kaseya:Kaseya;
+  kaseyaFetching:boolean;
+  kaseyaTransmitting:boolean;
+}
+interface Props{
+
+}
+interface Kaseya{
+  url:string;
+  userName:string;
+  password:string;
+
+}
+const mapStateToProps = (state:State, props:Props) => ({
   url: state.kaseya.url,
   userName: state.kaseya.userName,
   password: state.kaseya.password,
@@ -9,8 +23,8 @@ const mapStateToProps:any = (state, props):any => ({
   kaseyaTransmitting: state.kaseyaTransmitting
 });
 
-const mapDispatchToProps:any = (dispatch):any => ({
-  onUpdateKaseya({url, userName, password}:any):void {
+const mapDispatchToProps = (dispatch:Function) => ({
+  onUpdateKaseya(url:string, userName:string, password:string):void {
     dispatch(
         updateKaseya(url, userName, password)
     );
@@ -22,4 +36,4 @@ const mapDispatchToProps:any = (dispatch):any => ({
   }
 });
 
-export const kaseyaContainer:any = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp);
+export const kaseyaContainer = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp);

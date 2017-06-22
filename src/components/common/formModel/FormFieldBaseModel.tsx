@@ -25,5 +25,6 @@ export abstract class FormFieldBaseModel {
   onChange = () => {
     //todo
   }
+  regex: RegExp;
 
 }

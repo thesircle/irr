@@ -9,5 +9,3 @@ export const error = (props:MyProps) => {
   </span>
   );
 };
-
-

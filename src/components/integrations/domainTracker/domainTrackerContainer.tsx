@@ -3,7 +3,6 @@ import  {DomainTrackerComp} from "./domainTrackerComp";
 import { connect }    from "react-redux";
 import {viewDomainTracker} from "../../../actions/actions";
 interface Props{
-
 }
 interface State{
   domainTracker:DomainTrackerr;
@@ -18,17 +17,17 @@ const mapStateToProps = (state:State, props:Props) => ({
 });
 
 const mapDispatchToProps = (dispatch:Function) => ({
-    // onUpdateKaseya({url, userName, password}) {
-    //   dispatch(
-    //     updateKaseya(url, userName, password)
-    //   )
-    // },
-  onViewDomainTracker():void {
+  // onUpdateKaseya({url, userName, password}) {
+  //   dispatch(
+  //     updateKaseya(url, userName, password)
+  //   )
+  // },
+  onViewDomainTracker() {
     dispatch(
-        viewDomainTracker()
+      viewDomainTracker()
     );
   }
 });
 
 // const Container = connect(mapStateToProps, mapDispatchToProps)(KaseyaComp)
-export const domainTracker = connect(mapStateToProps, mapDispatchToProps)(DomainTrackerComp as any);
+export const domainTracker = connect(mapStateToProps, mapDispatchToProps)(DomainTrackerComp);

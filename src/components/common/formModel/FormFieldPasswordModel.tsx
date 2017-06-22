@@ -9,4 +9,5 @@ export class FormFieldPasswordBaseModel extends FormFieldBaseModel{
   type:string = "password";
   label:string = "Password";
   placeHolder:string = "Enter Password";
+  regex:RegExp=new RegExp("");
 }

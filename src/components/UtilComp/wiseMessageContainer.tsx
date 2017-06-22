@@ -1,14 +1,18 @@
 import { connect } from "react-redux";
 import {ShowWiseMessages} from "./wiseMessageComp";
 import {clearWiseMessage} from "../../actions/actions";
+interface State{
+  wiseMessages:Object[];
+}
+interface Props{
 
-const mapStateToProps:any = (state,props):any => {
+}
+const mapStateToProps = (state:State,props:Props) => {
   return {
     wiseMessages: state.wiseMessages
   };
 };
-
-const mapDispatchToProps:any = (dispatch):any => {
+const mapDispatchToProps = (dispatch:Function) => {
   return {
     onClearWiseMessage(index:string):void {
       dispatch(
@@ -17,5 +21,4 @@ const mapDispatchToProps:any = (dispatch):any => {
     }
   };
 };
-export const showErrors:any = connect(mapStateToProps, mapDispatchToProps)(ShowWiseMessages);
-
+export const showErrors = connect(mapStateToProps, mapDispatchToProps)(ShowWiseMessages);

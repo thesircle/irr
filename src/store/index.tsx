@@ -4,9 +4,9 @@ import {applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import {appReducer} from "./reducers";
 
-const consoleMessages = store=>next=>action=>{
+const consoleMessages = (store:any)=>(next:any)=>(action:any)=>{
   let result;
-  console.groupCollapsed(`dispatching action => ${action.type}`)
+  console.groupCollapsed(`dispatching action => ${action.type}`);
   let state = store.getState();
   console.log(`1 state: ${JSON.stringify(state)}`);
   result = next(action);

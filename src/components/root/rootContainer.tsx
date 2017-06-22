@@ -1,10 +1,15 @@
 import { connect }    from "react-redux";
 import {rootComp as RootComp} from "./rootComp";
+interface State{
 
-const mapStateToProps:any = (state, props):any => ({
+}
+interface Props{
+
+}
+const mapStateToProps = (state:State, props:Props) => ({
 });
 
-const mapDispatchToProps:any = (dispatch):any => ({
+const mapDispatchToProps = (dispatch:Function) => ({
 
 });
-export const container:any = connect(mapStateToProps, mapDispatchToProps)(RootComp);
+export const container = connect(mapStateToProps, mapDispatchToProps)(RootComp);

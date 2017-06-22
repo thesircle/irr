@@ -1,8 +1,12 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import {types as T} from "../constants/types";
 
-export const kaseya:any = (state={}, action):any => {
-  switch(action.type) {
+interface Action{
+  type:string;
+  payload:{};
+}
+export const kaseya = (state={}, action:Action) => {
+  switch(action.type as String) {
 
   case T.INTEGRATIONS.KASEYA.VIEW :
       //TODO: do some math
@@ -16,7 +20,7 @@ export const kaseya:any = (state={}, action):any => {
   }
 };
 
-export const kaseyaFetching:any = (state={}, action):any => {
+export const kaseyaFetching = (state={}, action:Action) => {
   switch(action.type) {
 
   case "fetching" :
@@ -27,7 +31,7 @@ export const kaseyaFetching:any = (state={}, action):any => {
     return state;
   }
 };
-export const domainTracker:any=(state={},action):any => {
+export const domainTracker=(state={},action:Action) => {
   switch (action.type){
   case T.INTEGRATIONS.DOMAINTRACKER.VIEW:
     return action.payload;
@@ -35,7 +39,7 @@ export const domainTracker:any=(state={},action):any => {
     return state;
   }
 };
-export const kaseyaTransmitting:any = (state={}, action):any => {
+export const kaseyaTransmitting= (state={}, action:Action) => {
   switch(action.type) {
 
   case "transmitting" :
@@ -47,7 +51,7 @@ export const kaseyaTransmitting:any = (state={}, action):any => {
   }
 };
 
-export const wiseMessages:any = (state=[], action):any => {
+export const wiseMessages = (state=[{}], action:Action) => {
   switch(action.type) {
   case T.WISE_MESSAGE.ADD :
     return [
@@ -61,11 +65,12 @@ export const wiseMessages:any = (state=[], action):any => {
   }
 };
 
-export const appReducer:any=combineReducers({
+export const appReducer=combineReducers({
   kaseya,
   kaseyaFetching,
   kaseyaTransmitting,
   wiseMessages,
-  domainTracker
+  domainTracker,
+  state: (state = {}) => state
 });
 

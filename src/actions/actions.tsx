@@ -5,20 +5,18 @@ import {types as T} from "../constants/types";
 
 export const viewDomainTracker= () => (dispatch:Function) => {
   dispatch({
-    type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
+    type:T.COMPANY.DOMAINTRACKER.VIEW,
     payload:{domainTrackerFetchingWhois:true}
   });
-  setTimeout(() => {
-    get(S.BK.DOMAINTRACKER.GET).then(({body}) => {
-      dispatch({
-        type:T.INTEGRATIONS.DOMAINTRACKER.VIEW,
-        payload:{domainTrackerFetching:false,data:body}
-      });
-    });},10000);
+  get(S.BK.API.DOMAINTRACKER_VIEW).then(({body}) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.VIEW,
+      payload:{domainTrackerFetching:false,data:body}
+    });
+  });
 };
-export  const updateKaseya = (url:string, userName:string, password:string) => (dispatch:Function) => {
-  //TODO: resolve issue of any with variable invoking method
-  let postBody:object = {
+export  const updateKaseya = (url, userName, password) => (dispatch) => {
+  let postBody = {
     "KaseyaUrl":url,
     "KaseyaUser":userName,
     "KaseyaUserPass":password
@@ -34,7 +32,7 @@ export  const updateKaseya = (url:string, userName:string, password:string) => (
   // dispatch({type: T.CANCEL_FETCHING}) //TODO
     });
 };
-export const viewKaseya = () => (dispatch:Function) => {
+export const viewKaseya = () => (dispatch) => {
   dispatch(addWiseMessage(S.WISE_MESSAGE.ERROR,
                           "newErrorMessage",
                           "Custom Heading"));
@@ -51,8 +49,8 @@ export const viewKaseya = () => (dispatch:Function) => {
     payload: {kaseyaFetching: true}
   });
   get(S.BK.API.KASEYA_VIEW).then(({body}) => {
-    let url:string = body.data.KaseyaUrl;
-    let userName:string = body.data.KaseyaUser;
+    let url = body.data.KaseyaUrl;
+    let userName = body.data.KaseyaUser;
     dispatch ({
       type: T.INTEGRATIONS.KASEYA.VIEW,
       payload: {url,userName}
@@ -64,16 +62,52 @@ export const viewKaseya = () => (dispatch:Function) => {
     });
 };
 
-export const addWiseMessage = (type:string, message:string, heading="") => (dispatch:Function) => {
+export const addWiseMessage = (type, message, heading="") => (dispatch) => {
   dispatch({
     type: T.WISE_MESSAGE.ADD,
     payload: {type,message,heading} // same as {type:type,message:message,heading:heading} in es6
   });
 };
-export const clearWiseMessage = (index:string) => (dispatch:Function) => {
+export const clearWiseMessage = (index) => (dispatch) => {
   dispatch({
     type: T.WISE_MESSAGE.CLEAR,
     payload: index
+  });
+};
+export const whoisDomainTracker = (domainName) => (dispatch) => {
+  dispatch({
+    type:T.COMPANY.DOMAINTRACKER.WHOIS,
+    payload:{fetching:true}
+  });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.WHOIS+domainName).then(({body}) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.WHOIS,
+      payload:{fetching:false,data:body}
+    });
+  });
+};
+export const aDomainTracker = (domainName) => (dispatch) => {
+  dispatch({
+    type:T.COMPANY.DOMAINTRACKER.A,
+    payload:{fetching:true}
+  });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.A+domainName).then(({body}) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.A,
+      payload:{fetching:false,data:body.data}
+    });
+  });
+};
+export const dnsDomainTracker = (domainName) => (dispatch) => {
+  dispatch({
+    type:T.COMPANY.DOMAINTRACKER.DNS,
+    payload:{fetching:true}
+  });
+  get(S.BK.DOMAINTRACKER.URL+S.BK.DOMAINTRACKER.DOMAINS.DNS+domainName).then(({body}) => {
+    dispatch({
+      type:T.COMPANY.DOMAINTRACKER.DNS,
+      payload:{fetching:false,data:body.data}
+    });
   });
 };
 

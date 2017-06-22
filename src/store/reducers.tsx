@@ -1,4 +1,5 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
+import {state as initState} from "../constants/initialState";
 import {types as T} from "../constants/types";
 
 interface Action{
@@ -31,14 +32,6 @@ export const kaseyaFetching = (state={}, action:Action) => {
     return state;
   }
 };
-export const domainTracker=(state={},action:Action) => {
-  switch (action.type){
-  case T.INTEGRATIONS.DOMAINTRACKER.VIEW:
-    return action.payload;
-  default:
-    return state;
-  }
-};
 export const kaseyaTransmitting= (state={}, action:Action) => {
   switch(action.type) {
 
@@ -60,6 +53,23 @@ export const wiseMessages = (state=[{}], action:Action) => {
     ];
   case T.WISE_MESSAGE.CLEAR :
     return state.filter((message, i) => i !== action.payload);
+  default:
+    return state;
+  }
+};
+
+export const domainTracker=(state=initState.companyDomainTracker,action) => {
+  switch (action.type){
+  case T.COMPANY.DOMAINTRACKER.WHOIS:
+    return Object.assign({},state,{whois:Object.assign({},state.whois,action.payload)});
+  case T.COMPANY.DOMAINTRACKER.A:
+    return Object.assign({},state,
+      {aName:Object.assign({},state.aName,
+        {data:Object.assign({},state.aName.data,action.payload.data),fetching:action.payload.fetching})});
+  case T.COMPANY.DOMAINTRACKER.DNS:
+    return Object.assign({},state,
+      {dns:Object.assign({},state.dns,
+        {data:Object.assign({},state.dns.data,action.payload.data),fetching:action.payload.fetching})});
   default:
     return state;
   }

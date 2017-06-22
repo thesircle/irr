@@ -12,7 +12,7 @@ interface SecurityObject{
   userName:string;
 }
 export const api = (url:string, params:{}) => {
-  let fullUrl:string = S.GET_BASE + url;
+  let fullUrl:string = S.BK_BASE + url;
   return fetch(fullUrl, params)
     .then((res) => {
       if (res.ok) {//200 to 299

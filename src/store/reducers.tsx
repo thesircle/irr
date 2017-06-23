@@ -58,7 +58,7 @@ export const wiseMessages = (state=[{}], action:Action) => {
   }
 };
 
-export const domainTracker=(state=initState.companyDomainTracker,action) => {
+export const domainTracker=(state=initState.companyDomainTracker,action:any) => {
   switch (action.type){
   case T.COMPANY.DOMAINTRACKER.WHOIS:
     return Object.assign({},state,{whois:Object.assign({},state.whois,action.payload)});

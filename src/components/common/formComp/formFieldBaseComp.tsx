@@ -3,11 +3,6 @@ import {FormFieldBaseModel} from "../formModel/FormFieldBaseModel";
 import {error as Error} from "./formFieldErrorBaseComp";
 import {validateField} from "../validations/validateFormFields";
 
-// interface MyNewProps{
-//   className:string;
-//   value:string;
-//   onChange:Event;
-// }
 interface Props{
   model:FormFieldBaseModel;
   className:string;
@@ -19,8 +14,8 @@ interface State{
 }
 export class FormFieldBaseComp extends Component<any,State>{
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       classNames: "col-lg-4 col-md-4 col-sm-12 col-xs-12 sm-p-l-0 tab-p-l-0"
     };

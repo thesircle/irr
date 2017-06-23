@@ -13,14 +13,14 @@ interface MyProps{
   onViewDomainTracker:Function;
 }
 export class DomainTrackerComp extends Component<any,MyState> {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       whoisFetchStatus:"",
       DomainTrackerOBJ:"",
     };
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps:MyProps) {
     let state = this.state;
     if (typeof nextProps.domainTrackerFetchingWhois === "undefined") {
       this.setState({whoisFetchStatus: ""});

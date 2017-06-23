@@ -12,8 +12,8 @@ interface Data{
 
 }
 export class TabsWraperComp extends Component<any,{}>{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
   }
 
 

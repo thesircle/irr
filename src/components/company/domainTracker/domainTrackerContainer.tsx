@@ -2,13 +2,19 @@ import {aDomainTracker,dnsDomainTracker,whoisDomainTracker} from "../../../actio
 import { connect }    from "react-redux";
 import  {DomainTrackerComp} from "./domainTrackerComp";
 
-const mapStateToProps = (state, props) => ({
+interface Iprops{
+
+}
+interface Istate{
+  domainTracker:{};
+}
+const mapStateToProps = (state:Istate, props:Iprops) => ({
   domainTracker:state.domainTracker
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch:Function) => ({
 
-  onViewDomainTracker(domainName) {
+  onViewDomainTracker(domainName:string) {
     dispatch(aDomainTracker(domainName));
     dispatch(whoisDomainTracker(domainName));
     dispatch(dnsDomainTracker(domainName));

@@ -17,15 +17,17 @@ interface Props{
 interface Data{
   data:Dataa;
   fetching:{};
-
 }
 interface Dataa{
-  registrar:{};
+  registrar:Registrar;
   contact:{};
 }
+interface Registrar{
+  [key:string]:string;
+}
 export class WhoisComp extends Component<Props,State>{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
       whoisHeader:{
         className:"",
@@ -45,13 +47,13 @@ export class WhoisComp extends Component<Props,State>{
     }));
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps:Props){
     this.props = nextProps;
     nextProps.data.data && nextProps.data.data.registrar ?
       this.setWhoisHeaderState(new Date(nextProps.data.data.registrar["Expiration Date"])): null;
   }
 
-  setWhoisHeaderState(expiration_Date){
+  setWhoisHeaderState(expiration_Date:any){
     let current_Date=new Date();
     let days = Math.round((expiration_Date-(current_Date.getTime())/(1000*60*60*24)));
     this.updateFieldInState("daysToExpire",days.toString());

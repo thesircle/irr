@@ -5,13 +5,13 @@ interface Props{
   loader:{};
 }
 export class TabContentComp extends Component<Props,{}>{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
   }
 
 
   render(){
-    let props = this.props;
+    let props = this.props as any;
     let headings = Object.keys(props.data);
     return (
       props.loader ?

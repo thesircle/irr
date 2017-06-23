@@ -3,10 +3,10 @@ import {rootComp as RootComp} from "./rootComp";
 interface State{
 
 }
-interface Props{
+interface Iprops{
 
 }
-const mapStateToProps = (state:State, props:Props) => ({
+const mapStateToProps = (state:State, props:Iprops) => ({
 });
 
 const mapDispatchToProps = (dispatch:Function) => ({

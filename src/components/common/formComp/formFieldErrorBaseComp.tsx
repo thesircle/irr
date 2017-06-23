@@ -1,7 +1,7 @@
-interface MyProps{
+interface IProps{
   value:string;
 }
-export const error = (props:MyProps) => {
+export const error = (props:IProps) => {
   let defaultValue:string = "";
   return (
   <span className="error" >

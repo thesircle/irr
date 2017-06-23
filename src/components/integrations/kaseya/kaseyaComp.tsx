@@ -184,14 +184,12 @@ export class KaseyaComp extends Component<any,State> {
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.userName}
                     value={state.KaseyaFormModel.userName.value}
-                    className=""
                     onChange={(e:ChangeEvent<HTMLInputElement>) => this.handleChange(e) }
                   />
 
                   <FormFieldBaseComp
                     model = {state.KaseyaFormModel.password}
                     value={state.KaseyaFormModel.password.value}
-                    className=""
                     onChange={(e:ChangeEvent<HTMLInputElement>) => this.handleChange(e)}
                   />
                   <button onSubmit={this.handleSubmit} >Update</button>
@@ -212,7 +210,6 @@ export class KaseyaComp extends Component<any,State> {
               <div className="col-xlg-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 m-t-20">
                 <img className="img-responsive float-right" src="/img/syncconnectwise.png" />
               </div>
-
             </div>
           </div>
         </div>

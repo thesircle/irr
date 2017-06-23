@@ -1,4 +1,4 @@
-interface Props{
+interface Iprops{
   object:Object;
 }
 interface Object{
@@ -15,7 +15,7 @@ interface Value{
   head:string;
   detail_List:Array<object>;
 }
-export const integrationInfoComp =(prop:Props) => {
+export const integrationInfoComp =(prop:Iprops) => {
   let popUp =():void => {
     parent.postMessage({
       name:"hide",

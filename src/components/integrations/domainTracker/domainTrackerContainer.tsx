@@ -2,16 +2,16 @@
 import  {DomainTrackerComp} from "./domainTrackerComp";
 import { connect }    from "react-redux";
 import {viewDomainTracker} from "../../../actions/actions";
-interface Props{
+interface IProps{
 }
-interface State{
+interface IState{
   domainTracker:DomainTrackerr;
 }
 interface DomainTrackerr{
   data:{};
   domainTrackerFetchingWhois:{};
 }
-const mapStateToProps = (state:State, props:Props) => ({
+const mapStateToProps = (state:IState, props:IProps) => ({
   domainTrakerOBJ: state.domainTracker.data,
   domainTrackerFetchingWhois:state.domainTracker.domainTrackerFetchingWhois,
 });

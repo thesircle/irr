@@ -1,12 +1,12 @@
 import {updateKaseya, viewKaseya} from "../../../actions/actions";
 import { KaseyaComp } from "./kaseyaComp";
 import { connect}    from "react-redux";
-interface State{
+interface IState{
   kaseya:Kaseya;
   kaseyaFetching:boolean;
   kaseyaTransmitting:boolean;
 }
-interface Props{
+interface IProps{
 
 }
 interface Kaseya{
@@ -15,7 +15,7 @@ interface Kaseya{
   password:string;
 
 }
-const mapStateToProps = (state:State, props:Props) => ({
+const mapStateToProps = (state:IState, props:IProps) => ({
   url: state.kaseya.url,
   userName: state.kaseya.userName,
   password: state.kaseya.password,

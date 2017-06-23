@@ -3,16 +3,16 @@ import {FormFieldBaseModel} from "../formModel/FormFieldBaseModel";
 import {error as Error} from "./formFieldErrorBaseComp";
 import {validateField} from "../validations/validateFormFields";
 
-interface Props{
+interface IProps{
   model:FormFieldBaseModel;
   className:string;
   value:string;
   onChange:EventHandler<ChangeEvent<HTMLInputElement>>;
 }
-interface State{
+interface IState{
   classNames:string;
 }
-export class FormFieldBaseComp extends Component<any,State>{
+export class FormFieldBaseComp extends Component<any,IState>{
 
   constructor(){
     super();

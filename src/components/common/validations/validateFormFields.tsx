@@ -1,14 +1,14 @@
 /*
  * We can use validatejs, ajv, joi later
  */
-interface MyProps{
+interface IProps{
   isRequired:boolean;
   value:string;
   isFormateRequired:boolean;
   regex:RegExp;
   label:string;
 }
-export const validateField = (props:MyProps) => {
+export const validateField = (props:IProps) => {
   let result:boolean= true;//being permissive
   let message:string= "";
   if(props.isRequired && props.value === ""){

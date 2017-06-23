@@ -1,16 +1,16 @@
 import "./../../../styles/main.scss";
 import {Component} from "react";
 // import {PropTypes} from "prop-types";
-interface MyState{
+interface IState{
   whoisFetchStatus:{};
   DomainTrackerOBJ:{};
 }
-interface MyProps{
+interface IProps{
   domainTrackerFetchingWhois:{};
   domainTrakerOBJ:{};
   onViewDomainTracker:Function;
 }
-export class DomainTrackerComp extends Component<any,MyState> {
+export class DomainTrackerComp extends Component<any,IState> {
 
   constructor() {
     super();
@@ -19,7 +19,7 @@ export class DomainTrackerComp extends Component<any,MyState> {
       DomainTrackerOBJ:"",
     };
   }
-  componentWillReceiveProps(nextProps:MyProps){
+  componentWillReceiveProps(nextProps:IProps){
     let state = this.state;
     if(typeof nextProps.domainTrackerFetchingWhois ==="undefined")
     {

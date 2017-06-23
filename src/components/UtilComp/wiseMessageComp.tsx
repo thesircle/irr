@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {system as S} from "../../constants/system";
 // import CloseButton from 'react-icons/lib/fa/close'
-interface MyState{
+interface IState{
   wiseMessages:WiseObj[];
   onClearWiseMessage:Function;
 
@@ -21,7 +21,7 @@ interface A{
 interface Props{
   onClearWiseMessage:Function;
 }
-export class ShowWiseMessages extends Component<any,MyState> {
+export class ShowWiseMessages extends Component<any,IState> {
   constructor() {
     super();
     this.state = {

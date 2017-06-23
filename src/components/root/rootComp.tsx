@@ -1,7 +1,7 @@
 import {domainTracker as DomainTracker} from "../company/domainTracker/domainTrackerContainer";
 import {kaseyaContainer as KaseyaContainer} from "./../integrations/kaseya/kaseyaContainer";
 import {showErrors as ShowErrors} from "../UtilComp/wiseMessageContainer";
-interface Props {
+interface Iprops {
   match: Match;
 }
 interface Match {

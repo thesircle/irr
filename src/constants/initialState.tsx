@@ -1,5 +1,5 @@
 import {DomainTrackerBaseModel} from "../components/company/domainTracker/Models/DomainTrackerBaseModel";
-interface State{
+interface IState{
   kaseya:Kaseya;
   kaseyaFetching:boolean;
   kaseyaTransmitting:boolean;
@@ -11,7 +11,7 @@ interface Kaseya{
   userName:string;
   password:string;
 }
-export const state:State = {
+export const state:IState = {
   kaseya:{
     url:"",
     userName :"",

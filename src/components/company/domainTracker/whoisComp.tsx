@@ -1,9 +1,10 @@
 import {Component} from "react";
+import {DomainTrackerBaseModel} from "./Models/DomainTrackerBaseModel";
 import {TabContentComp} from "./tabContentComp";
 import {TabsWraperComp} from "./tabsWraperComp";
 import {lang as L} from "../../../constants/lang";
 
-interface State{
+interface IState{
   whoisHeader:WhoisHeader;
 }
 interface WhoisHeader{
@@ -11,8 +12,8 @@ interface WhoisHeader{
   icon:string;
   daysToExpire:number;
 }
-interface Props{
-  data:Data;
+interface IProps {
+  data: Data;
 }
 interface Data{
   data:Dataa;
@@ -25,7 +26,7 @@ interface Dataa{
 interface Registrar{
   [key:string]:string;
 }
-export class WhoisComp extends Component<Props,State>{
+export class WhoisComp extends Component<IProps,IState>{
   constructor(){
     super();
     this.state = {
@@ -47,7 +48,7 @@ export class WhoisComp extends Component<Props,State>{
     }));
   }
 
-  componentWillReceiveProps(nextProps:Props){
+  componentWillReceiveProps(nextProps:IProps){
     this.props = nextProps;
     nextProps.data.data && nextProps.data.data.registrar ?
       this.setWhoisHeaderState(new Date(nextProps.data.data.registrar["Expiration Date"])): null;

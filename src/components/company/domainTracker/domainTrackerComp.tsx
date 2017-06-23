@@ -1,18 +1,21 @@
 import "./../../../styles/main.scss";
 import {Component} from "react";
+import {DomainTrackerBaseModel} from "./Models/DomainTrackerBaseModel";
 import {TabContentComp} from "./tabContentComp";
 import {WhoisComp} from "./whoisComp";
+
 // import {PropTypes} from "prop-types";
-interface MyState{
+interface IState{
   whoisFetchStatus:{};
   DomainTrackerOBJ:{};
 }
-interface MyProps{
+interface IProps{
   domainTrackerFetchingWhois:{};
   domainTrakerOBJ:{};
   onViewDomainTracker:Function;
+  domainTracker:DomainTrackerBaseModel;
 }
-export class DomainTrackerComp extends Component<any,MyState> {
+export class DomainTrackerComp extends Component<any,IState> {
   constructor() {
     super();
     this.state = {
@@ -20,7 +23,7 @@ export class DomainTrackerComp extends Component<any,MyState> {
       DomainTrackerOBJ:"",
     };
   }
-  componentWillReceiveProps(nextProps:MyProps) {
+  componentWillReceiveProps(nextProps:IProps) {
     let state = this.state;
     if (typeof nextProps.domainTrackerFetchingWhois === "undefined") {
       this.setState({whoisFetchStatus: ""});
@@ -47,7 +50,7 @@ export class DomainTrackerComp extends Component<any,MyState> {
           <div className="page-container">
             <div className="row">
               <div className="col-md-12 col-lg-6 col-xs-12 registrar-info widgetborder no-padding m-b-15">
-                <WhoisComp data={props.domainTracker.whois}/>
+                <WhoisComp data={props.domainTracker}/>
 
               </div>
               <div className="col-md-6 col-sm-6 col-lg-3 col-lg-push-3 col-md-push-6 col-sm-push-6 domain-view no-padding">

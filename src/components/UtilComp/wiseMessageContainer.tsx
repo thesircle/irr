@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import {ShowWiseMessages} from "./wiseMessageComp";
 import {clearWiseMessage} from "../../actions/actions";
-interface State{
+interface Istate{
   wiseMessages:Object[];
 }
-interface Props{
+interface Iprops{
 
 }
-const mapStateToProps = (state:State,props:Props) => {
+const mapStateToProps = (state:Istate,props:Iprops) => {
   return {
     wiseMessages: state.wiseMessages
   };

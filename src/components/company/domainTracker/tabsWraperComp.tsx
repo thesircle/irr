@@ -1,10 +1,10 @@
 import {Component} from "react";
 import {TabContentComp} from "./tabContentComp";
-interface Props{
-  data:Data;
+interface IProps{
+  data:IData;
   loader:{};
 }
-interface Data{
+interface IData{
   registrant:{};
   admin:{};
   technical:{};

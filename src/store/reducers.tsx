@@ -2,11 +2,11 @@ import { combineReducers } from "redux";
 import {state as initState} from "../constants/initialState";
 import {types as T} from "../constants/types";
 
-interface Action{
+interface IAction{
   type:string;
   payload:{};
 }
-export const kaseya = (state={}, action:Action) => {
+export const kaseya = (state={}, action:IAction) => {
   switch(action.type as String) {
 
   case T.INTEGRATIONS.KASEYA.VIEW :
@@ -21,7 +21,7 @@ export const kaseya = (state={}, action:Action) => {
   }
 };
 
-export const kaseyaFetching = (state={}, action:Action) => {
+export const kaseyaFetching = (state={}, action:IAction) => {
   switch(action.type) {
 
   case "fetching" :
@@ -32,7 +32,7 @@ export const kaseyaFetching = (state={}, action:Action) => {
     return state;
   }
 };
-export const kaseyaTransmitting= (state={}, action:Action) => {
+export const kaseyaTransmitting= (state={}, action:IAction) => {
   switch(action.type) {
 
   case "transmitting" :
@@ -44,7 +44,7 @@ export const kaseyaTransmitting= (state={}, action:Action) => {
   }
 };
 
-export const wiseMessages = (state=[{}], action:Action) => {
+export const wiseMessages = (state=[{}], action:IAction) => {
   switch(action.type) {
   case T.WISE_MESSAGE.ADD :
     return [

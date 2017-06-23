@@ -15,7 +15,7 @@ export const viewDomainTracker= () => (dispatch:Function) => {
     });
   });
 };
-export  const updateKaseya = (url, userName, password) => (dispatch) => {
+export  const updateKaseya = (url:string, userName:string, password:string) => (dispatch:Function) => {
   let postBody = {
     "KaseyaUrl":url,
     "KaseyaUser":userName,
@@ -32,7 +32,7 @@ export  const updateKaseya = (url, userName, password) => (dispatch) => {
   // dispatch({type: T.CANCEL_FETCHING}) //TODO
     });
 };
-export const viewKaseya = () => (dispatch) => {
+export const viewKaseya = () => (dispatch:Function) => {
   dispatch(addWiseMessage(S.WISE_MESSAGE.ERROR,
                           "newErrorMessage",
                           "Custom Heading"));
@@ -62,19 +62,19 @@ export const viewKaseya = () => (dispatch) => {
     });
 };
 
-export const addWiseMessage = (type, message, heading="") => (dispatch) => {
+export const addWiseMessage = (type:string, message:string, heading="") => (dispatch:Function) => {
   dispatch({
     type: T.WISE_MESSAGE.ADD,
     payload: {type,message,heading} // same as {type:type,message:message,heading:heading} in es6
   });
 };
-export const clearWiseMessage = (index) => (dispatch) => {
+export const clearWiseMessage = (index:string) => (dispatch:Function) => {
   dispatch({
     type: T.WISE_MESSAGE.CLEAR,
     payload: index
   });
 };
-export const whoisDomainTracker = (domainName) => (dispatch) => {
+export const whoisDomainTracker = (domainName:string) => (dispatch:Function) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.WHOIS,
     payload:{fetching:true}
@@ -86,7 +86,7 @@ export const whoisDomainTracker = (domainName) => (dispatch) => {
     });
   });
 };
-export const aDomainTracker = (domainName) => (dispatch) => {
+export const aDomainTracker = (domainName:string) => (dispatch:Function) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.A,
     payload:{fetching:true}
@@ -98,7 +98,7 @@ export const aDomainTracker = (domainName) => (dispatch) => {
     });
   });
 };
-export const dnsDomainTracker = (domainName) => (dispatch) => {
+export const dnsDomainTracker = (domainName:string) => (dispatch:Function) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.DNS,
     payload:{fetching:true}

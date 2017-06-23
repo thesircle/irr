@@ -52,10 +52,9 @@ export class WhoisComp extends Component<Props,State>{
     nextProps.data.data && nextProps.data.data.registrar ?
       this.setWhoisHeaderState(new Date(nextProps.data.data.registrar["Expiration Date"])): null;
   }
-
-  setWhoisHeaderState(expiration_Date:any){
+  setWhoisHeaderState(expiration_Date:Date){
     let current_Date=new Date();
-    let days = Math.round((expiration_Date-(current_Date.getTime())/(1000*60*60*24)));
+    let days = Math.round((expiration_Date.getTime()-current_Date.getTime())/(1000*60*60*24));
     this.updateFieldInState("daysToExpire",days.toString());
     if(current_Date > expiration_Date)
     {

@@ -1,18 +1,30 @@
 import {system as S} from "../constants/system";
-export const api = (url, params) => {
-  let fullUrl = S.BK_BASE + url;
+interface IParams{
+  headers:{};
+}
+interface IWindow extends Window{
+  securityObject:ISecurity;
+}
+interface ISecurity{
+  token:string;
+  orgId:string;
+  userId:string;
+  userName:string;
+}
+export const api = (url:string, params:{}) => {
+  let fullUrl:string = S.BK_BASE + url;
   return fetch(fullUrl, params)
-    .then(res => {
+    .then((res) => {
       if (res.ok) {//200 to 299
-        return res.json().then(body => ({body, res}));
+        return res.json().then((body) => ({body, res}));
       }
       else {
-        return res.json().then(body => Promise.reject({body, res}));
+        return res.json().then((body) => Promise.reject({body, res}));
       }
     });
 };
-let securityObject = (window as any).securityObject;
-
+let securityObject = (window as IWindow).securityObject;
+//window.securityObject = securityInfo;
 let headers = {
   "Authorization" : "Bearer "+securityObject.token,
   "orgId"         : securityObject.orgId,
@@ -20,8 +32,7 @@ let headers = {
   "userName"      : securityObject.userName
 };
 
-
-export const get = (url, params:any={}) => {
+export const get = (url:string, params={} as IParams) => {
   if (params.headers) {
     Object.assign(headers, params.headers);
   }
@@ -34,7 +45,7 @@ export const get = (url, params:any={}) => {
 };
 
 
-export const post = (url, body, params:any={}) => {
+export const post = (url:string, body:{}, params={} as IParams) => {
   Object.assign(headers, {
     "Content-Type": "application/json"
   });

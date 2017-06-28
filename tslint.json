@@ -72,7 +72,8 @@
       true,
       "always"
     ],
-    "no-any": true
+    "no-any": true,
+    "interface-name": [true, "always-prefix"]
   },
 "rulesDirectory": []
 }

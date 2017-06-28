@@ -15,13 +15,16 @@
  * but the implementation would not get affected
  */
 export abstract class FormFieldBaseModel {
-  name;
-  value = "";
-  type = "text";
-  label = "";
-  placeHolder = "Please fill the field";
-  isRequired = true;
-  isFormateRequired = false;
-  onChange = null;
+  name: string = "";
+  value: string = "";
+  type: string = "text";
+  label: string = "";
+  placeHolder: string = "Please fill";
+  isRequired: boolean = true;
+  isFormateRequired: boolean = false;
+  onChange = () => {
+    //todo
+  }
+  regex: RegExp;
 
 }

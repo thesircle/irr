@@ -1,6 +1,9 @@
-class DomainTrackerBaseDataModel {
+export class DomainTrackerBaseDataModel {
+  [key:string]:object|boolean;
   fetching: boolean = true;
-  data:object = {};
+  data : {
+
+  };
 }
 
 export class DomainTrackerBaseModel {

@@ -1,3 +1,4 @@
+import "./styles/main.scss";
 import * as React from "react";
 import * as sampleState from  "./constants/initialState";
 import {Provider} from "react-redux";
@@ -5,9 +6,14 @@ import {render} from "react-dom";
 import {routes as Routes} from "./routes";
 import {storeFactory} from "./store";
 
-const store:any = (storeFactory(sampleState) as any);
-(window as any).React = React;
-(window as any).store = store;
+interface IWindow extends Window {
+  React:Object ;
+  store:Object;
+}
+
+const store = (storeFactory(sampleState));
+(window as IWindow).React = React;
+(window as IWindow).store = store;
 render(
   <Provider store={store}>
       <Routes/>

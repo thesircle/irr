@@ -1,9 +1,12 @@
 import {Component} from "react";
 import {LoaderCog} from "../../UtilComp/loaderCog";
-
-export class TabContentComp extends Component<any,any>{
-  constructor(props){
-    super(props);
+interface IProps{
+  data:{};
+  loader:{};
+}
+export class TabContentComp extends Component<IProps,{}>{
+  constructor(){
+    super();
   }
 
 

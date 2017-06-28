@@ -1,11 +1,34 @@
 import {Component} from "react";
-import {lang as L} from "../../../constants/lang";
+import {DomainTrackerBaseModel} from "./Models/DomainTrackerBaseModel";
 import {TabContentComp} from "./tabContentComp";
 import {TabsWraperComp} from "./tabsWraperComp";
+import {lang as L} from "../../../constants/lang";
 
-export class WhoisComp extends Component<any,any>{
-  constructor(props){
-    super(props);
+interface IState{
+  whoisHeader:WhoisHeader;
+}
+interface WhoisHeader{
+  className:string;
+  icon:string;
+  daysToExpire:number;
+}
+interface IProps {
+  data: Data;
+}
+interface Data{
+  data:Dataa;
+  fetching:{};
+}
+interface Dataa{
+  registrar:Registrar;
+  contact:{};
+}
+interface Registrar{
+  [key:string]:string;
+}
+export class WhoisComp extends Component<IProps,IState>{
+  constructor(){
+    super();
     this.state = {
       whoisHeader:{
         className:"",
@@ -17,24 +40,23 @@ export class WhoisComp extends Component<any,any>{
     this.updateFieldInState = this.updateFieldInState.bind(this);
   }
 
-  updateFieldInState(field:any, value:any):any{
-    this.setState((state:any) => ({
+  updateFieldInState(field:string, value:string){
+    this.setState((state) => ({
       whoisHeader: { ...state.whoisHeader,
         [field]: value
       }
     }));
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps:IProps){
     this.props = nextProps;
     nextProps.data.data && nextProps.data.data.registrar ?
       this.setWhoisHeaderState(new Date(nextProps.data.data.registrar["Expiration Date"])): null;
   }
-
-  setWhoisHeaderState(expiration_Date){
+  setWhoisHeaderState(expiration_Date:Date){
     let current_Date=new Date();
-    let days = Math.round((expiration_Date-(current_Date as any))/(1000*60*60*24));
-    this.updateFieldInState("daysToExpire",days);
+    let days = Math.round((expiration_Date.getTime()-current_Date.getTime())/(1000*60*60*24));
+    this.updateFieldInState("daysToExpire",days.toString());
     if(current_Date > expiration_Date)
     {
       this.updateFieldInState("className",L.COMPANY.DOAMINTRACKER.HEADERS.CLASS.DANGER);
@@ -56,14 +78,14 @@ export class WhoisComp extends Component<any,any>{
 
 
   render(){
-    let props=this.props as any;
-    let state = this.state as any;
+    let props=this.props;
+    let state = this.state;
     return(
       <div>
       <div className={state.whoisHeader.className}>
         <span className="fs-20">
-          WHOIS: {props.data.data && props.data.data.registrar["Domain Name"] as any ?
-          props.data.data.registrar["Domain Name"].toUpperCase() as any : ""}</span>
+          WHOIS: {props.data.data && props.data.data.registrar["Domain Name"]  ?
+          props.data.data.registrar["Domain Name"].toUpperCase()  : ""}</span>
         {state.whoisHeader.daysToExpire >= 0 ?
           <div className="pull-right"><span>Domain will expire in {state.whoisHeader.daysToExpire} days </span>
             <img src={state.whoisHeader.icon} width="24px" height="24px"/></div> :

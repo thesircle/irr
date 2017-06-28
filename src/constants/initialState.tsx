@@ -1,12 +1,25 @@
 import {DomainTrackerBaseModel} from "../components/company/domainTracker/Models/DomainTrackerBaseModel";
-export const state = {
+interface IState{
+  kaseya:IKaseya;
+  kaseyaFetching:boolean;
+  kaseyaTransmitting:boolean;
+  wiseMessages:object[];
+  //companyDomainTracker:DomainTrackerBaseModel;
+}
+interface IKaseya{
+  url:string;
+  userName:string;
+  password:string;
+}
+export const state:IState = {
   kaseya:{
     url:"",
     userName :"",
     password  :""
   },
-  kaseyaFetching:false,
+  kaseyaFetching:false, //TODO: {M.A} thinking to put Kaseya in one object with fetching and trasmitting
   kaseyaTransmitting:false,
-  wiseMessages:[],
-  companyDomainTracker: new DomainTrackerBaseModel()
+  wiseMessages:[]
+  //,
+  //companyDomainTracker: new DomainTrackerBaseModel()
 };

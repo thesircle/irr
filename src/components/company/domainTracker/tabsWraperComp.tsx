@@ -1,13 +1,24 @@
 import {Component} from "react";
 import {TabContentComp} from "./tabContentComp";
-export class TabsWraperComp extends Component<any,any>{
-  constructor(props){
-    super(props);
+interface IProps{
+  data:IData;
+  loader:{};
+}
+interface IData{
+  registrant:{};
+  admin:{};
+  technical:{};
+
+
+}
+export class TabsWraperComp extends Component<any,{}>{
+  constructor(){
+    super();
   }
 
 
   render(){
-    let props=this.props as any;
+    let props=this.props;
     return(
     <div className="col-md-7 col-sm-7 whois-tab-info no-padding">
       <ul className="nav nav-pills">

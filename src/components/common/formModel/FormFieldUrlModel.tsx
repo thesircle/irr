@@ -8,7 +8,7 @@ export class FormFieldUrlBaseModel extends FormFieldBaseModel{
 
   name:string = "url";
   label:string = "Server Url";
-  placeHolder:string = "Enter your CW FQDN. E.g. https://api-na.myconnectwise.net";
+  placeHolder:string = "Enter FQDN url E.g. https://sub.site.net";
   isFormateRequired:boolean = true;
   regex:RegExp = new RegExp(
     "^" +

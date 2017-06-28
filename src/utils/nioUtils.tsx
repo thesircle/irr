@@ -1,11 +1,11 @@
 import {system as S} from "../constants/system";
-interface Params{
+interface IParams{
   headers:{};
 }
-interface WindowInterface extends Window{
-  securityObject:SecurityObject;
+interface IWindow extends Window{
+  securityObject:ISecurity;
 }
-interface SecurityObject{
+interface ISecurity{
   token:string;
   orgId:string;
   userId:string;
@@ -23,7 +23,7 @@ export const api = (url:string, params:{}) => {
       }
     });
 };
-let securityObject = (window as WindowInterface).securityObject;
+let securityObject = (window as IWindow).securityObject;
 //window.securityObject = securityInfo;
 let headers = {
   "Authorization" : "Bearer "+securityObject.token,
@@ -32,7 +32,7 @@ let headers = {
   "userName"      : securityObject.userName
 };
 
-export const get = (url:string, params={} as Params) => {
+export const get = (url:string, params={} as IParams) => {
   if (params.headers) {
     Object.assign(headers, params.headers);
   }
@@ -45,7 +45,7 @@ export const get = (url:string, params={} as Params) => {
 };
 
 
-export const post = (url:string, body:{}, params={} as Params) => {
+export const post = (url:string, body:{}, params={} as IParams) => {
   Object.assign(headers, {
     "Content-Type": "application/json"
   });

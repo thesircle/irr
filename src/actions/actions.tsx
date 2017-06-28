@@ -1,9 +1,10 @@
 import "isomorphic-fetch";
 import {get,post} from "../utils/nioUtils";
+import {Dispatch} from "redux";
 import {system as S} from "../constants/system";
 import {types as T} from "../constants/types";
 
-export const viewDomainTracker= () => (dispatch:Function) => {
+export const viewDomainTracker= () => (dispatch:Dispatch<string>) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.VIEW,
     payload:{domainTrackerFetchingWhois:true}
@@ -15,7 +16,7 @@ export const viewDomainTracker= () => (dispatch:Function) => {
     });
   });
 };
-export  const updateKaseya = (url:string, userName:string, password:string) => (dispatch:Function) => {
+export  const updateKaseya = (url:string, userName:string, password:string) => (dispatch:Dispatch<string>) => {
   let postBody = {
     "KaseyaUrl":url,
     "KaseyaUser":userName,
@@ -32,7 +33,7 @@ export  const updateKaseya = (url:string, userName:string, password:string) => (
   // dispatch({type: T.CANCEL_FETCHING}) //TODO
     });
 };
-export const viewKaseya = () => (dispatch:Function) => {
+export const viewKaseya = () => (dispatch:Dispatch<string>) => {
   dispatch(addWiseMessage(S.WISE_MESSAGE.ERROR,
                           "newErrorMessage",
                           "Custom Heading"));
@@ -45,7 +46,7 @@ export const viewKaseya = () => (dispatch:Function) => {
   // dispatch(addWiseMessage(`testError2`))
   // dispatch(addWiseMessage(`testError3`))
   dispatch({
-    type: "fetching",
+    type: T.INTEGRATIONS.KASEYA.FETCHING,
     payload: {kaseyaFetching: true}
   });
   get(S.BK.API.KASEYA_VIEW).then(({body}) => {
@@ -62,19 +63,19 @@ export const viewKaseya = () => (dispatch:Function) => {
     });
 };
 
-export const addWiseMessage = (type:string, message:string, heading="") => (dispatch:Function) => {
+export const addWiseMessage = (type:string, message:string, heading:string="") => (dispatch:Dispatch<string>) => {
   dispatch({
     type: T.WISE_MESSAGE.ADD,
     payload: {type,message,heading} // same as {type:type,message:message,heading:heading} in es6
   });
 };
-export const clearWiseMessage = (index:string) => (dispatch:Function) => {
+export const clearWiseMessage = (index:string) => (dispatch:Dispatch<string>) => {
   dispatch({
     type: T.WISE_MESSAGE.CLEAR,
     payload: index
   });
 };
-export const whoisDomainTracker = (domainName:string) => (dispatch:Function) => {
+export const whoisDomainTracker = (domainName:string) => (dispatch:Dispatch<string>) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.WHOIS,
     payload:{fetching:true}
@@ -86,7 +87,7 @@ export const whoisDomainTracker = (domainName:string) => (dispatch:Function) => 
     });
   });
 };
-export const aDomainTracker = (domainName:string) => (dispatch:Function) => {
+export const aDomainTracker = (domainName:string) => (dispatch:Dispatch<string>) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.A,
     payload:{fetching:true}
@@ -98,7 +99,7 @@ export const aDomainTracker = (domainName:string) => (dispatch:Function) => {
     });
   });
 };
-export const dnsDomainTracker = (domainName:string) => (dispatch:Function) => {
+export const dnsDomainTracker = (domainName:string) => (dispatch:Dispatch<string>) => {
   dispatch({
     type:T.COMPANY.DOMAINTRACKER.DNS,
     payload:{fetching:true}

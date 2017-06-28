@@ -2,7 +2,7 @@
   "compilerOptions": {
 //    "outDir": "./tsdist/",
    // "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "commonjs",
     "target": "es2015",
     "allowJs": true,

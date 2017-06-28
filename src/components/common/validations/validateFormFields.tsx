@@ -1,16 +1,12 @@
 /*
  * We can use validatejs, ajv, joi later
  */
-interface IProps{
-  isRequired:boolean;
-  value:string;
-  isFormateRequired:boolean;
-  regex:RegExp;
-  label:string;
-}
-export const validateField = (props:IProps) => {
-  let result:boolean= true;//being permissive
-  let message:string= "";
+import {FormFieldBaseModel} from "../formModel/FormFieldBaseModel";
+
+export const validateField = (props:FormFieldBaseModel) => {
+  let result:boolean = true;//being permissive
+  let message:string = "";
+
   if(props.isRequired && props.value === ""){
     message += " not be empty";
     result= false;
@@ -24,6 +20,6 @@ export const validateField = (props:IProps) => {
   //todo password, max/min length etc
 
   let preMessage:string = result? "": props.label+" should";
-  return {result: result,message: preMessage+message};
+  return {result: result,message: preMessage + message};
 };
 

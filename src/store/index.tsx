@@ -4,6 +4,7 @@ import {applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import {appReducer} from "./reducers";
 
+//TODO: {M.A} there should be no `any` type
 const consoleMessages = (store:any)=>(next:any)=>(action:any)=>{
   let result;
   console.groupCollapsed(`dispatching action => ${action.type}`);

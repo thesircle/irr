@@ -19,7 +19,7 @@ export abstract class FormFieldBaseModel {
   value: string = "";
   type: string = "text";
   label: string = "";
-  placeHolder: string = "Please fill the field";
+  placeHolder: string = "Please fill";
   isRequired: boolean = true;
   isFormateRequired: boolean = false;
   onChange = () => {

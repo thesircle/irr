@@ -7,8 +7,9 @@ import {routes as Routes} from "./routes";
 import {storeFactory} from "./store";
 
 interface IWindow extends Window {
-  React:Object ;
-  store:Object;
+  //TODO: {M.A}
+  React:Object;// tslint:disable-line
+  store:Object;// tslint:disable-line
 }
 
 const store = (storeFactory(sampleState));

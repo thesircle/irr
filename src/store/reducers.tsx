@@ -1,5 +1,5 @@
-import {IWiseObj} from "../components/UtilComp/wiseMessageContainer";
 import {combineReducers } from "redux";
+import {IWiseObj} from "../components/UtilComp/wiseMessageContainer";
 import {types as T} from "../constants/types";
 
 

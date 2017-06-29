@@ -1,10 +1,10 @@
 import {ChangeEvent, Component, EventHandler, FormEvent} from "react";
 import {updateKaseya, viewKaseya} from "../../../actions/actions";
+import {connect}    from "react-redux";
 import {FormFieldBaseComp} from "../../common/formComp/formFieldBaseComp";
 import {FormFieldEmailBaseModel} from "../../common/formModel/FormFieldEmailModel";
-import {KaseyaFormModel} from "./KaseyaFormModel";
-import {connect}    from "react-redux";
 import {integrationInfoComp as IntegrationInfoComp} from "../integrationInfoComp";
+import {KaseyaFormModel} from "./KaseyaFormModel";
 import {lang as L} from "../../../constants/lang";
 import {validateField} from "../../common/validations/validateFormFields";
 

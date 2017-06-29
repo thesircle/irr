@@ -24,7 +24,7 @@
     "typeof-compare": true,
     "use-isnan": true,
     "cyclomatic-complexity": [true, 20],
-    "max-classes-per-file": [true, 5],
+    "max-classes-per-file": [true, 10],
     "max-file-line-count": [true, 500],
     "max-line-length": [true, 125],
     "no-default-export": true,
@@ -33,11 +33,7 @@
     "class-name": true,
     "jsdoc-format": true,
     "no-consecutive-blank-lines": [true, 2],
-    "sort-imports": [true,
-      {
-        "ignore-case":true
-      }
-    ],
+    "sort-imports": [true, "ignore-case"],
     "prefer-template": [true, "allow-single-concat"],
     "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case"],
     "no-extra-semi": true,
@@ -73,7 +69,8 @@
       "always"
     ],
     "no-any": true,
-    "interface-name": [true, "always-prefix"]
+    "interface-name": [true, "always-prefix"],
+    "ban-types": [true, ["Object"], ["object"],["{}"],["undefined"],["null"],["any"],["Any"]]
   },
 "rulesDirectory": []
 }

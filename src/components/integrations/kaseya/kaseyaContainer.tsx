@@ -8,6 +8,34 @@ import {KaseyaFormModel} from "./KaseyaFormModel";
 import {lang as L} from "../../../constants/lang";
 import {validateField} from "../../common/validations/validateFormFields";
 
+export interface IKaseya{
+  url:                string;
+  userName:           string;
+  password:           string;
+}
+
+export interface IKaseyaFormModel{
+  KaseyaFormModel:    KaseyaFormModel;
+}
+
+export interface IKaseyaReduxState{
+  kaseya:             IKaseya;
+}
+
+export interface IDispatchToProps{
+  onUpdateKaseya:     Function;
+  onViewKaseya:       Function;
+}
+
+export interface IKaseyaIO {
+  kaseyaFetching:     boolean;
+  kaseyaTransmitting: boolean;
+}
+
+export interface IMiscProps{
+  disableForm:        boolean;
+}
+//////
 
 interface IProps{
   onUpdateKaseya:     Function;
@@ -47,7 +75,8 @@ interface IKaseyaForContainer{
 
 }
 
-export class KaseyaComp extends Component<IProps,IState> {
+export class KaseyaComp extends Component<IKaseya           & IDispatchToProps  & IKaseyaIO,
+                                          IKaseyaFormModel  & IMiscProps        & IKaseyaIO> {
 //https://github.com/DefinitelyTyped/DefinitelyTyped/issues/17355#issuecomment-310544041
 //import {RouteComponentProps} from "react-router";
 // export class KaseyaComp extends Component<IProps & RouteComponentProps<{}>,IState> {
@@ -247,7 +276,7 @@ export class KaseyaComp extends Component<IProps,IState> {
   }
 }
 
-const mapStateToProps = (state:IStateForContainer, props:IPropsForContainer):IPropsForContainer => ({
+const mapStateToProps = (state:IKaseyaReduxState & IKaseyaIO, props:IKaseya & IKaseyaIO):IKaseya & IKaseyaIO => ({
   url: state.kaseya.url,
   userName: state.kaseya.userName,
   password: state.kaseya.password,
@@ -269,5 +298,6 @@ const mapDispatchToProps = (dispatch:Function) => ({
 });
 
 export const kaseyaContainer =
-  connect<IPropsForContainer, void, IProps>(mapStateToProps, mapDispatchToProps)(KaseyaComp);
+  connect<IKaseya & IKaseyaIO, void, IKaseya & IDispatchToProps & IKaseyaIO>
+    (mapStateToProps, mapDispatchToProps)(KaseyaComp);
   // connect<IPropsForContainer, void, IProps & RouteComponentProps<{}>>(mapStateToProps, mapDispatchToProps)(KaseyaComp);

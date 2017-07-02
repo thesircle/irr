@@ -1,8 +1,11 @@
 import "isomorphic-fetch";
 import {get,post} from "../utils/nioUtils";
 import {Dispatch} from "redux";
+import {Kaseya} from "../components/integrations/kaseya/kaseyaContainer";
 import {system as S} from "../constants/system";
+
 import {types as T} from "../constants/types";
+
 
 export const viewDomainTracker= () => (dispatch:Dispatch<string>) => {
   dispatch({
@@ -34,6 +37,7 @@ export  const updateKaseya = (url:string, userName:string, password:string) => (
     });
 };
 export const viewKaseya = () => (dispatch:Dispatch<string>) => {
+  let kaseya = new Kaseya();
   dispatch(addWiseMessage(S.WISE_MESSAGE.ERROR,
                           "newErrorMessage",
                           "Custom Heading"));
@@ -45,16 +49,20 @@ export const viewKaseya = () => (dispatch:Dispatch<string>) => {
     "newWarningMessage","Custom Warn Heading here"));
   // dispatch(addWiseMessage(`testError2`))
   // dispatch(addWiseMessage(`testError3`))
+  kaseya.fetching = true;
   dispatch({
     type: T.INTEGRATIONS.KASEYA.FETCHING,
-    payload: {kaseyaFetching: true}
+    payload: kaseya
   });
+
   get(S.BK.API.KASEYA_VIEW).then(({body}) => {
-    let url = body.data.KaseyaUrl;
-    let userName = body.data.KaseyaUser;
+
+    kaseya.url = body.data.KaseyaUrl;
+    kaseya.userName = body.data.KaseyaUser;
+
     dispatch ({
       type: T.INTEGRATIONS.KASEYA.VIEW,
-      payload: {url,userName}
+      payload: kaseya
     });
   })
     .catch((error) => {

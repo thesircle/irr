@@ -7,45 +7,23 @@ interface IAction{
   type:string;
   payload:{};
 }
-export const kaseya = (state={}, action:IAction) => {
+export const Kaseya = (state={}, action:IAction) => {
   switch(action.type as String) {
 
-  case T.INTEGRATIONS.KASEYA.VIEW :
-      //TODO: do some math
-    return action.payload;
+  case T.INTEGRATIONS.KASEYA.VIEW
+    || T.INTEGRATIONS.KASEYA.UPDATE
+    || T.INTEGRATIONS.KASEYA.FETCHING
+    || T.INTEGRATIONS.KASEYA.TRANSMITTING :
+    //returning the same for all so using same case..
+    return Object.assign({}, state, action.payload);
 
-  case T.INTEGRATIONS.KASEYA.UPDATE :
-      //TODO: do some math
-    return action.payload;
   default:
     return state;
   }
 };
 
-export const kaseyaFetching = (state={}, action:IAction) => {
-  switch(action.type) {
 
-  case T.INTEGRATIONS.KASEYA.FETCHING :
-      //TODO: do some math
-    return action.payload;
-    // could be extended
-  default:
-    return state;
-  }
-};
-export const kaseyaTransmitting= (state={}, action:IAction) => {
-  switch(action.type) {
-
-  case T.INTEGRATIONS.KASEYA.TRANSMITTING :
-      //TODO: do some math
-    return action.payload;
-    // could be extended
-  default:
-    return state;
-  }
-};
-
-export const wiseMessages = (state:IWiseObj[]=[], action:IAction) => {
+export const wiseMessages = (state:Array<IWiseObj>=[], action:IAction) => {
   switch(action.type) {
   case T.WISE_MESSAGE.ADD :
     return [
@@ -77,9 +55,7 @@ export const wiseMessages = (state:IWiseObj[]=[], action:IAction) => {
 // };
 
 export const appReducer=combineReducers({
-  kaseya,
-  kaseyaFetching,
-  kaseyaTransmitting,
+  Kaseya,
   wiseMessages
   // domainTracker,
   // state: (state = {}) => state //??

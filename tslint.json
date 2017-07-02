@@ -35,7 +35,7 @@
     "no-consecutive-blank-lines": [true, 2],
     "sort-imports": [true, "ignore-case"],
     "prefer-template": [true, "allow-single-concat"],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case"],
+    "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case", "allow-pascal-case"],
     "no-extra-semi": true,
     "ter-indent": [
       true, 2,

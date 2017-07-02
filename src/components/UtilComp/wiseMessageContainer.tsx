@@ -4,7 +4,11 @@ import {Component} from "react";
 import {RouteComponentProps} from "react-router";
 import {system as S} from "../../constants/system";
 
-
+export class WiseMessage{
+  type:string;
+  heading:string;
+  message:string;
+}
 interface IProps{
   wiseMessages:IWiseObj[];
   onClearWiseMessage:(n:number) => void;
@@ -24,6 +28,8 @@ export interface IWiseObj{
   heading:string;
   message:string;
 }
+
+
 interface INextProps{
   wiseMessages:IWiseObj[];
 }

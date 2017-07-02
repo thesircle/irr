@@ -1,6 +1,6 @@
 import {ChangeEvent, Component, EventHandler, FormEvent} from "react";
-import {FormFieldBaseModel} from "../formModel/FormFieldBaseModel";
 import {error as Error} from "./formFieldErrorBaseComp";
+import {FormFieldBaseModel} from "../formModel/FormFieldBaseModel";
 import {validateField} from "../validations/validateFormFields";
 
 interface IProps{

@@ -1,46 +1,35 @@
 import { clearWiseMessage} from "../../actions/actions";
 import { connect } from "react-redux";
 import {Component} from "react";
-import {RouteComponentProps} from "react-router";
+import {Dispatch} from "redux";
 import {system as S} from "../../constants/system";
 
 
-interface IProps{
-  wiseMessages:IWiseObj[];
-  onClearWiseMessage:(n:number) => void;
-}
-
-interface IState{
-  wiseMessages:IWiseObj[];
-  onClearWiseMessage:(n:number) => void;
-}
-
-interface IStateForContainer{
-  wiseMessages:IWiseObj[];
-}
-
-export interface IWiseObj{
+export class WiseMessage{
   type:string;
   heading:string;
   message:string;
 }
-interface INextProps{
-  wiseMessages:IWiseObj[];
+interface IProps{
+  WiseMessages:WiseMessage[];
 }
 
-export class ShowWiseMessages extends Component<IProps,IState> {
+interface IState extends IProps{
+
+}
+
+interface IDispatchProps {
+  onClearWiseMessage: (i:number) => void;
+}
+
+export class ShowWiseMessages extends Component<IProps & IDispatchProps,IState> {
   constructor() {
     super();
     this.state = {
-      wiseMessages: [],
-      onClearWiseMessage: (f) => f
+      WiseMessages: []
     };
   }
-  componentWillReceiveProps(nextProps:INextProps):void{
-    this.setState({
-      wiseMessages: nextProps.wiseMessages
-    });
-  }
+
   getClassAndHeading(type:string){
     switch(type) {
     case S.WISE_MESSAGE.WARNING :
@@ -73,9 +62,9 @@ export class ShowWiseMessages extends Component<IProps,IState> {
   render(){
     return(
       <div className="wise-message-wrapper">
-        {(this.state.wiseMessages.length) ?
-          this.state.wiseMessages.map((wiseObj:IWiseObj, i:number) => {
-            let classAndHeading = this.getClassAndHeading(wiseObj.type);
+        {(this.props.WiseMessages.length) ?
+          this.props.WiseMessages.map((wiseMessage:WiseMessage, i:number) => {
+            let classAndHeading = this.getClassAndHeading(wiseMessage.type);
             return (
               <div key={i} className="pgn-wrapper slideLeft" data-position="top-right">
                 <div className="pgn push-on-sidebar-open pgn-circle">
@@ -86,9 +75,9 @@ export class ShowWiseMessages extends Component<IProps,IState> {
                       <div className="pgn-message">
                         <div>
                           <p className="bold">
-                            {(wiseObj.heading)?wiseObj.heading:classAndHeading.heading}
+                            {(wiseMessage.heading)?wiseMessage.heading:classAndHeading.heading}
                           </p>
-                          <p>{wiseObj.message}</p>
+                          <p>{wiseMessage.message}</p>
                         </div>
                       </div>
                     </div>
@@ -109,14 +98,14 @@ export class ShowWiseMessages extends Component<IProps,IState> {
 }
 
 
-const mapStateToProps = (state:IState, props:IProps):IStateForContainer => {
+const mapStateToProps = (state:IState, props:IProps):IProps => {
   return {
-    wiseMessages: state.wiseMessages,
+    WiseMessages: state.WiseMessages,
   };
 };
-const mapDispatchToProps = (dispatch:Function) => {
+const mapDispatchToProps = (dispatch:Dispatch<string>) => {
   return {
-    onClearWiseMessage(index:string):void {
+    onClearWiseMessage(index:number) {
       dispatch(
         clearWiseMessage(index)
       );
@@ -124,9 +113,9 @@ const mapDispatchToProps = (dispatch:Function) => {
   };
 };
 export const showErrors =
-  connect<IStateForContainer,void,IProps >(mapStateToProps,
-                                          mapDispatchToProps)
-                                          (ShowWiseMessages);
+  connect<IProps,void,IProps >(mapStateToProps,
+                               mapDispatchToProps)
+                              (ShowWiseMessages);
 
 // {(message[0] === "e")? "wise-error": "wise-success"}
 

@@ -1,67 +1,51 @@
 import {ChangeEvent, Component, EventHandler, FormEvent} from "react";
 import {updateKaseya, viewKaseya} from "../../../actions/actions";
+import {connect}    from "react-redux";
 import {FormFieldBaseComp} from "../../common/formComp/formFieldBaseComp";
 import {FormFieldEmailBaseModel} from "../../common/formModel/FormFieldEmailModel";
-import {KaseyaFormModel} from "./KaseyaFormModel";
-import {connect}    from "react-redux";
 import {integrationInfoComp as IntegrationInfoComp} from "../integrationInfoComp";
+import {KaseyaFormModel} from "./KaseyaFormModel";
 import {lang as L} from "../../../constants/lang";
 import {validateField} from "../../common/validations/validateFormFields";
 
-
-interface IProps{
+export class Kaseya {
+  url:                string  = "";
+  userName:           string  = "";
+  password:           string  = "";
+  fetching:           boolean = false;
+  transmitting:       boolean = false;
+}
+export interface IKaseya {
+  Kaseya:             Kaseya;
+}
+export interface IKaseyaFormModel{
+  KaseyaFormModel:    KaseyaFormModel;
+}
+export interface IDispatchToProps{
   onUpdateKaseya:     Function;
   onViewKaseya:       Function;
-  url:                string;
-  userName:           string;
-  password:           string;
-  kaseyaFetching:     boolean;
-  kaseyaTransmitting: boolean;
 }
-
-interface IState{
-  kaseyaFetching:     boolean;
-  kaseyaTransmitting: boolean;
-  KaseyaFormModel:    KaseyaFormModel;
+export interface IMiscProps{
   disableForm:        boolean;
 }
 
-interface IPropsForContainer{
-  url:                string;
-  userName:           string;
-  password:           string;
-  kaseyaFetching:     boolean;
-  kaseyaTransmitting: boolean;
-}
+type TProps = IKaseya & IDispatchToProps;
+type TState = IKaseya & IKaseyaFormModel & IMiscProps;
 
-interface IStateForContainer{
-  kaseya:IKaseyaForContainer;
-  kaseyaFetching:     boolean;
-  kaseyaTransmitting: boolean;
-}
-
-interface IKaseyaForContainer{
-  url:                string;
-  userName:           string;
-  password:           string;
-
-}
-
-export class KaseyaComp extends Component<IProps,IState> {
+export class KaseyaComp extends Component<TProps,
+                                          TState> {
 //https://github.com/DefinitelyTyped/DefinitelyTyped/issues/17355#issuecomment-310544041
 //import {RouteComponentProps} from "react-router";
 // export class KaseyaComp extends Component<IProps & RouteComponentProps<{}>,IState> {
-  constructor(props:IProps) {
+  constructor(props:IKaseya & IDispatchToProps) {
     super(props);
-    this.state ={
-      kaseyaFetching:false,
-      kaseyaTransmitting: false,
+    this.state = {
+      Kaseya: new Kaseya(),
       KaseyaFormModel: new KaseyaFormModel(),
       disableForm: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleChange (e:ChangeEvent<HTMLInputElement>):void{
@@ -120,23 +104,37 @@ export class KaseyaComp extends Component<IProps,IState> {
    */
   updateFormFieldInState(formField:string, value:string):void {
     let state = this.state;
-    this.setState(
+    this.setState((prevState:TState) => (
       {
-        KaseyaFormModel:
-        { ...state.KaseyaFormModel, [formField]:
-          { ...state.KaseyaFormModel[formField], value: value }
-        }
+        KaseyaFormModel: Object.assign({},
+                                        prevState.KaseyaFormModel,
+                                        {[formField]: Object.assign({}, prevState.KaseyaFormModel[formField], {value})}
+                                      )
+
       }
-    );
+      // {
+      //   KaseyaFormModel:
+      //   { ...state.KaseyaFormModel, [formField]:
+      //     { ...state.KaseyaFormModel[formField], value: value }
+      //   }
+      // }
+    ));
   }
 
-  componentWillReceiveProps(nextProps:IProps):void{
+  //TODO: {M.A}: can we make more concise code and also not loose efficiency and performance?
+  componentWillReceiveProps(nextProps:IKaseya):void{
+
     let state = this.state;
-    this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.url);
-    this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.userName);
-    this.updateFormFieldInState(state.KaseyaFormModel.password.name, nextProps.password);
-    this.setState({kaseyaFetching: nextProps.kaseyaFetching});
-    this.setState({kaseyaTransmitting: nextProps.kaseyaTransmitting});
+    this.updateFormFieldInState(state.KaseyaFormModel.url.name, nextProps.Kaseya.url);
+    this.updateFormFieldInState(state.KaseyaFormModel.userName.name, nextProps.Kaseya.userName);
+    this.updateFormFieldInState(state.KaseyaFormModel.password.name, nextProps.Kaseya.password);
+    this.setState((prevState:TState) => ({
+      Kaseya: Object.assign({}, prevState.Kaseya, {fetching: nextProps.Kaseya.fetching})
+    }));
+    this.setState((prevState:TState) => ({
+      Kaseya: Object.assign({}, prevState.Kaseya, {transmitting: nextProps.Kaseya.transmitting})
+    }));
+
   }
 
   componentDidMount():void{
@@ -147,7 +145,7 @@ export class KaseyaComp extends Component<IProps,IState> {
     let state=this.state;
     return(
       <div>
-        {(state.kaseyaFetching)? "fetching": "not fetching" }
+        { (state.Kaseya.fetching) ? "fetching": "not fetching" }
         <div className="container-fluid container-fixed-lg m-t-30">
           <div className="container-fixed-lg bg-white widgetborder">
             <div className="col-lg-12 col-md-12 col-xs-12">
@@ -221,7 +219,7 @@ export class KaseyaComp extends Component<IProps,IState> {
                     />
                     {/* //TODO: classNames should be optional.*/}
 
-                    <button onSubmit={this.handleSubmit} >Update</button>
+                    <button onClick={this.handleSubmit} >Update</button>
                   </div>
                 </form>
 
@@ -247,12 +245,8 @@ export class KaseyaComp extends Component<IProps,IState> {
   }
 }
 
-const mapStateToProps = (state:IStateForContainer, props:IPropsForContainer):IPropsForContainer => ({
-  url: state.kaseya.url,
-  userName: state.kaseya.userName,
-  password: state.kaseya.password,
-  kaseyaFetching: state.kaseyaFetching,
-  kaseyaTransmitting: state.kaseyaTransmitting
+const mapStateToProps = (state:IKaseya, props:IKaseya):IKaseya => ({
+  Kaseya: state.Kaseya
 });
 
 const mapDispatchToProps = (dispatch:Function) => ({
@@ -269,5 +263,6 @@ const mapDispatchToProps = (dispatch:Function) => ({
 });
 
 export const kaseyaContainer =
-  connect<IPropsForContainer, void, IProps>(mapStateToProps, mapDispatchToProps)(KaseyaComp);
+  connect<IKaseya, void, TProps>
+    (mapStateToProps, mapDispatchToProps)(KaseyaComp);
   // connect<IPropsForContainer, void, IProps & RouteComponentProps<{}>>(mapStateToProps, mapDispatchToProps)(KaseyaComp);

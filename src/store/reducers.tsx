@@ -1,6 +1,6 @@
 import {combineReducers } from "redux";
-import {IWiseObj} from "../components/UtilComp/wiseMessageContainer";
 import {types as T} from "../constants/types";
+import {WiseMessage} from "../components/UtilComp/wiseMessageContainer";
 
 
 interface IAction{
@@ -23,7 +23,7 @@ export const Kaseya = (state={}, action:IAction) => {
 };
 
 
-export const wiseMessages = (state:Array<IWiseObj>=[], action:IAction) => {
+export const WiseMessages = (state:Array<WiseMessage>=[], action:IAction) => {
   switch(action.type) {
   case T.WISE_MESSAGE.ADD :
     return [
@@ -56,7 +56,7 @@ export const wiseMessages = (state:Array<IWiseObj>=[], action:IAction) => {
 
 export const appReducer=combineReducers({
   Kaseya,
-  wiseMessages
+  WiseMessages
   // domainTracker,
   // state: (state = {}) => state //??
 });

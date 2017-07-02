@@ -77,7 +77,7 @@ export const addWiseMessage = (type:string, message:string, heading:string="") =
     payload: {type,message,heading} // same as {type:type,message:message,heading:heading} in es6
   });
 };
-export const clearWiseMessage = (index:string) => (dispatch:Dispatch<string>) => {
+export const clearWiseMessage = (index:number) => (dispatch:Dispatch<string>) => {
   dispatch({
     type: T.WISE_MESSAGE.CLEAR,
     payload: index
